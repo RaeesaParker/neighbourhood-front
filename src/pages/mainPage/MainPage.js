@@ -5,8 +5,27 @@ import "./MainPageStyles.css";
 
 function MainPage() {
   return (
-    <div>
-      <h1>Welcome to the Main Page</h1>
+    <div id="section-mainpage-div">
+      <div
+        id="subsection-mainpage-navbar"
+        className="section-mainpage-border"
+      >
+        <h1>NavBar</h1>
+      </div>
+
+      <div
+        id="subsection-mainpage-posts"
+        className="section-mainpage-border"
+      >
+        <h1>Main Section</h1>
+      </div>
+
+      <div
+        id="subsection-mainpage-panel"
+        className="section-mainpage-border"
+      >
+        <h1>Right Panel</h1>
+      </div>
     </div>
   );
 }
