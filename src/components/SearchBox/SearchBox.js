@@ -1,4 +1,7 @@
+// Design + images
 import "./SearchBox.css";
+
+// ////////////////
 
 const SearchBox = () => {
   return (
