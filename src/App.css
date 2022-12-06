@@ -21,6 +21,7 @@
 }
 
 body {
+  color: var(--grey-dark);
   font-family: "Heebo", sans-serif;
   margin: 0;
   padding: 0;

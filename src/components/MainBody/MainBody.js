@@ -6,6 +6,7 @@ import SearchBox from "../SearchBox/SearchBox";
 import SpanMainPage from "../SpanMainPage/SpanMainPage";
 import NewPost from "../NewPost/NewPost";
 import Feed from "../Feed/Feed";
+import PostCard from "../PostCards/PostCard";
 
 // ////////////////
 
@@ -16,6 +17,12 @@ const MainBody = () => {
       <SpanMainPage />
       <NewPost />
       <Feed />
+      <div className="mainbody-posts">
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+      </div>
     </div>
   );
 };
