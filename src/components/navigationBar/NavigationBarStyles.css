@@ -18,17 +18,35 @@
   width: 70%;
 }
 
-#navbar-links-div {
+.navbar-links-div {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  width: 90%;
 }
 
-#section-navbar button {
+#section-navbar i {
+  margin: 0 10% 0 0;
+}
+
+.button-style {
   background: none;
   border: none;
   color: var(--white);
-  font-size: 1rem;
-  margin: 5% 0;
+  font-size: 0.9rem;
+  margin: 10% 0 10% 5%;
+  padding: 5% 7%;
   text-align: left;
+}
+
+#section-navbar button:hover {
+  color: var(--grey-medium);
+  cursor: pointer;
+}
+
+#button-new-post {
+  background-color: var(--white);
+  border: none;
+  border-radius: 10px;
+  color: var(--grey-nav);
 }

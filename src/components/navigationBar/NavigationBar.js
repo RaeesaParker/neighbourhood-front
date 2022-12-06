@@ -14,16 +14,38 @@ function NavigationBar() {
           id="navbar-logo"
         />
       </div>
-      <div id="navbar-links-div">
-        <button> Home</button>
-        <button>My Account</button>
-        <button>New Post</button>
+      <div className="navbar-links-div">
+        <button className="button-style">
+          <i className="fa-solid fa-house"></i>
+          Home
+        </button>
+        <button className="button-style">
+          <i className="fa-solid fa-user"></i>My
+          Account
+        </button>
+        <button
+          id="button-new-post"
+          className="button-style"
+        >
+          <i className="fa-solid fa-plus"></i>New
+          Post
+        </button>
       </div>
-      <div id="navbar-pages-div">
-        <button>Schools</button>
+      <div className="navbar-links-div">
+        <button className="button-style">
+          <i className="fa-solid fa-school"></i>
+          Schools
+        </button>
+        <button className="button-style">
+          <i className="fa-solid fa-hospital"></i>
+          Medical
+        </button>
       </div>
-      <div id="navbar-logout-div">
-        <button>Logout</button>
+      <div className="navbar-links-div">
+        <button className="button-style">
+          <i className="fa-solid fa-arrow-right-from-bracket"></i>
+          Logout
+        </button>
       </div>
     </div>
   );
