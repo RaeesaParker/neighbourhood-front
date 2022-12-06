@@ -1,15 +1,69 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import "./SidePanelStyles.css";
 // Import profile pictures
 import userProfile from "../../imgs/profiles/profile1.jpg";
-// import userProfile2 from "../../imgs/profiles/profile2.jpg";
-// import userProfile3 from "../../imgs/profiles/profile3.jpg";
-// import userProfile4 from "../../imgs/profiles/profile4.jpg";
-// import userProfile5 from "../../imgs/profiles/profile5.jpg";
-
-// Side Panel => Username Bar => Users List => Weather Bar
 
 function SidePanel() {
+  // State to store the weather
+  const [weather, setWeather] = useState({});
+  const [weatherImage, setWeatherImage] =
+    useState("sunny");
+
+  // Function to set the weather
+  function setWeatherFunc() {
+    setWeather({
+      minTemp: 5,
+      maxTemp: 15,
+      weatherCode: 91,
+    });
+  }
+
+  // Set the weather when the component loads
+  useEffect(() => {
+    setWeatherFunc();
+    setWeatherImageFunc();
+  }, []);
+
+  // Set the weather image when the weather data is loaded
+  useEffect(() => {
+    setWeatherImageFunc();
+  }, [weather]);
+
+  // Function to set the weather image
+  function setWeatherImageFunc() {
+    if (weather.weatherCode == 0) {
+      setWeatherImage("sunny");
+    } else if (
+      weather.weatherCode > 0 &&
+      weather.weatherCode < 50
+    ) {
+      setWeatherImage("cloudy");
+    } else if (
+      weather.weatherCode > 50 &&
+      weather.weatherCode < 60
+    ) {
+      setWeatherImage("cloudy_rain");
+    } else if (
+      weather.weatherCode > 60 &&
+      weather.weatherCode < 70
+    ) {
+      setWeatherImage("rain");
+    } else if (
+      weather.weatherCode > 70 &&
+      weather.weatherCode < 80
+    ) {
+      setWeatherImage("snow_cloud");
+    } else if (
+      weather.weatherCode > 80 &&
+      weather.weatherCode < 90
+    ) {
+      setWeatherImage("snow");
+    } else {
+      setWeatherImage("thunder");
+    }
+  }
+
   // Function to set all the users
   const allUsers = [
     "profile2",
@@ -34,7 +88,7 @@ function SidePanel() {
     <div id="subsection-mainpage-panel">
       <div id="subsection-panel-user">
         <div id="subsection-panel-user-div">
-          <h4>Raeesa Parker</h4>
+          <h4>Username</h4>
         </div>
         <div id="subsection-panel-image-div">
           <img
@@ -44,13 +98,20 @@ function SidePanel() {
           />
         </div>
       </div>
-      <div id="subsection-panel-all-users">
+      <div className="subsection-panel">
         <h3>Preston</h3>
         <p>All your connected neighbours...</p>
         <div>{userImages}</div>
       </div>
-      <div>
-        <h1>Weather</h1>
+      <div className="subsection-panel">
+        <h3>Weather</h3>
+        <p>Min Temp: {weather.minTemp}&deg;C</p>
+        <p>Max Temp: {weather.maxTemp}&deg;C </p>
+        <img
+          src={require(`../../imgs/weather/${weatherImage}.png`)}
+          alt="Logo"
+          id="fig-weather"
+        />
       </div>
     </div>
   );
