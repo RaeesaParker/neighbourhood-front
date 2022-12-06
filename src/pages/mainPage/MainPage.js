@@ -1,16 +1,16 @@
 import React from "react";
 import "./MainPageStyles.css";
 
+// Import Components
+import NavigationBar from "../../components/navigationBar/NavigationBar";
+
 // Main Page => Navigation bar on Left => Posts Section in Center => User Panel on Right
 
 function MainPage() {
   return (
     <div id="section-mainpage-div">
-      <div
-        id="subsection-mainpage-navbar"
-        className="section-mainpage-border"
-      >
-        <h1>NavBar</h1>
+      <div className="section-mainpage-border">
+        <NavigationBar />
       </div>
 
       <div

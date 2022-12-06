@@ -8,10 +8,6 @@
   margin: 1% 1% 1% 1%;
 }
 
-#subsection-mainpage-navbar {
-  background-color: var(--grey-nav);
-}
-
 #subsection-mainpage-posts {
   background-color: blue;
   flex-grow: 2;

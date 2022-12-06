@@ -1,0 +1,39 @@
+#section-navbar {
+  align-items: center;
+  background-color: var(--grey-nav);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 100vh;
+  width: 12vw;
+}
+
+#navbar-logo-div {
+  display: flex;
+  justify-content: center;
+}
+
+#navbar-logo {
+  width: 70%;
+}
+
+#navbar-links-div {
+  display: flex;
+  flex-direction: column;
+}
+
+#navbar-links-div button {
+  background: none;
+  border: none;
+  color: var(--white);
+  margin: 5% 0;
+}
+
+#navbar-pages-div {
+  background-color: green;
+}
+
+#navbar-logout-div {
+  background-color: yellow;
+}
