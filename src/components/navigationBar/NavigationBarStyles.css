@@ -23,17 +23,10 @@
   flex-direction: column;
 }
 
-#navbar-links-div button {
+#section-navbar button {
   background: none;
   border: none;
   color: var(--white);
+  font-size: 1rem;
   margin: 5% 0;
-}
-
-#navbar-pages-div {
-  background-color: green;
-}
-
-#navbar-logout-div {
-  background-color: yellow;
 }
