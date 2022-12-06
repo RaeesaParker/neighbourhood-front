@@ -1,0 +1,32 @@
+.search-bg {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  background-color: var(--white-dark);
+  border-radius: 15px;
+
+  color: var(--grey-dark);
+
+  padding: 0px 15px;
+  height: 45px;
+  width: 75%;
+}
+
+.search-icon {
+  font-size: 22px;
+}
+
+.search-bg p {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.search-input {
+  background-color: transparent;
+  border: none;
+}
+
+.search-input:focus {
+  outline: none;
+}
