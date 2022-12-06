@@ -1,11 +1,11 @@
 import React from "react";
-import { useState } from "react";
 // import { Routes, Route, useNavigate} from "react-router-dom";
 import "./App.css";
 
 // Import Components => Homepage , Login Page Modal?  , Main Page
 import "./pages/homePage/Homepage";
 import Homepage from "./pages/homePage/Homepage";
+import MainPage from "./pages/mainPage/MainPage";
 
 // Need a state to holder the user details
 
@@ -14,6 +14,7 @@ function App() {
     <div>
       <h1>Neighbourhood app</h1>
       <Homepage />
+      <MainPage />
     </div>
   );
 }
