@@ -41,17 +41,25 @@
   width: 300%;
 }
 
-#subsection-panel-users-list {
+#subsection-panel-all-users {
   background-color: var(--white-dark);
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
-#subsection-panel-users-list h3 {
-  margin: 10% 10%;
+#subsection-panel-all-users h3 {
+  margin: 10% 10% 0 10%;
 }
 
-#subsection-panel-users-list p {
-  font-size: 0.8em;
-  margin: 10% 10%;
+#subsection-panel-all-users p {
+  font-size: 0.9em;
+  margin: 10% 10% 5% 10%;
+}
+
+.fig-user-all {
+  border-radius: 50%;
+  margin: 5% 3% 0 7%;
+  width: 3.5vw;
 }
