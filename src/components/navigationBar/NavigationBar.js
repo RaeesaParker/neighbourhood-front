@@ -15,7 +15,7 @@ function NavigationBar() {
         />
       </div>
       <div id="navbar-links-div">
-        <button>Home</button>
+        <button> Home</button>
         <button>My Account</button>
         <button>New Post</button>
       </div>

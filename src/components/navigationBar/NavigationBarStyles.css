@@ -21,6 +21,7 @@
 #navbar-links-div {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
 
 #section-navbar button {
@@ -29,4 +30,5 @@
   color: var(--white);
   font-size: 1rem;
   margin: 5% 0;
+  text-align: left;
 }
