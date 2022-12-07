@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./NavigationBarStyles.css";
 import logo from "../../imgs/logo.svg";
 
@@ -42,10 +43,12 @@ function NavigationBar() {
         </button>
       </div>
       <div className="navbar-links-div">
-        <button className="button-style">
-          <i className="fa-solid fa-arrow-right-from-bracket"></i>
-          Logout
-        </button>
+        <Link to="/">
+          <button className="button-style">
+            <i className="fa-solid fa-arrow-right-from-bracket"></i>
+            Logout
+          </button>
+        </Link>
       </div>
     </div>
   );
