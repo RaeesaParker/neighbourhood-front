@@ -1,0 +1,35 @@
+#section-mainpage-div {
+  background-color: var(--white);
+  display: flex;
+  min-height: 100vh;
+  margin: 15px;
+}
+
+/* #subsection-mainpage-posts {
+  flex-grow: 2;
+} */
+
+#subsection-mainpage-navbar {
+  height: 10px;
+  width: 270px;
+  min-width: 200px;
+}
+
+#subsection-mainpage-posts {
+  height: 10px;
+  max-width: 100%;
+}
+
+#subsection-mainpage-sidepanel {
+  /* background-color: red; */
+  height: 10px;
+  width: 280px;
+  min-width: 280px;
+}
+
+@media screen and (max-width: 1200px) {
+  #subsection-mainpage-navbar {
+    width: 95px;
+    min-width: 95px;
+  }
+}
