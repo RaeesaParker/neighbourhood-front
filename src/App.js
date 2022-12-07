@@ -1,5 +1,5 @@
 import React from "react";
-// import { Routes, Route, useNavigate} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
 // Import Components => Homepage , Login Page Modal?  , Main Page
@@ -14,9 +14,16 @@ import MainPage from "./pages/mainPage/MainPage";
 function App() {
   return (
     <div>
-      <h1>Neighbourhood app</h1>
-      <Homepage />
-      <MainPage />
+      <Routes>
+        <Route
+          path="/"
+          element={<Homepage />}
+        ></Route>
+        <Route
+          path="/main"
+          element={<MainPage />}
+        ></Route>
+      </Routes>
     </div>
   );
 }
