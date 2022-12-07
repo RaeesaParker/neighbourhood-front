@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./NavigationBarStyles.css";
 import logo from "../../imgs/logo.svg";
 
@@ -15,14 +16,18 @@ function NavigationBar() {
         />
       </div>
       <div className="navbar-links-div">
-        <button className="button-style">
-          <i className="fa-solid fa-house"></i>
-          <p>Home</p>
-        </button>
-        <button className="button-style">
-          <i className="fa-solid fa-user"></i>
-          <p>My Account</p>
-        </button>
+        <Link to="/main">
+          <button className="button-style">
+            <i className="fa-solid fa-house"></i>
+            <p>Home</p>
+          </button>
+        </Link>
+        <Link to="/user">
+          <button className="button-style">
+            <i className="fa-solid fa-user"></i>My
+            <p>My Account</p>
+          </button>
+        </Link>
         <button
           id="button-new-post"
           className="button-style"
@@ -32,20 +37,26 @@ function NavigationBar() {
         </button>
       </div>
       <div className="navbar-links-div">
-        <button className="button-style">
-          <i className="fa-solid fa-school"></i>
-          <p>Schools</p>
-        </button>
-        <button className="button-style">
-          <i className="fa-solid fa-hospital"></i>
-          <p>Medical</p>
-        </button>
+        <Link to="/schools">
+          <button className="button-style">
+            <i className="fa-solid fa-school"></i>
+            <p>Schools</p>
+          </button>
+        </Link>
+        <Link to="/hospitals">
+          <button className="button-style">
+            <i className="fa-solid fa-hospital"></i>
+            <p>Medical</p>
+          </button>
+        </Link>
       </div>
       <div className="navbar-links-div">
-        <button className="button-style">
-          <i className="fa-solid fa-arrow-right-from-bracket"></i>
-          <p>Logout</p>
-        </button>
+        <Link to="/">
+          <button className="button-style">
+            <i className="fa-solid fa-arrow-right-from-bracket"></i>
+            <p>Logout</p>
+          </button>
+        </Link>
       </div>
     </div>
   );

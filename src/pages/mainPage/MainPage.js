@@ -14,11 +14,9 @@ function MainPage() {
       <div id="subsection-mainpage-navbar">
         <NavigationBar />
       </div>
-
       <div id="subsection-mainpage-posts">
         <MainBody />
       </div>
-
       <div id="subsection-mainpage-sidepanel">
         <SidePanel />
       </div>
