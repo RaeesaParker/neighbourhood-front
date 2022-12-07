@@ -4,6 +4,7 @@ import SidePanel from "../../components/sidePanel/SidePanel";
 
 // Import Components
 import NavigationBar from "../../components/navigationBar/NavigationBar";
+import MainBody from "../../components/MainBody/MainBody";
 
 // Main Page => Navigation bar on Left => Posts Section in Center => User Panel on Right
 
@@ -14,12 +15,11 @@ function MainPage() {
         <NavigationBar />
       </div>
 
-      <div
+      <MainBody />
+      {/* <div
         id="subsection-mainpage-posts"
         className="section-mainpage-border"
-      >
-        <h1>Main Section</h1>
-      </div>
+      ></div> */}
 
       <div className="section-mainpage-border">
         <SidePanel />
