@@ -16,10 +16,6 @@ function MainPage() {
       </div>
 
       <MainBody />
-      {/* <div
-        id="subsection-mainpage-posts"
-        className="section-mainpage-border"
-      ></div> */}
 
       <div className="section-mainpage-border">
         <SidePanel />
