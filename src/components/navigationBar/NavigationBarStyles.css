@@ -1,12 +1,17 @@
 #section-navbar {
-  align-items: center;
-  background-color: var(--grey-nav);
-  border-radius: 10px;
   display: flex;
+  align-items: center;
   flex-direction: column;
-  justify-content: space-around;
-  min-height: 100vh;
-  width: 12vw;
+  justify-content: space-between;
+
+  background-color: var(--grey-nav);
+  border-radius: 20px;
+
+  padding: 40px 25px;
+  height: calc(100% - 110px);
+  width: 150px;
+
+  position: fixed;
 }
 
 #navbar-logo-div {
@@ -15,38 +20,101 @@
 }
 
 #navbar-logo {
-  width: 70%;
+  width: 120px;
 }
 
 .navbar-links-div {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 90%;
+  gap: 25px;
+  width: 100%;
 }
 
 #section-navbar i {
-  margin: 0 10% 0 0;
+  font-size: 22px;
+  margin-right: 25px;
+
+  width: 25px;
 }
 
 .button-style {
+  display: flex;
   background: none;
   border: none;
-  color: var(--white);
-  font-size: 0.9rem;
-  margin: 10% 0 10% 5%;
-  padding: 5% 7%;
+
+  color: var(--white-dark);
+  font-size: 1rem;
+  font-weight: 600;
   text-align: left;
+
+  padding: 0;
 }
 
 #section-navbar button:hover {
   color: var(--grey-medium);
-  cursor: pointer;
+  transition: 0.5s all ease;
 }
 
 #button-new-post {
-  background-color: var(--white);
-  border: none;
+  background-color: var(--white-dark);
   border-radius: 10px;
+  border: none;
+
   color: var(--grey-nav);
+  padding: 10px 15px;
+}
+
+#button-new-post:hover {
+  background-color: var(--grey-light);
+  color: var(--grey-nav) !important;
+  transition: 0.5s all ease;
+}
+
+.icon-newpost {
+  margin-right: 5px !important;
+}
+
+@media screen and (max-width: 1200px) {
+  #section-navbar {
+    padding: 30px 10px;
+    height: calc(100% - 90px);
+    width: 75px;
+  }
+
+  #navbar-logo {
+    width: 55px;
+  }
+
+  .navbar-links-div {
+    justify-content: center;
+    align-items: center;
+  }
+
+  #section-navbar i {
+    font-size: 26px;
+    margin-right: 0px;
+    width: auto;
+  }
+
+  #button-new-post {
+    padding: 5px 8px;
+  }
+
+  .icon-newpost {
+    margin-right: 0px !important;
+  }
+
+  .button-style p {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 950px) {
+}
+
+@media screen and (max-width: 850px) {
+}
+
+@media screen and (max-width: 600px) {
 }

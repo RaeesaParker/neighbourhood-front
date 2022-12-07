@@ -17,34 +17,34 @@ function NavigationBar() {
       <div className="navbar-links-div">
         <button className="button-style">
           <i className="fa-solid fa-house"></i>
-          Home
+          <p>Home</p>
         </button>
         <button className="button-style">
-          <i className="fa-solid fa-user"></i>My
-          Account
+          <i className="fa-solid fa-user"></i>
+          <p>My Account</p>
         </button>
         <button
           id="button-new-post"
           className="button-style"
         >
-          <i className="fa-solid fa-plus"></i>New
-          Post
+          <i className="fa-solid fa-plus icon-newpost"></i>
+          <p>New Post</p>
         </button>
       </div>
       <div className="navbar-links-div">
         <button className="button-style">
           <i className="fa-solid fa-school"></i>
-          Schools
+          <p>Schools</p>
         </button>
         <button className="button-style">
           <i className="fa-solid fa-hospital"></i>
-          Medical
+          <p>Medical</p>
         </button>
       </div>
       <div className="navbar-links-div">
         <button className="button-style">
           <i className="fa-solid fa-arrow-right-from-bracket"></i>
-          Logout
+          <p>Logout</p>
         </button>
       </div>
     </div>

@@ -4,7 +4,7 @@ import "./App.css";
 
 // Import Components => Homepage , Login Page Modal?  , Main Page
 import "./pages/homePage/Homepage";
-import Homepage from "./pages/homePage/Homepage";
+// import Homepage from "./pages/homePage/Homepage";
 import MainPage from "./pages/mainPage/MainPage";
 
 // Need a state to holder the user details
@@ -12,8 +12,7 @@ import MainPage from "./pages/mainPage/MainPage";
 function App() {
   return (
     <div>
-      <h1>Neighbourhood app</h1>
-      <Homepage />
+      {/* <Homepage /> */}
       <MainPage />
     </div>
   );
