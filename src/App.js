@@ -4,7 +4,7 @@ import "./App.css";
 
 // Import Components => Homepage , Login Page Modal?  , Main Page
 import "./pages/homePage/Homepage";
-import Homepage from "./pages/homePage/Homepage";
+// import Homepage from "./pages/homePage/Homepage";
 import MainPage from "./pages/mainPage/MainPage";
 import UserPage from "./pages/userPage/UserPage";
 import SchoolPage from "./pages/schoolPage/SchoolPage";

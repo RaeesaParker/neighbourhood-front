@@ -19,34 +19,34 @@ function NavigationBar() {
         <Link to="/main">
           <button className="button-style">
             <i className="fa-solid fa-house"></i>
-            Home
+            <p>Home</p>
           </button>
         </Link>
         <Link to="/user">
           <button className="button-style">
             <i className="fa-solid fa-user"></i>My
-            Account
+            <p>My Account</p>
           </button>
         </Link>
         <button
           id="button-new-post"
           className="button-style"
         >
-          <i className="fa-solid fa-plus"></i>New
-          Post
+          <i className="fa-solid fa-plus icon-newpost"></i>
+          <p>New Post</p>
         </button>
       </div>
       <div className="navbar-links-div">
         <Link to="/schools">
           <button className="button-style">
             <i className="fa-solid fa-school"></i>
-            Schools
+            <p>Schools</p>
           </button>
         </Link>
         <Link to="/hospitals">
           <button className="button-style">
             <i className="fa-solid fa-hospital"></i>
-            Medical
+            <p>Medical</p>
           </button>
         </Link>
       </div>
@@ -54,7 +54,7 @@ function NavigationBar() {
         <Link to="/">
           <button className="button-style">
             <i className="fa-solid fa-arrow-right-from-bracket"></i>
-            Logout
+            <p>Logout</p>
           </button>
         </Link>
       </div>

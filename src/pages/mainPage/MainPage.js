@@ -11,13 +11,13 @@ import MainBody from "../../components/MainBody/MainBody";
 function MainPage() {
   return (
     <div id="section-mainpage-div">
-      <div className="section-mainpage-border">
+      <div id="subsection-mainpage-navbar">
         <NavigationBar />
       </div>
-
-      <MainBody />
-
-      <div className="section-mainpage-border">
+      <div id="subsection-mainpage-posts">
+        <MainBody />
+      </div>
+      <div id="subsection-mainpage-sidepanel">
         <SidePanel />
       </div>
     </div>
