@@ -11,7 +11,6 @@ import Homepage from "./pages/homePage/Homepage";
 function App() {
   return (
     <div>
-      <h1>Neighbourhood app</h1>
       <Homepage />
     </div>
   );
