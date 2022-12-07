@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./NavigationBarStyles.css";
 import logo from "../../imgs/logo.svg";
 
@@ -15,14 +16,18 @@ function NavigationBar() {
         />
       </div>
       <div className="navbar-links-div">
-        <button className="button-style">
-          <i className="fa-solid fa-house"></i>
-          Home
-        </button>
-        <button className="button-style">
-          <i className="fa-solid fa-user"></i>My
-          Account
-        </button>
+        <Link to="/main">
+          <button className="button-style">
+            <i className="fa-solid fa-house"></i>
+            Home
+          </button>
+        </Link>
+        <Link to="/user">
+          <button className="button-style">
+            <i className="fa-solid fa-user"></i>My
+            Account
+          </button>
+        </Link>
         <button
           id="button-new-post"
           className="button-style"
@@ -32,20 +37,26 @@ function NavigationBar() {
         </button>
       </div>
       <div className="navbar-links-div">
-        <button className="button-style">
-          <i className="fa-solid fa-school"></i>
-          Schools
-        </button>
-        <button className="button-style">
-          <i className="fa-solid fa-hospital"></i>
-          Medical
-        </button>
+        <Link to="/schools">
+          <button className="button-style">
+            <i className="fa-solid fa-school"></i>
+            Schools
+          </button>
+        </Link>
+        <Link to="/hospitals">
+          <button className="button-style">
+            <i className="fa-solid fa-hospital"></i>
+            Medical
+          </button>
+        </Link>
       </div>
       <div className="navbar-links-div">
-        <button className="button-style">
-          <i className="fa-solid fa-arrow-right-from-bracket"></i>
-          Logout
-        </button>
+        <Link to="/">
+          <button className="button-style">
+            <i className="fa-solid fa-arrow-right-from-bracket"></i>
+            Logout
+          </button>
+        </Link>
       </div>
     </div>
   );
