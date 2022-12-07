@@ -9,6 +9,8 @@ import MainPage from "./pages/mainPage/MainPage";
 
 // Need a state to holder the user details
 
+// Set up the routing
+
 function App() {
   return (
     <div>
