@@ -7,10 +7,6 @@
   overflow: hidden;
 }
 
-/* #subsection-mainpage-posts {
-  flex-grow: 2;
-} */
-
 #subsection-mainpage-navbar {
   height: 0px;
   width: 270px;
@@ -19,7 +15,7 @@
 }
 
 #subsection-mainpage-posts {
-  height: 0px;
+  height: auto;
   width: 100%;
 }
 
