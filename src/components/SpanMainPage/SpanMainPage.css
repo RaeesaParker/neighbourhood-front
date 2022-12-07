@@ -41,24 +41,28 @@
 }
 
 .span-mp .span-body img {
-  bottom: 10px;
+  top: -75px;
   right: 0;
 
   position: absolute;
   width: 250px;
 }
 
-@media screen and (max-width: 1360px) {
-}
-
 @media screen and (max-width: 1200px) {
+  .span-mp .span-body img {
+    width: 200px;
+  }
+  .span-mp .span-body p {
+    font-size: 14px;
+    margin-right: 200px;
+  }
 }
 
 @media screen and (max-width: 950px) {
-}
-
-@media screen and (max-width: 850px) {
-}
-
-@media screen and (max-width: 600px) {
+  .span-mp .span-body img {
+    display: none;
+  }
+  .span-mp .span-body p {
+    margin-right: 0px;
+  }
 }
