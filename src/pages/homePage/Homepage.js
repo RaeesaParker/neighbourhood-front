@@ -1,11 +1,14 @@
 import React from "react";
-import LoginPage from "../../components/loginPage/LoginPage";
 import "./HomepageStyles.css";
 
 // Homepage => Logo => Login button => Sign in Button => Modal?
 
 function Homepage() {
-  return <LoginPage />;
+  return (
+    <div>
+      <h1>Welcome to the homepage</h1>
+    </div>
+  );
 }
 
 export default Homepage;
