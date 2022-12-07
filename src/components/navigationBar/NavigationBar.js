@@ -24,7 +24,7 @@ function NavigationBar() {
         </Link>
         <Link to="/user">
           <button className="button-style">
-            <i className="fa-solid fa-user"></i>My
+            <i className="fa-solid fa-user"></i>
             <p>My Account</p>
           </button>
         </Link>
