@@ -4,7 +4,6 @@ import "./App.css";
 
 // Import Components => Homepage , Login Page Modal?  , Main Page
 import Homepage from "./pages/homePage/Homepage";
-// import Homepage from "./pages/homePage/Homepage";
 import MainPage from "./pages/mainPage/MainPage";
 import UserPage from "./pages/userPage/UserPage";
 import SchoolPage from "./pages/schoolPage/SchoolPage";
@@ -12,7 +11,7 @@ import HospitalPage from "./pages/hospitalPage/HospitalPage";
 
 // Need a state to holder the user details
 
-// Set up the routing
+// Set up login functionality
 
 function App() {
   return (
