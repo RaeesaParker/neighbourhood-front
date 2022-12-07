@@ -5,14 +5,14 @@
 }
 
 .section-mainpage-border {
-  margin: 1% 0.5% 1% 0.5%;
+  margin: 1% 1% 1% 1%;
+}
+
+#subsection-mainpage-navbar {
+  background-color: var(--grey-nav);
 }
 
 #subsection-mainpage-posts {
   background-color: blue;
   flex-grow: 2;
-}
-
-#subsection-mainpage-panel {
-  background-color: yellow;
 }

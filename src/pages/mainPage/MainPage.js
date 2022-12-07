@@ -1,5 +1,6 @@
 import React from "react";
 import "./MainPageStyles.css";
+import SidePanel from "../../components/sidePanel/SidePanel";
 
 // Import Components
 import NavigationBar from "../../components/navigationBar/NavigationBar";
@@ -20,11 +21,8 @@ function MainPage() {
         <h1>Main Section</h1>
       </div>
 
-      <div
-        id="subsection-mainpage-panel"
-        className="section-mainpage-border"
-      >
-        <h1>Right Panel</h1>
+      <div className="section-mainpage-border">
+        <SidePanel />
       </div>
     </div>
   );
