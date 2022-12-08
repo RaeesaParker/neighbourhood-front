@@ -39,6 +39,7 @@ export const registerUser = async (
       user_regionId: data.region_id,
     });
     writeCookie("jwt_token", data.token, 7);
+    return data.id;
   } catch (error) {
     console.log(error);
   }

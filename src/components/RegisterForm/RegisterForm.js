@@ -1,9 +1,13 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./registerForm.css";
 import { registerUser } from "../../utils/users";
 
 function RegisterForm(props) {
+  // Navigation for redirect
+  const navigate = useNavigate();
+
   // Set states for username, email, password, postcode
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
@@ -13,13 +17,16 @@ function RegisterForm(props) {
   // Async Function to handle onSubmit of register form
   const onSubmitRegisterForm = async (event) => {
     event.preventDefault();
-    await registerUser(
+    const newUser = await registerUser(
       username,
       email,
       password,
       postcode,
       props.setUserDetails
     );
+    if (newUser) {
+      navigate("/main");
+    }
   };
 
   return (
