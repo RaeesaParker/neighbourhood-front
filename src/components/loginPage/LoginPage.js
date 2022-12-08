@@ -2,42 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import Background from "../../imgs/Background.png";
 import Logo from "../../imgs/logo.svg";
-import LoginForm from "./Login/LoginForm";
-import { useState } from "react";
-import RegisterForm from "./Register/RegisterForm";
 
 // Login Page => Form to sign in => Form to register
 
 function LoginPage(props) {
-  const [showForm, setShowForm] = useState(null);
-
   return (
     <LoginPageWrapper>
       <div>
         <NavBarWrapper>
-          {showForm === "login" ? (
-            <LoginForm register={setShowForm} />
-          ) : showForm === "register" ? (
-            <RegisterForm login={setShowForm} />
-          ) : (
-            <div className="btn">
-              <button
-                className="login-btn"
-                onClick={() => {
-                  setShowForm("login");
-                }}
-              >
-                Login
-              </button>
-              <button
-                onClick={() => {
-                  setShowForm("register");
-                }}
-              >
-                Sign Up
-              </button>
-            </div>
-          )}
+          <div className="btn">
+            <button className="login-btn">
+              Login
+            </button>
+            <button>Sign Up</button>
+          </div>
         </NavBarWrapper>
         <MainLogo>
           <img alt="logo" src={Logo}></img>
@@ -67,12 +45,9 @@ const NavBarWrapper = styled.div`
     margin-right: 20px;
     height: 30px;
     /* border-color: var(--white); */
-    &:hover {
-      cursor: pointer;
-      opacity: 0.7;
-    }
   }
   .login-btn {
+    /* opacity: 0.2; */
     background-color: transparent;
   }
 `;
