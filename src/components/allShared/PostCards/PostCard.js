@@ -1,6 +1,6 @@
 // Design + images
 import "./PostCard.css";
-import fakeuser from "../../imgs/fakeuser.png";
+import fakeuser from "../../../imgs/fakeuser.png";
 
 // Components
 import { useState } from "react";

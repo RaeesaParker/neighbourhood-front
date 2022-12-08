@@ -2,10 +2,10 @@
 import "./AccountBody.css";
 
 // Components
-import SearchBox from "../SearchBox/SearchBox";
-import SpanAccount from "../SpanAccount/SpanAccount";
-import Feed from "../Feed/Feed";
-import PostCard from "../PostCards/PostCard";
+import SearchBox from "../../allShared/SearchBox/SearchBox";
+import SpanAccount from "../../allAccountPage/SpanAccount/SpanAccount";
+import Feed from "../../allShared/Feed/Feed";
+import PostCard from "../../allShared/PostCards/PostCard";
 
 const AccountBody = () => {
   return (

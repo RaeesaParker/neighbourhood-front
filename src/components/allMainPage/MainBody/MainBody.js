@@ -2,11 +2,11 @@
 import "./MainBody.css";
 
 // Components
-import SearchBox from "../SearchBox/SearchBox";
-import SpanMainPage from "../SpanMainPage/SpanMainPage";
-import NewPost from "../NewPost/NewPost";
-import Feed from "../Feed/Feed";
-import PostCard from "../PostCards/PostCard";
+import SearchBox from "../../allShared/SearchBox/SearchBox";
+import SpanMainPage from "../../allMainPage/SpanMainPage/SpanMainPage";
+import NewPost from "../../allMainPage/NewPost/NewPost";
+import Feed from "../../allShared/Feed/Feed";
+import PostCard from "../../allShared/PostCards/PostCard";
 
 // ////////////////
 

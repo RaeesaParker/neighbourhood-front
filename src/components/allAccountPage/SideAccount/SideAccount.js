@@ -1,6 +1,6 @@
 // Design + images
 import "./SideAccount.css";
-import userProfile from "../../imgs/profiles/profile1.jpg";
+import userProfile from "../../../imgs/profiles/profile1.jpg";
 import { useState } from "react";
 
 // Components
