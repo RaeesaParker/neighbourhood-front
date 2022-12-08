@@ -1,5 +1,7 @@
 .mainbody-box {
   padding: 0px 30px;
+  width: calc(100% - 60px);
+  min-width: 30px;
 }
 
 /* ** */
@@ -19,4 +21,10 @@
 
   margin-top: 25px;
   max-width: 100%;
+}
+
+@media screen and (max-width: 850px) {
+  .mainbody-box {
+    padding: 0px 0px 0px 30px;
+  }
 }

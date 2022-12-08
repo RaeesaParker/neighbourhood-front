@@ -15,7 +15,7 @@ const SpanMainPage = () => {
 
   return (
     <div
-      className={`span-mp ${
+      className={`span-mainpage ${
         span ? "display-none" : ""
       }`}
     >
@@ -39,7 +39,11 @@ const SpanMainPage = () => {
           Welcome, neighbor!
         </p>
 
-        <img src={cellphone} alt="cellphone" />
+        <img
+          src={cellphone}
+          alt="cellphone"
+          className="span-cellphone"
+        />
       </div>
     </div>
   );

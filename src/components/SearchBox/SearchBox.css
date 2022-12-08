@@ -35,7 +35,13 @@
   outline: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 950px) {
+  .search-bg {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 650px) {
   .search-bg {
     width: 100%;
   }
