@@ -1,6 +1,6 @@
 // Design + images
 import "./SpanMainPage.css";
-import cellphone from "../../imgs/groupchat.png";
+import cellphone from "../../../imgs/groupchat.png";
 
 // Libraries
 import { useState } from "react";

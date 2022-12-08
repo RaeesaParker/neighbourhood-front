@@ -23,6 +23,11 @@
   max-width: 100%;
 }
 
+.no-posts {
+  margin-top: 25px;
+  text-align: center;
+}
+
 @media screen and (max-width: 850px) {
   .mainbody-box {
     padding: 0px 0px 0px 30px;

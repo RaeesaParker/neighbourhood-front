@@ -1,11 +1,11 @@
 // Design + images
 import "./PostCard.css";
-import fakeuser from "../../imgs/fakeuser.png";
+import fakeuser from "../../../imgs/fakeuser.png";
 
 // Components
 import { useState } from "react";
 
-const PostCard = () => {
+const PostCard = ({ post, user }) => {
   const [liked, setLiked] = useState(false);
   const [shareBtn, setShareBtn] = useState(true);
 
@@ -19,22 +19,29 @@ const PostCard = () => {
 
   return (
     <div>
-      <div className="postcard">
+      <div
+        className={`postcard ${
+          post.post_type === 1
+            ? "postcard-bg1"
+            : post.post_type === 2
+            ? "postcard-bg2"
+            : post.post_type === 3
+            ? "postcard-bg3"
+            : post.post_type === 4
+            ? "postcard-bg4"
+            : "postcard-bg"
+        }`}
+      >
         <div className="postcard-head">
           <img src={fakeuser} alt="userpicture" />
           <div>
-            <h3>Username</h3>
-            <p>Neighbourhood, City</p>
+            <h3>{user.name}</h3>
+            <p>@{user.user_name}</p>
           </div>
         </div>
         <hr />
         <div className="postcard-text">
-          <p>
-            Hey guys! I found a lost Pug dog here
-            on my street and he has a collar with
-            the name Teddy... he is here with me
-            at my house. Someone lost a dog?!
-          </p>
+          <p>{post.post_content}</p>
         </div>
 
         <div className="postcard-icons">

@@ -39,18 +39,16 @@
 }
 
 .filter-general {
-  background-color: var(--pink);
-}
-
-.filter-alerts {
   background-color: var(--blue);
 }
 .filter-buysell {
-  background-color: var(--orange);
-}
-
-.filter-traffic {
   background-color: var(--green);
+}
+.filter-alerts {
+  background-color: var(--pink);
+}
+.filter-traffic {
+  background-color: var(--orange);
 }
 .filter-all {
   background-color: var(--grey-dark);
