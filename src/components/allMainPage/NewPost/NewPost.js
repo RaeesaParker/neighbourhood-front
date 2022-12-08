@@ -1,6 +1,6 @@
 // Design + images
 import "./NewPost.css";
-import speechbubble from "../../imgs/speechbubble.png";
+import speechbubble from "../../../imgs/speechbubble.png";
 
 // ////////////////
 

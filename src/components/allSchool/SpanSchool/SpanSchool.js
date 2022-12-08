@@ -1,11 +1,11 @@
 // Design + images
-import "./SpanAccount.css";
-import lamp from "../../imgs/lamp.png";
+import "./SpanSchool.css";
+import schoolpic from "../../../imgs/manschool.png";
 
 // Components
 import { useState } from "react";
 
-const SpanAccount = () => {
+const SpanSchool = () => {
   const [span, setSpan] = useState(false);
   const handleClick = () => {
     setSpan(true);
@@ -13,7 +13,7 @@ const SpanAccount = () => {
 
   return (
     <div
-      className={`span-account ${
+      className={`span-school ${
         span ? "display-none" : ""
       }`}
     >
@@ -25,20 +25,18 @@ const SpanAccount = () => {
       </div>
       <div className="span-body">
         <p>
-          This is your user page. Here you can
-          edit your account information and see
-          all your posts already made on our
-          platform!
+          Find here important information about
+          all the schools close to where you live.
         </p>
 
         <img
-          src={lamp}
-          alt="lamp"
-          className="span-lamp"
+          src={schoolpic}
+          alt="schoolpic"
+          className="span-man"
         />
       </div>
     </div>
   );
 };
 
-export default SpanAccount;
+export default SpanSchool;
