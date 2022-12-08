@@ -2,7 +2,7 @@ import React from "react";
 import {
   Routes,
   Route,
-  useNavigate,
+  // useNavigate,
 } from "react-router-dom";
 import "./App.css";
 
@@ -14,50 +14,50 @@ import SchoolPage from "./pages/schoolPage/SchoolPage";
 import HospitalPage from "./pages/hospitalPage/HospitalPage";
 
 // Import utils for login
-import { getCookie } from "./common/index";
-import { findUser } from "./utils/users";
+// import { getCookie } from "./common/index";
+// import { findUser } from "./utils/users";
 
 // Need a state to holder the user details
 
 // Set up login functionality
 function App() {
-  // Navigation for redirect
-  const navigate = useNavigate();
+  // // Navigation for redirect
+  // const navigate = useNavigate();
 
-  // State to set the user details
-  const [userDetails, setUserDetails] = useState({
-    username: "",
-    user_id: "",
-    user_postcode: "",
-  });
+  // // State to set the user details
+  // const [userDetails, setUserDetails] = useState({
+  //   username: "",
+  //   user_id: "",
+  //   user_postcode: "",
+  // });
 
-  // Function to take in the user details submited on homepage
-  function onSetUserDetails(userDetails) {
-    setUserDetails({
-      username: userDetails.username,
-      user_id: userDetails.user_id,
-      user_postcode: userDetails.user_postcode,
-    });
-  }
+  // // Function to take in the user details submited on homepage
+  // function onSetUserDetails(userDetails) {
+  //   setUserDetails({
+  //     username: userDetails.username,
+  //     user_id: userDetails.user_id,
+  //     user_postcode: userDetails.user_postcode,
+  //   });
+  // }
 
-  // Function to be used for cookie search => Check for cookie when the page loads => Find user if the token is found
-  useEffect(() => {
-    let cookie = getCookie("jwt_token");
-    if (cookie !== false) {
-      loginWithToken(cookie, setUserDetails);
-    }
-  }, []);
+  // // Function to be used for cookie search => Check for cookie when the page loads => Find user if the token is found
+  // useEffect(() => {
+  //   let cookie = getCookie("jwt_token");
+  //   if (cookie !== false) {
+  //     loginWithToken(cookie, setUserDetails);
+  //   }
+  // }, []);
 
-  // Login with token if the cookie is true
-  const loginWithToken = async (cookie) => {
-    const userDetails = await findUser(
-      cookie,
-      setUserDetails
-    );
-    if (userDetails) {
-      navigate("/main");
-    }
-  };
+  // // Login with token if the cookie is true
+  // const loginWithToken = async (cookie) => {
+  //   const userDetails = await findUser(
+  //     cookie,
+  //     setUserDetails
+  //   );
+  //   if (userDetails) {
+  //     navigate("/main");
+  //   }
+  // };
 
   return (
     <div>
