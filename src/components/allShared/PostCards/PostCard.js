@@ -17,24 +17,49 @@ const PostCard = () => {
     setShareBtn(!shareBtn);
   };
 
+  // fake user
+  const user = {
+    user_name: "ijwilliamson",
+    email: "ian@mail.com",
+    password: "password",
+    pcd: "SW1A 1AA",
+    name: "Ian Williamson",
+    address: "1 Downing Street",
+  };
+
+  const post = {
+    id: 1,
+    post_type: 1,
+    user_id: 1,
+    post_content:
+      "This is a post. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+  };
+
   return (
     <div>
-      <div className="postcard">
+      <div
+        className={`postcard ${
+          post.post_type === 1
+            ? "postcard-bg1"
+            : post.post_type === 2
+            ? "postcard-bg2"
+            : post.post_type === 3
+            ? "postcard-bg3"
+            : post.post_type === 4
+            ? "postcard-bg4"
+            : "postcard-bg"
+        }`}
+      >
         <div className="postcard-head">
           <img src={fakeuser} alt="userpicture" />
           <div>
-            <h3>Username</h3>
-            <p>Neighbourhood, City</p>
+            <h3>{user.name}</h3>
+            <p>@{user.user_name}</p>
           </div>
         </div>
         <hr />
         <div className="postcard-text">
-          <p>
-            Hey guys! I found a lost Pug dog here
-            on my street and he has a collar with
-            the name Teddy... he is here with me
-            at my house. Someone lost a dog?!
-          </p>
+          <p>{post.post_content}</p>
         </div>
 
         <div className="postcard-icons">

@@ -22,6 +22,25 @@ const MainBody = () => {
         <PostCard />
         <PostCard />
         <PostCard />
+        {/* {posts.length > 0 ? (
+          <div className="mainbody-posts">
+            {posts.map((post, i) => {
+              return (
+                <PostCard
+                  key={i}
+                  post={post}
+                  user={user}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          <div className="no-posts">
+            <h2>
+              No posts at the moment. Sorry.
+            </h2>
+          </div>
+        )} */}
       </div>
     </div>
   );
