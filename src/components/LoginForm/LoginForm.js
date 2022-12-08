@@ -21,6 +21,7 @@ function LoginForm(props) {
       props.setUserDetails
     );
     if (loggedUser) {
+      props.setIsLoggedIn(true);
       navigate("/main");
     }
   };

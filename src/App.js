@@ -11,6 +11,10 @@ import SchoolPage from "./pages/schoolPage/SchoolPage";
 import HospitalPage from "./pages/hospitalPage/HospitalPage";
 
 function App() {
+  // Set state to manage user login
+  const [isLoggedIn, setIsLoggedIn] =
+    useState(true);
+
   // State to set the user details
   const [userDetails, setUserDetails] = useState({
     username: "",
@@ -35,28 +39,44 @@ function App() {
           element={
             <Homepage
               setUserDetails={onSetUserDetails}
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
             />
           }
         ></Route>
         <Route
           path="/main"
           element={
-            <MainPage userDetails={userDetails} />
+            <MainPage
+              userDetails={userDetails}
+              setIsLoggedIn={setIsLoggedIn}
+            />
           }
         ></Route>
         <Route
           path="/user"
           element={
-            <UserPage userDetails={userDetails} />
+            <UserPage
+              userDetails={userDetails}
+              setIsLoggedIn={setIsLoggedIn}
+            />
           }
         ></Route>
         <Route
           path="/schools"
-          element={<SchoolPage />}
+          element={
+            <SchoolPage
+              setIsLoggedIn={setIsLoggedIn}
+            />
+          }
         ></Route>
         <Route
           path="/hospitals"
-          element={<HospitalPage />}
+          element={
+            <HospitalPage
+              setIsLoggedIn={setIsLoggedIn}
+            />
+          }
         ></Route>
       </Routes>
     </div>

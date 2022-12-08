@@ -1,11 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+} from "react-router-dom";
 import "./NavigationBarStyles.css";
 import logo from "../../imgs/logo.svg";
 
 // Navigation Bar => Logo => Links => Logout Button
 
-function NavigationBar() {
+function NavigationBar(props) {
+  // Navigation for redirect
+  const navigate = useNavigate();
+
+  function onLogOut() {
+    props.setIsLoggedIn(false);
+    navigate("/");
+  }
+
   return (
     <div id="section-navbar">
       <div id="navbar-logo-div">
@@ -51,12 +62,13 @@ function NavigationBar() {
         </Link>
       </div>
       <div className="navbar-links-div">
-        <Link to="/">
-          <button className="button-style">
-            <i className="fa-solid fa-arrow-right-from-bracket"></i>
-            <p>Logout</p>
-          </button>
-        </Link>
+        <button
+          onClick={onLogOut}
+          className="button-style"
+        >
+          <i className="fa-solid fa-arrow-right-from-bracket"></i>
+          <p>Logout</p>
+        </button>
       </div>
     </div>
   );

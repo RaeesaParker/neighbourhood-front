@@ -14,7 +14,9 @@ function UserPage(props) {
         id="subsection-mainpage-navbar"
         className="userpage-navbar"
       >
-        <NavigationBar />
+        <NavigationBar
+          setIsLoggedIn={props.setIsLoggedIn}
+        />
       </div>
       <div className="userpage-body">
         <AccountBody

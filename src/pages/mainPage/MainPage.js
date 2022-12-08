@@ -12,7 +12,9 @@ function MainPage(props) {
   return (
     <div id="section-mainpage-div">
       <div id="subsection-mainpage-navbar">
-        <NavigationBar />
+        <NavigationBar
+          setIsLoggedIn={props.setIsLoggedIn}
+        />
       </div>
       <div id="subsection-mainpage-posts">
         <MainBody

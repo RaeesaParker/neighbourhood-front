@@ -25,6 +25,7 @@ function RegisterForm(props) {
       props.setUserDetails
     );
     if (newUser) {
+      props.setIsLoggedIn(true);
       navigate("/main");
     }
   };
