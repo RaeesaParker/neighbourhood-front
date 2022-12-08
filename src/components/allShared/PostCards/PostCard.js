@@ -5,7 +5,7 @@ import fakeuser from "../../../imgs/fakeuser.png";
 // Components
 import { useState } from "react";
 
-const PostCard = () => {
+const PostCard = ({ post, user }) => {
   const [liked, setLiked] = useState(false);
   const [shareBtn, setShareBtn] = useState(true);
 
@@ -15,24 +15,6 @@ const PostCard = () => {
 
   const handleShared = () => {
     setShareBtn(!shareBtn);
-  };
-
-  // fake user
-  const user = {
-    user_name: "ijwilliamson",
-    email: "ian@mail.com",
-    password: "password",
-    pcd: "SW1A 1AA",
-    name: "Ian Williamson",
-    address: "1 Downing Street",
-  };
-
-  const post = {
-    id: 1,
-    post_type: 1,
-    user_id: 1,
-    post_content:
-      "This is a post. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
   };
 
   return (
