@@ -25,6 +25,7 @@ function UserPage(props) {
       </div>
       <div className="userpage-sidebar">
         <SideAccount
+          setUserDetails={props.setUserDetails}
           userDetails={props.userDetails}
         />
       </div>

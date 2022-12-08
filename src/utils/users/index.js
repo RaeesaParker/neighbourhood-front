@@ -13,13 +13,6 @@ export const registerUser = async (
   setUserDetails
 ) => {
   try {
-    console.log(
-      "Values are",
-      username,
-      email,
-      password,
-      postcode
-    );
     const response = await fetch(
       `https://web-production-2000.up.railway.app/user`,
       {
@@ -54,7 +47,6 @@ export const findUser = async (
   setUserDetails
 ) => {
   try {
-    console.log("token:", cookieValue);
     const response = await fetch(
       `https://web-production-2000.up.railway.app/auth/checkToken`,
       {
@@ -116,13 +108,35 @@ export const loginUser = async (
   }
 };
 
+// Get a users details
+export const getUser = async (userId) => {
+  try {
+    const response = await fetch(
+      `https://web-production-2000.up.railway.app/user/${userId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          Authorization:
+            "Bearer " + getCookie("jwt_token"),
+        },
+      }
+    );
+    const data = await response.json();
+    if (!data.error) {
+      return data;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // Update a user's details
 export const updateUser = async (
   userId,
-  username,
-  email,
-  password,
-  postcode,
+  updateObject,
   setUserDetails
 ) => {
   try {
@@ -135,15 +149,11 @@ export const updateUser = async (
           Authorization:
             "Bearer " + getCookie("jwt_token"),
         },
-        body: JSON.stringify({
-          user_name: username,
-          email: email,
-          password: password,
-          pcd: postcode,
-        }),
+        body: JSON.stringify(updateObject),
       }
     );
     const data = await response.json();
+    console.log("Updated details are ", data);
     setUserDetails({
       username: data.user_name,
       user_id: data.id,
