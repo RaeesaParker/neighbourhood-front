@@ -10,11 +10,13 @@ import PostCard from "../PostCards/PostCard";
 
 // ////////////////
 
-const MainBody = () => {
+const MainBody = (props) => {
   return (
     <div className="mainbody-box">
       <SearchBox />
-      <SpanMainPage />
+      <SpanMainPage
+        userDetails={props.userDetails}
+      />
       <NewPost />
       <Feed />
       <div className="mainbody-posts">
