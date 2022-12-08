@@ -12,7 +12,6 @@ import HospitalPage from "./pages/hospitalPage/HospitalPage";
 // Need a state to holder the user details
 
 // Set up login functionality
-
 function App() {
   return (
     <div>
