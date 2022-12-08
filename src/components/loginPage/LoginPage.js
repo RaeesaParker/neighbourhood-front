@@ -16,7 +16,10 @@ function LoginPage(props) {
         {showForm === "login" ? (
           <LoginForm register={setShowForm} />
         ) : showForm === "register" ? (
-          <RegisterForm login={setShowForm} />
+          <RegisterForm
+            login={setShowForm}
+            setUserDetails={props.setUserDetails}
+          />
         ) : (
           <div className="btn">
             <button
