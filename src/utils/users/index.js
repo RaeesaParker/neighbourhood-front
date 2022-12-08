@@ -1,5 +1,8 @@
 // Utils for the user connection
-import { writeCookie } from "../../common/index";
+import {
+  writeCookie,
+  getCookie,
+} from "../../common/index";
 
 // Register a user => Used to create user
 export const registerUser = async (
@@ -51,8 +54,9 @@ export const findUser = async (
   setUserDetails
 ) => {
   try {
+    console.log("token:", cookieValue);
     const response = await fetch(
-      `https://web-production-2000.up.railway.app/checkToken`,
+      `https://web-production-2000.up.railway.app/auth/checkToken`,
       {
         method: "POST",
         headers: {
@@ -64,12 +68,14 @@ export const findUser = async (
       }
     );
     const data = await response.json();
-    setUserDetails({
-      username: data.user_name,
-      user_id: data.id,
-      user_regionId: data.region_id,
-    });
-    return true;
+    if (data.user_name) {
+      setUserDetails({
+        username: data.user_name,
+        user_id: data.id,
+        user_regionId: data.region_id,
+      });
+      return data.user_name;
+    }
   } catch (error) {
     console.log(error);
   }
@@ -110,42 +116,43 @@ export const loginUser = async (
   }
 };
 
-// // Update a user's details
-// export const updateUser = async (
-//   user_id,
-//   username,
-//   email,
-//   password,
-//   postcode,
-//   setUserDetails
-// ) => {
-//   try {
-//     const response = await fetch(
-//       `https://web-production-2000.up.railway.app/user/${user_id}`,
-//       {
-//         method: "PUT",
-//         headers: {
-//           "Content-type": "application/json",
-//            "Authorization: Bearer + getCookie("jwt_token"),
-//         },
-//         body: JSON.stringify({
-//          user_name: username,
-//          email: email,
-//          password: password,
-//          pcd: postcode,
-//         }),
-//       }
-//     );
-//     const data = await response.json();
-//     setUserDetails({
-//       username: data.user_name,
-//       user_id: data.id,
-//       user_regionId: data.region_id,
-//       })
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+// Update a user's details
+export const updateUser = async (
+  userId,
+  username,
+  email,
+  password,
+  postcode,
+  setUserDetails
+) => {
+  try {
+    const response = await fetch(
+      `https://web-production-2000.up.railway.app/user/${userId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+          Authorization:
+            "Bearer " + getCookie("jwt_token"),
+        },
+        body: JSON.stringify({
+          user_name: username,
+          email: email,
+          password: password,
+          pcd: postcode,
+        }),
+      }
+    );
+    const data = await response.json();
+    setUserDetails({
+      username: data.user_name,
+      user_id: data.id,
+      user_regionId: data.region_id,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // Delete a user
 export const deleteUser = async (userId) => {
@@ -157,12 +164,13 @@ export const deleteUser = async (userId) => {
         headers: {
           "Content-type": "application/json",
           Authorization:
-            "Bearer" + getCookie("jwt_token"),
+            "Bearer " + getCookie("jwt_token"),
         },
       }
     );
     const data = await response.json();
-    if (data) {
+    console.log(data);
+    if (!data.error) {
       return true;
     } else {
       return false;

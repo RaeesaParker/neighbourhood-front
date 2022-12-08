@@ -24,7 +24,6 @@ export const getCookie = (cookieName) => {
   );
   try {
     const cookie = document.cookie.match(re)[0]; // Will raise TypeError if cookie is not found
-    console.log(cookie);
     return cookie;
   } catch {
     console.log("this-cookie-doesn't-exist");

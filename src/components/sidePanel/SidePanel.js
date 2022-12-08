@@ -4,7 +4,7 @@ import "./SidePanelStyles.css";
 // Import profile pictures
 import userProfile from "../../imgs/profiles/profile1.jpg";
 
-function SidePanel() {
+function SidePanel(props) {
   // State to store the weather
   const [weather, setWeather] = useState({});
   const [weatherImage, setWeatherImage] =
@@ -92,7 +92,7 @@ function SidePanel() {
     <div id="subsection-mainpage-panel">
       <div id="subsection-panel-user">
         <div id="subsection-panel-user-div">
-          <h4>Username</h4>
+          <h4>{props.userDetails.username}</h4>
         </div>
         <div id="subsection-panel-image-div">
           <img

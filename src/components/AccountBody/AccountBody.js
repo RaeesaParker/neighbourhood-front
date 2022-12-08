@@ -7,11 +7,13 @@ import SpanAccount from "../SpanAccount/SpanAccount";
 import Feed from "../Feed/Feed";
 import PostCard from "../PostCards/PostCard";
 
-const AccountBody = () => {
+const AccountBody = (props) => {
   return (
     <div className="mainbody-box">
       <SearchBox />
-      <SpanAccount />
+      <SpanAccount
+        userDetails={props.userDetails}
+      />
       <Feed />
       <div className="mainbody-posts">
         <PostCard />

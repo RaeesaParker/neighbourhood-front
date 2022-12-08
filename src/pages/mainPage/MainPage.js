@@ -20,7 +20,9 @@ function MainPage(props) {
         />
       </div>
       <div id="subsection-mainpage-sidepanel">
-        <SidePanel />
+        <SidePanel
+          userDetails={props.userDetails}
+        />
       </div>
     </div>
   );

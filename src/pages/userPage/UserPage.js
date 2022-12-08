@@ -17,7 +17,9 @@ function UserPage(props) {
         <NavigationBar />
       </div>
       <div className="userpage-body">
-        <AccountBody />
+        <AccountBody
+          userDetails={props.userDetails}
+        />
       </div>
       <div className="userpage-sidebar">
         <SideAccount
