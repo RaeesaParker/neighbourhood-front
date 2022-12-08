@@ -7,7 +7,7 @@ import "./UserPageStyles.css";
 
 // User Page => Navigation bar on Left => User Posts Section in Center => User Editing Panel on Right
 
-function UserPage() {
+function UserPage(props) {
   return (
     <div className="userpage-page">
       <div
@@ -20,7 +20,9 @@ function UserPage() {
         <AccountBody />
       </div>
       <div className="userpage-sidebar">
-        <SideAccount />
+        <SideAccount
+          userDetails={props.userDetails}
+        />
       </div>
     </div>
   );

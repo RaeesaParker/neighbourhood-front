@@ -75,40 +75,40 @@ export const findUser = async (
   }
 };
 
-// // Login a user without a cookie
-// export const loginUser = async (
-//   username,
-//   password,
-//   setUserDetails
-// ) => {
-//   try {
-//     const response = await fetch(
-//       "https://web-production-2000.up.railway.app/auth",
-//       {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           user_name: username,
-//           password: password,
-//         }),
-//       }
-//     );
-//     const data = await response.json();
-//     if (data.username) {
-//       setUserDetails({
-//         username: data.user_name,
-//         user_id: data.id,
-//         user_regionId: data.region_id,
-//       });
-//       writeCookie("jwt_token", data.token, 7);
-//       return true;
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+// Login a user without a cookie
+export const loginUser = async (
+  username,
+  password,
+  setUserDetails
+) => {
+  try {
+    const response = await fetch(
+      "https://web-production-2000.up.railway.app/auth",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_name: username,
+          password: password,
+        }),
+      }
+    );
+    const data = await response.json();
+    if (data.user_name) {
+      setUserDetails({
+        username: data.user_name,
+        user_id: data.id,
+        user_regionId: data.region_id,
+      });
+      writeCookie("jwt_token", data.token, 7);
+      return true;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // // Update a user's details
 // export const updateUser = async (
@@ -147,21 +147,27 @@ export const findUser = async (
 //   }
 // };
 
-// // Delete a user
-// export const deleteUser = async (user_id) => {
-//   try {
-//     const response = await fetch(
-//       `https://web-production-2000.up.railway.app/user/${user_id}`,
-//       {
-//         method: "DELETE",
-//         headers: {
-//           "Content-type": "application/json",
-//            "Authorization: Bearer + getCookie("jwt_token"),
-//         },
-//       }
-//     );
-//     const data = await response.json();
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+// Delete a user
+export const deleteUser = async (userId) => {
+  try {
+    const response = await fetch(
+      `https://web-production-2000.up.railway.app/user/${userId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+          Authorization:
+            "Bearer" + getCookie("jwt_token"),
+        },
+      }
+    );
+    const data = await response.json();
+    if (data) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

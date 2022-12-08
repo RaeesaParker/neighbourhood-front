@@ -14,7 +14,10 @@ function LoginPage(props) {
     <div className="LoginPageHomeScreen">
       <div className="NavBarHomeScreen">
         {showForm === "login" ? (
-          <LoginForm register={setShowForm} />
+          <LoginForm
+            register={setShowForm}
+            setUserDetails={props.setUserDetails}
+          />
         ) : showForm === "register" ? (
           <RegisterForm
             login={setShowForm}

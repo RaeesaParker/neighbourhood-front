@@ -46,7 +46,9 @@ function App() {
         ></Route>
         <Route
           path="/user"
-          element={<UserPage />}
+          element={
+            <UserPage userDetails={userDetails} />
+          }
         ></Route>
         <Route
           path="/schools"

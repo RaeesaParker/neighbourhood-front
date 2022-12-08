@@ -2,10 +2,14 @@
 import "./SideAccount.css";
 import userProfile from "../../imgs/profiles/profile1.jpg";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { deleteUser } from "../../utils/users";
 
 // Components
 
-const SideAccount = () => {
+const SideAccount = (props) => {
+  // Navigation for redirect
+  const navigate = useNavigate();
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -35,6 +39,19 @@ const SideAccount = () => {
 
   const handleClick = () => {
     setEditAcc(!editAcc);
+  };
+
+  // Async Function to delete account
+  const onDeleteAccount = async (event) => {
+    event.preventDefault();
+    const userId = props.userDetails.user_id;
+    const deletedUser = await deleteUser(userId);
+
+    if (deletedUser == true) {
+      navigate("/");
+    } else {
+      console.log("Deleting user unsuccessful");
+    }
   };
 
   return (
@@ -136,7 +153,10 @@ const SideAccount = () => {
               >
                 Back
               </button>
-              <button className="btn-deleteacc">
+              <button
+                onClick={onDeleteAccount}
+                className="btn-deleteacc"
+              >
                 Delete account
               </button>
             </div>
