@@ -17,9 +17,6 @@ import HospitalPage from "./pages/hospitalPage/HospitalPage";
 // import { getCookie } from "./common/index";
 // import { findUser } from "./utils/users";
 
-// Need a state to holder the user details
-
-// Set up login functionality
 function App() {
   // // Navigation for redirect
   // const navigate = useNavigate();
@@ -28,7 +25,7 @@ function App() {
   // const [userDetails, setUserDetails] = useState({
   //   username: "",
   //   user_id: "",
-  //   user_postcode: "",
+  //   user_areaCode: "",
   // });
 
   // // Function to take in the user details submited on homepage
@@ -36,7 +33,7 @@ function App() {
   //   setUserDetails({
   //     username: userDetails.username,
   //     user_id: userDetails.user_id,
-  //     user_postcode: userDetails.user_postcode,
+  //     user_areaCode: userDetails.user_areaCode,
   //   });
   // }
 

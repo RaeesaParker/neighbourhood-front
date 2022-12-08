@@ -21,7 +21,7 @@
 //           username: username,
 //           email: email,
 //           password: password,
-//           postcode,
+//           postcode:
 //           postcode,
 //         }),
 //       }
@@ -30,7 +30,7 @@
 //     setUserDetails({
 //       username: data.username,
 //       user_id: data.id,
-//       user_postcode: data.postcode,
+//       user_areaCode: data.areaCode,
 //     });
 //     writeCookie("jwt_token", data.token, 7);
 //   } catch (error) {
@@ -62,8 +62,8 @@
 //     if (data.username) {
 //       setUserDetails({
 //         username: data.username,
-//         user_id: data.idm,
-//         user_postcode: data.postcode,
+//         user_id: data.id,
+//         user_areaCode: data.areaCode,
 //       });
 //       writeCookie("jwt_token", data.token, 7);
 //       return true;
@@ -93,7 +93,7 @@
 //     setUserDetails({
 //       username: data.username,
 //       user_id: data.id,
-//       user_postcode: data.postcode,
+//       user_areaCode: data.areaCode,
 //     });
 //     return true;
 //   } catch (error) {
