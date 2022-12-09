@@ -35,8 +35,9 @@
 #section-navbar .nb-icon {
   font-size: 22px;
   margin-right: 25px;
+  text-align: center;
 
-  width: 25px;
+  width: 30px;
 }
 
 .button-style {
@@ -82,6 +83,10 @@
     padding: 30px 10px;
     height: calc(100% - 90px);
     width: 75px;
+  }
+
+  #section-navbar .nb-icon {
+    margin-right: 0px;
   }
 
   #navbar-logo {

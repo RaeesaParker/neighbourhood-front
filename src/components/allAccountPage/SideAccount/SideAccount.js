@@ -1,47 +1,119 @@
 // Design + images
 import "./SideAccount.css";
 import userProfile from "../../../imgs/profiles/profile1.jpg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  getUser,
+  updateUser,
+  deleteUser,
+} from "../../../utils/users";
 
-// Components
+const SideAccount = (props) => {
+  // Navigation for redirect
+  const navigate = useNavigate();
 
-const SideAccount = () => {
-  const [username, setUsername] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [postcode, setPostcode] = useState();
+  // States to hold the updated details
+  const [username, setUsername] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [postcode, setPostcode] = useState(null);
   const [editAcc, setEditAcc] = useState(true);
 
-  // Functions to interact with the backend, maybe need to change naming
-  const updateUsername = async (e) => {
-    e.preventDefault();
-    await updateUser(user, "username", username);
-  };
+  // State to store the current user details => will remain empty for firt render
+  const [currentDetails, setCurrentDetails] =
+    useState({
+      user_name: null,
+      password: null,
+      email: null,
+      postcode: null,
+    });
 
-  const updateEmail = async (e) => {
-    e.preventDefault();
-    await updateUser(user, "email", email);
-  };
-
-  const updatePassword = async (e) => {
-    e.preventDefault();
-    await updateUser(user, "password", password);
-  };
-
-  const updatePoscode = async (e) => {
-    e.preventDefault();
-    await updateUser(user, "postcode", postcode);
-  };
-
+  // Handle open and close of edit pane
   const handleClick = () => {
     setEditAcc(!editAcc);
+  };
+
+  // Function to get the user data (username, email and postcode)
+  useEffect(() => {
+    getUserDetailsFunc();
+  }, []);
+
+  const getUserDetailsFunc = async () => {
+    const userData = await getUser(
+      props.userDetails.user_id
+    );
+    setCurrentDetails(userData);
+  };
+
+  //  Function to update the user parameters
+  const updateValues = async (event) => {
+    event.preventDefault();
+    // Make an object containing the updated values
+    const updatedObj = {
+      user_name: username,
+      email: email,
+      password: password,
+      pcd: postcode,
+    };
+    // Reduce the object down to just the updated fields
+    const reducedData = await reduceObject(
+      updatedObj
+    );
+    console.log(
+      "The reduced object is ",
+      reducedData
+    );
+    // Send the reduced data to the update request
+    const updatedUserDetails = await updateUser(
+      props.userDetails.user_id,
+      reducedData,
+      props.setUserDetails
+    );
+    console.log(
+      "The updated details here!",
+      updatedUserDetails
+    );
+    setEditAcc(!editAcc);
+    getUserDetailsFunc();
+  };
+
+  // Reduce the object to only the updated fields
+  const reduceObject = (obj) => {
+    const keys = Object.keys(obj);
+    const values = Object.values(obj);
+    let modifiedObj = obj;
+
+    // loop through the values and remove the key if the value is falsy
+    for (let i = keys.length; i >= 0; i--) {
+      if (!values[i]) {
+        const { [keys[i]]: unused, ...tempObj } =
+          modifiedObj;
+        modifiedObj = tempObj;
+        console.log(unused);
+      }
+    }
+    return modifiedObj;
+  };
+
+  // Async Function to delete account
+  const onDeleteAccount = async (event) => {
+    event.preventDefault();
+    const userId = props.userDetails.user_id;
+    const deletedUser = await deleteUser(userId);
+
+    if (deletedUser == true) {
+      navigate("/");
+    } else {
+      console.log("Deleting user unsuccessful");
+    }
   };
 
   return (
     <div className="sideaccount">
       <div id="subsection-panel-user">
         <div id="subsection-panel-user-div">
-          <h4>Username</h4>
+          <h4>{props.userDetails.username}</h4>
         </div>
         <div id="subsection-panel-image-div">
           <img
@@ -62,12 +134,7 @@ const SideAccount = () => {
           <div className="group-editacc">
             <form
               className="form-editacc"
-              onSubmit={
-                (updateUsername,
-                updateEmail,
-                updatePassword,
-                updatePoscode)
-              }
+              onSubmit={updateValues}
             >
               <div>
                 <label>
@@ -75,7 +142,9 @@ const SideAccount = () => {
                   <i className="fa-solid fa-chevron-right"></i>
                 </label>
                 <input
-                  placeholder="username"
+                  placeholder={
+                    currentDetails.user_name
+                  }
                   onChange={(e) =>
                     setUsername(e.target.value)
                   }
@@ -88,7 +157,9 @@ const SideAccount = () => {
                   <i className="fa-solid fa-chevron-right"></i>
                 </label>
                 <input
-                  placeholder="useremail@email.com"
+                  placeholder={
+                    currentDetails.email
+                  }
                   onChange={(e) =>
                     setEmail(e.target.value)
                   }
@@ -101,7 +172,7 @@ const SideAccount = () => {
                   <i className="fa-solid fa-chevron-right"></i>
                 </label>
                 <input
-                  placeholder="passsword"
+                  placeholder="**********"
                   onChange={(e) =>
                     setPassword(e.target.value)
                   }
@@ -114,7 +185,7 @@ const SideAccount = () => {
                   <i className="fa-solid fa-chevron-right"></i>
                 </label>
                 <input
-                  placeholder="postcode"
+                  placeholder={currentDetails.pcd}
                   onChange={(e) =>
                     setPostcode(e.target.value)
                   }
@@ -136,7 +207,10 @@ const SideAccount = () => {
               >
                 Back
               </button>
-              <button className="btn-deleteacc">
+              <button
+                onClick={onDeleteAccount}
+                className="btn-deleteacc"
+              >
                 Delete account
               </button>
             </div>

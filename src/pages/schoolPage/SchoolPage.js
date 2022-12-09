@@ -6,17 +6,23 @@ import NavigationBar from "../../components/navigationBar/NavigationBar";
 import SchoolBody from "../../components/allSchool/SchoolBody/SchoolBody";
 import SidePanel from "../../components/sidePanel/SidePanel";
 
-function SchoolPage() {
+function SchoolPage(props) {
   return (
     <div className="section-school">
       <div id="subsection-mainpage-navbar">
-        <NavigationBar />
+        <NavigationBar
+          setIsLoggedIn={props.setIsLoggedIn}
+        />
       </div>
       <div className="schoolpage-body">
-        <SchoolBody />
+        <SchoolBody
+          userDetails={props.userDetails}
+        />
       </div>
       <div id="subsection-mainpage-sidepanel">
-        <SidePanel />
+        <SidePanel
+          userDetails={props.userDetails}
+        />
       </div>
     </div>
   );
