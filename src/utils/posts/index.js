@@ -1,13 +1,10 @@
 /* eslint-disable camelcase */
 // Utils for the post connections
 // Write CRUD Functionality
+import { getCookie } from "../../common/index";
 const API_URL = process.env.REACT_APP_API_URL;
 // // Create a post => Used to create post
-export const createPost = async (
-  user_id,
-  post_type,
-  post_content
-) => {
+export const createPost = async (postObject) => {
   try {
     const response = await fetch(
       `${API_URL}/post`,
@@ -19,9 +16,9 @@ export const createPost = async (
             "Bearer " + getCookie("jwt_token"),
         },
         body: JSON.stringify({
-          post_type: post_type,
-          user_id: user_id,
-          post_content: post_content,
+          post_type: postObject.post_type,
+          user_id: postObject.user_id,
+          post_content: postObject.post_content,
         }),
       }
     );
@@ -147,7 +144,7 @@ export const deletePost = async (id) => {
     const response = await fetch(
       `${API_URL}/posts/${id}`,
       {
-        method: "GET",
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
           Authorization:

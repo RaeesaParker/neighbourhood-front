@@ -1,5 +1,6 @@
 // Design + images
 import "./MainBody.css";
+import { useEffect } from "react";
 
 // Components
 import SearchBox from "../../allShared/SearchBox/SearchBox";
@@ -7,57 +8,26 @@ import SpanMainPage from "../../allMainPage/SpanMainPage/SpanMainPage";
 import NewPost from "../../allMainPage/NewPost/NewPost";
 import Feed from "../../allShared/Feed/Feed";
 import PostCard from "../../allShared/PostCards/PostCard";
+import { getAllPost } from "../../../utils/posts";
 
 // ////////////////
 
 const MainBody = (props) => {
-  // fake user
-  const user = {
-    user_name: "ijwilliamson",
-    email: "ian@mail.com",
-    password: "password",
-    pcd: "SW1A 1AA",
-    name: "Ian Williamson",
-    address: "1 Downing Street",
+  useEffect(() => {
+    getPostFunction();
+  }, []);
+
+  const getPostFunction = async () => {
+    const getPost = await getAllPost();
+    console.log(getPost);
+    props.setPostDetails(getPost);
   };
-  // fake post
-  const posts = [
-    {
-      id: 1,
-      post_type: 1,
-      user_id: 1,
-      post_content:
-        "This is a post. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    },
-    {
-      id: 1,
-      post_type: 2,
-      user_id: 1,
-      post_content:
-        "This is a post. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    },
-    {
-      id: 1,
-      post_type: 3,
-      user_id: 1,
-      post_content:
-        "This is a post. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    },
-    {
-      id: 1,
-      post_type: 4,
-      user_id: 1,
-      post_content:
-        "This is a post. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    },
-    {
-      id: 1,
-      post_type: 1,
-      user_id: 1,
-      post_content:
-        "This is a post. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    },
-  ];
+
+  //     id: 1,
+  //     post_type: 1,
+  //     user_id: 1,
+  //     post_content:
+  //       "This is a post. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
 
   return (
     <div className="mainbody-box">
@@ -65,17 +35,17 @@ const MainBody = (props) => {
       <SpanMainPage
         userDetails={props.userDetails}
       />
-      <NewPost />
+      <NewPost userDetails={props.userDetails} />
       <Feed />
       <div className="mainbody-posts">
-        {posts.length > 0 ? (
+        {props.postDetails.length > 0 ? (
           <div className="mainbody-posts">
-            {posts.map((post, i) => {
+            {props.postDetails.map((post, i) => {
               return (
                 <PostCard
                   key={i}
                   post={post}
-                  user={user}
+                  user={props.userDetails}
                 />
               );
             })}

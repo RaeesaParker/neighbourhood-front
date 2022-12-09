@@ -8,7 +8,7 @@ import MsgModal from "../../allShared/MsgModal/MsgModal";
 
 // ////////////////
 
-const NewPost = () => {
+const NewPost = (props) => {
   const [modal, setModal] = useState(false);
   const toggleModal = () => {
     setModal(!modal);

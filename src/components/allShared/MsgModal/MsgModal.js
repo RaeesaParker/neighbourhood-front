@@ -1,24 +1,29 @@
 // Design + images
 import { useState } from "react";
+import { createPost } from "../../../utils/posts";
 
 // Components
 import "./MsgModal.css";
 
 // ///////////////
 
-const MsgModal = () => {
+const MsgModal = (props) => {
   const [cancelBtn, setCancelBtn] =
     useState(false);
   const [newPost, setNewPost] = useState({
     post_type: null,
-    user_id: null,
+    user_id: props.userDetails.user_id,
     post_content: null,
   });
   const [errorMessage, setErrorMessage] =
     useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(newPost);
+    const postCreated = await createPost(newPost);
+    // console.log(postCreated);
+    setNewPost(postCreated);
 
     // Basic validation
     if (!newPost.post_content) {
@@ -173,6 +178,7 @@ const MsgModal = () => {
           <button onClick={handleCancelBtn}>
             Cancel
           </button>
+
           <button type="submit">
             Create Post
           </button>

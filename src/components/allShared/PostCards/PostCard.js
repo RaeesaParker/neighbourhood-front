@@ -35,8 +35,8 @@ const PostCard = ({ post, user }) => {
         <div className="postcard-head">
           <img src={fakeuser} alt="userpicture" />
           <div>
-            <h3>{user.name}</h3>
-            <p>@{user.user_name}</p>
+            <h3>{post.user_name}</h3>
+            <p>@{post.created_at}</p>
           </div>
         </div>
         <hr />

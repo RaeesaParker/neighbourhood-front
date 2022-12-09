@@ -13,11 +13,14 @@ function MainPage(props) {
     <div id="section-mainpage-div">
       <div id="subsection-mainpage-navbar">
         <NavigationBar
+          userDetails={props.userDetails}
           setIsLoggedIn={props.setIsLoggedIn}
         />
       </div>
       <div id="subsection-mainpage-posts">
         <MainBody
+          postDetails={props.postDetails}
+          setPostDetails={props.setPostDetails}
           userDetails={props.userDetails}
         />
       </div>
