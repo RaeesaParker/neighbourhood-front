@@ -34,7 +34,8 @@
 
 .infocards-box h3 {
   font-size: 20px;
-  margin-bottom: -5px;
+  line-height: 20px;
+  margin-bottom: 0px;
 }
 
 .infocards-box p {
@@ -54,6 +55,7 @@
 }
 
 .ic-adress,
-.ic-phone {
+.ic-phone,
+.ic-earth {
   color: #004da0;
 }

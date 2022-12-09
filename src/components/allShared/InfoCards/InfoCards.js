@@ -1,31 +1,46 @@
 // Design + images
 import "./InfoCards.css";
-import examplepicture from "../../../imgs/Background.png";
+import school from "../../../imgs/schools.jpg";
 
 // Components
 
-const InfoCards = () => {
+const InfoCards = (props) => {
   return (
     <div className="infocards-box">
       <img
-        src={examplepicture}
+        src={school}
         alt="hospital"
         className="infocards-img"
       />
       <div className="infocards-head">
-        <h3>Hospital/school name</h3>
-        <p>Information</p>
+        <h3>{props.school.Name}</h3>
+        <p>{props.school.Type}</p>
       </div>
       <hr />
       <div className="infocards-info">
         <div className="ic-info">
           <i className="fa-solid fa-location-dot ic-adress"></i>
-          <p>Adress</p>
+          <p>
+            {props.school.Street},{" "}
+            {props.school.Postcode}
+          </p>
         </div>
         <div className="ic-info">
           <i className="fa-solid fa-phone ic-phone"></i>
-          <p>123 456 789</p>
+          <p>{props.school.Telephone}</p>
         </div>
+        {props.school.Website && (
+          <div className="ic-info">
+            <i className="fa-solid fa-earth-americas ic-earth"></i>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={`${props.school.Website}`}
+            >
+              {props.school.Website}
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );
