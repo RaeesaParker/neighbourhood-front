@@ -2,7 +2,7 @@
 import "./SchoolPageStyles.css";
 
 // Components
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavigationBar from "../../components/navigationBar/NavigationBar";
 import SchoolBody from "../../components/allSchool/SchoolBody/SchoolBody";
@@ -11,10 +11,17 @@ import SidePanel from "../../components/sidePanel/SidePanel";
 // Import utils
 import { getCookie } from "../../common/index";
 import { findUser } from "../../utils/users/index";
+import { nearSchools } from "../../utils/schools/index";
 
 function SchoolPage(props) {
   // Navigation for redirect
   const navigate = useNavigate();
+
+  // State to store the schools
+  const [
+    allSchoolsByRegion,
+    setAllSchoolByRegion,
+  ] = useState([]);
 
   // Check to see if a user is logged in
   useEffect(() => {
@@ -39,11 +46,16 @@ function SchoolPage(props) {
       props.setUserDetails
     );
     if (userDetails) {
-      console.log(
-        "The user details have been set to ",
-        userDetails
-      );
+      getSchools(userDetails);
     }
+  };
+
+  // Function to find all the schools
+  const getSchools = async (userDetails) => {
+    const response = await nearSchools(
+      userDetails.region[0].region_id
+    );
+    setAllSchoolByRegion(response);
   };
 
   return (
@@ -56,6 +68,7 @@ function SchoolPage(props) {
       <div className="schoolpage-body">
         <SchoolBody
           userDetails={props.userDetails}
+          allSchoolsByRegion={allSchoolsByRegion}
         />
       </div>
       <div id="subsection-mainpage-sidepanel">
