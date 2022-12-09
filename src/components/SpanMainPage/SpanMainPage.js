@@ -7,7 +7,7 @@ import { useState } from "react";
 
 // ////////////////
 
-const SpanMainPage = () => {
+const SpanMainPage = (props) => {
   const [span, setSpan] = useState(false);
   const handleClick = () => {
     setSpan(true);
@@ -15,12 +15,14 @@ const SpanMainPage = () => {
 
   return (
     <div
-      className={`span-mp ${
+      className={`span-mainpage ${
         span ? "display-none" : ""
       }`}
     >
       <div className="span-header">
-        <h2>Hello, name!</h2>
+        <h2>
+          Hello, {props.userDetails.username}!
+        </h2>
         <button onClick={handleClick}>
           <i className="fa-solid fa-x icon-spanclose"></i>
         </button>
@@ -39,7 +41,11 @@ const SpanMainPage = () => {
           Welcome, neighbor!
         </p>
 
-        <img src={cellphone} alt="cellphone" />
+        <img
+          src={cellphone}
+          alt="cellphone"
+          className="span-cellphone"
+        />
       </div>
     </div>
   );

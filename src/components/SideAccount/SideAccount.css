@@ -1,0 +1,104 @@
+.sideaccount {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  height: calc(100% - 110px);
+  width: 280px;
+
+  position: fixed;
+}
+
+.sideacc-edit {
+  width: 100%;
+}
+
+.btn-editacc,
+.btn-changeacc,
+.btn-backacc,
+.btn-deleteacc {
+  border-radius: 10px;
+  border: none;
+
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 15px;
+}
+
+.btn-editacc {
+  background-color: var(--grey-light);
+  color: var(--grey-nav);
+
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.btn-changeacc {
+  background-color: var(--grey-dark);
+  color: var(--white-dark);
+  width: 100%;
+}
+.btn-backacc {
+  background-color: var(--grey-medium);
+}
+
+.btn-deleteacc {
+  background-color: var(--grey-light);
+}
+.btn-editacc:hover,
+.btn-changeacc:hover,
+.btn-deleteacc:hover,
+.btn-backacc:hover {
+  background-color: var(--grey-medium);
+  color: var(--white-dark);
+  transition: 0.6s all ease;
+}
+
+.form-editacc-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.group-editacc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+
+  background-color: var(--white-dark);
+  border-radius: 15px;
+
+  padding: 20px 20px;
+}
+
+.form-editacc label {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
+
+.form-editacc input {
+  background-color: transparent;
+  border: none;
+
+  padding: 0px 10px;
+}
+
+.form-editacc input::placeholder {
+  color: var(--grey-light);
+}
+
+.form-editacc input:focus {
+  outline: none;
+}
+
+.form-editacc hr {
+  opacity: 0.4;
+  margin: 10px 0px 20px 0px;
+}
+
+@media screen and (max-width: 1100px) {
+  .sideaccount {
+    width: 230px;
+  }
+}

@@ -1,25 +1,23 @@
 // Design + images
-import "./MainBody.css";
+import "./AccountBody.css";
 
 // Components
 import SearchBox from "../SearchBox/SearchBox";
-import SpanMainPage from "../SpanMainPage/SpanMainPage";
-import NewPost from "../NewPost/NewPost";
+import SpanAccount from "../SpanAccount/SpanAccount";
 import Feed from "../Feed/Feed";
 import PostCard from "../PostCards/PostCard";
 
-// ////////////////
-
-const MainBody = (props) => {
+const AccountBody = (props) => {
   return (
     <div className="mainbody-box">
       <SearchBox />
-      <SpanMainPage
+      <SpanAccount
         userDetails={props.userDetails}
       />
-      <NewPost />
       <Feed />
       <div className="mainbody-posts">
+        <PostCard />
+        <PostCard />
         <PostCard />
         <PostCard />
         <PostCard />
@@ -29,4 +27,4 @@ const MainBody = (props) => {
   );
 };
 
-export default MainBody;
+export default AccountBody;
