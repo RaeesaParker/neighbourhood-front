@@ -11,6 +11,7 @@ import SchoolPage from "./pages/schoolPage/SchoolPage";
 import HospitalPage from "./pages/hospitalPage/HospitalPage";
 
 function App() {
+  // Feature test branch
   // Set state to manage user login
   const [isLoggedIn, setIsLoggedIn] =
     useState(true);
