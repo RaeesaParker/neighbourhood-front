@@ -10,11 +10,13 @@ import "./MsgModal.css";
 const MsgModal = (props) => {
   const [cancelBtn, setCancelBtn] =
     useState(false);
+
   const [newPost, setNewPost] = useState({
     post_type: null,
     user_id: props.userDetails.user_id,
     post_content: null,
   });
+
   const [errorMessage, setErrorMessage] =
     useState("");
 
@@ -175,7 +177,10 @@ const MsgModal = (props) => {
               {errorMessage}
             </span>
           )}
-          <button onClick={handleCancelBtn}>
+          <button
+            type="button"
+            onClick={handleCancelBtn}
+          >
             Cancel
           </button>
 
