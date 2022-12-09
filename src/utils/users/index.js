@@ -66,7 +66,7 @@ export const findUser = async (
         user_id: data.id,
         user_regionId: data.region_id,
       });
-      return data.user_name;
+      return data;
     }
   } catch (error) {
     console.log(error);
@@ -111,6 +111,7 @@ export const loginUser = async (
 // Get a users details
 export const getUser = async (userId) => {
   try {
+    console.log(userId);
     const response = await fetch(
       `https://web-production-2000.up.railway.app/user/${userId}`,
       {
