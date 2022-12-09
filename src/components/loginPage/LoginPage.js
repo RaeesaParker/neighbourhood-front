@@ -18,14 +18,14 @@ function LoginPage(props) {
             register={setShowForm}
             setUserDetails={props.setUserDetails}
             isLoggedIn={props.isLoggedIn}
-            setIsLoggedIn={props.isLoggedIn}
+            setIsLoggedIn={props.setIsLoggedIn}
           />
         ) : showForm === "register" ? (
           <RegisterForm
             login={setShowForm}
             setUserDetails={props.setUserDetails}
             isLoggedIn={props.isLoggedIn}
-            setIsLoggedIn={props.isLoggedIn}
+            setIsLoggedIn={props.setIsLoggedIn}
           />
         ) : (
           <div className="btn">
