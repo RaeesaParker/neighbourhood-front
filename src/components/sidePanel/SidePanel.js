@@ -67,10 +67,6 @@ function SidePanel() {
   // Function to set all the users
   const allUsers = [
     "profile2",
-    "profile2",
-    "profile2",
-    "profile2",
-    "profile2",
     "profile3",
     "profile4",
     "profile5",
@@ -103,7 +99,7 @@ function SidePanel() {
         </div>
       </div>
       <div className="subsection-panel">
-        <h3>Whos in Preston?</h3>
+        <h3>Who&apos;s in Preston?</h3>
         <p>All your connected neighbors:</p>
         <div>{userImages}</div>
         <p>And many others!</p>
