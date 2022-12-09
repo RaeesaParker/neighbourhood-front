@@ -18,6 +18,7 @@ const NewPost = (props) => {
     <div className="newpost">
       {modal && (
         <MsgModal
+          setModal={setModal}
           userDetails={props.userDetails}
         />
       )}

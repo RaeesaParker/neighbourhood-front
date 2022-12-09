@@ -8,8 +8,9 @@ import "./MsgModal.css";
 // ///////////////
 
 const MsgModal = (props) => {
-  const [cancelBtn, setCancelBtn] =
-    useState(false);
+  // prop setModal set false to remove modal
+  // const [cancelBtn, setCancelBtn] =
+  //   useState(false);
 
   const [newPost, setNewPost] = useState({
     post_type: null,
@@ -46,20 +47,18 @@ const MsgModal = (props) => {
     }
     // Function for posting to backend bellow:
     const postCreated = await createPost(newPost);
-    setCancelBtn(!cancelBtn);
+    props.setModal(false);
     setNewPost(postCreated);
     console.log(postCreated);
   };
 
   const handleCancelBtn = () => {
-    setCancelBtn(!cancelBtn);
+    props.setModal(false);
   };
 
   return (
     <form
-      className={`msgmodal-box ${
-        cancelBtn ? "display-none" : ""
-      }`}
+      className={`msgmodal-box `}
       onSubmit={handleSubmit}
     >
       <div className="msgmodal">

@@ -81,6 +81,7 @@ function NavigationBar(props) {
       </div>
       {modal && (
         <MsgModal
+          setModal={setModal}
           userDetails={props.userDetails}
         />
       )}

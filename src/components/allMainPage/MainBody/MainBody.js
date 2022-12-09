@@ -26,6 +26,8 @@ const MainBody = (props) => {
     1, 2, 3, 4,
   ]);
 
+  console.log(postFilter); // remove once the postFilter variable has been used
+
   const getPostFunction = async () => {
     const getPost = await getAllPost();
     console.log(getPost);
