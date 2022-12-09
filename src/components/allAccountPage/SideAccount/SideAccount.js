@@ -20,7 +20,7 @@ const SideAccount = (props) => {
   const [postcode, setPostcode] = useState(null);
   const [editAcc, setEditAcc] = useState(true);
 
-  // State to store the current user details => will remain empty for firt render
+  // State to store the current user details => will remain empty for first render
   const [currentDetails, setCurrentDetails] =
     useState({
       user_name: null,

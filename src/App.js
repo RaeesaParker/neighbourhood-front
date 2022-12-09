@@ -48,8 +48,10 @@ function App() {
           path="/main"
           element={
             <MainPage
-              userDetails={userDetails}
+              isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
+              userDetails={userDetails}
+              setUserDetails={onSetUserDetails}
             />
           }
         ></Route>
