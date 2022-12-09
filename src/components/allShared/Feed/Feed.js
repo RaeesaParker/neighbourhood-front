@@ -16,15 +16,15 @@ const Feed = () => {
             </label>
           </div>
           <div>
-            <input type="checkbox" id="alerts" />
-            <label className="filter-alerts">
-              Alerts
-            </label>
-          </div>
-          <div>
             <input type="checkbox" id="buysell" />
             <label className="filter-buysell">
               Buy and Sell
+            </label>
+          </div>
+          <div>
+            <input type="checkbox" id="alerts" />
+            <label className="filter-alerts">
+              Alerts
             </label>
           </div>
           <div>

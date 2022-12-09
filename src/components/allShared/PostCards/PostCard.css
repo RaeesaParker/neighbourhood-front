@@ -1,9 +1,28 @@
 .postcard {
-  background-color: var(--grey-extra-light);
   border-radius: 15px;
 
   position: relative;
   padding: 20px 20px 10px 20px;
+}
+
+.postcard-bg {
+  background-color: var(--grey-extra-light);
+}
+
+.postcard-bg1 {
+  background-color: var(--blue-light);
+}
+
+.postcard-bg2 {
+  background-color: var(--green-light);
+}
+
+.postcard-bg3 {
+  background-color: var(--pink-light);
+}
+
+.postcard-bg4 {
+  background-color: var(--orange-light);
 }
 
 /* ** */

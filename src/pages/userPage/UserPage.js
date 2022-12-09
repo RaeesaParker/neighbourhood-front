@@ -1,7 +1,7 @@
 import React from "react";
-import AccountBody from "../../components/AccountBody/AccountBody";
+import AccountBody from "../../components/allAccountPage/AccountBody/AccountBody";
 import NavigationBar from "../../components/navigationBar/NavigationBar";
-import SideAccount from "../../components/SideAccount/SideAccount";
+import SideAccount from "../../components/allAccountPage/SideAccount/SideAccount";
 
 import "./UserPageStyles.css";
 
