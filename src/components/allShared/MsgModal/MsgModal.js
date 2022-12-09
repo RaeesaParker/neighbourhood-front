@@ -12,7 +12,7 @@ const MsgModal = (props) => {
     useState(false);
 
   const [newPost, setNewPost] = useState({
-    post_type: null,
+    post_type: 1,
     user_id: props.userDetails.user_id,
     post_content: null,
   });
