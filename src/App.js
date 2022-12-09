@@ -32,6 +32,19 @@ function App() {
     });
   }
 
+  // eslint-disable-next-line no-unused-vars
+  const [postDetails, setPostDetails] = useState(
+    []
+  );
+
+  // func to take all post details on homepage
+
+  function onSetPostDetails(postDetails) {
+    setPostDetails(postDetails);
+  }
+
+  console.log(onSetPostDetails);
+
   return (
     <div>
       <Routes>
@@ -49,9 +62,15 @@ function App() {
           path="/main"
           element={
             <MainPage
-              isLoggedIn={isLoggedIn}
-              setIsLoggedIn={setIsLoggedIn}
+
+              postDetails={postDetails}
+              setPostDetails={onSetPostDetails}
               userDetails={userDetails}
+
+              isLoggedIn={isLoggedIn}
+
+              setIsLoggedIn={setIsLoggedIn}
+             
               setUserDetails={onSetUserDetails}
             />
           }
