@@ -1,19 +1,29 @@
-// Design + images
+import React from "react";
+import {
+  Link,
+  useNavigate,
+} from "react-router-dom";
+import { useState } from "react";
 import "./NavigationBarStyles.css";
 import logo from "../../imgs/logo.svg";
 
 // Components
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import MsgModal from "../allShared/MsgModal/MsgModal";
 
-// Navigation Bar => Logo => Links => Logout Button
+function NavigationBar(props) {
+  // Navigation for redirect
+  const navigate = useNavigate();
 
-function NavigationBar() {
+  // Modal for new post
   const [modal, setModal] = useState(false);
   const toggleModal = () => {
     setModal(!modal);
   };
+
+  function onLogOut() {
+    props.setIsLoggedIn(false);
+    navigate("/");
+  }
 
   return (
     <div id="section-navbar">
@@ -61,12 +71,13 @@ function NavigationBar() {
         </Link>
       </div>
       <div className="navbar-links-div">
-        <Link to="/">
-          <button className="button-style">
-            <i className="fa-solid fa-arrow-right-from-bracket nb-icon"></i>
-            <p>Logout</p>
-          </button>
-        </Link>
+        <button
+          onClick={onLogOut}
+          className="button-style"
+        >
+          <i className="fa-solid fa-arrow-right-from-bracket"></i>
+          <p>Logout</p>
+        </button>
       </div>
       {modal && <MsgModal />}
     </div>

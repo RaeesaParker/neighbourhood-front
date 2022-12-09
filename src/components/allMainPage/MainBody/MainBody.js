@@ -10,7 +10,7 @@ import PostCard from "../../allShared/PostCards/PostCard";
 
 // ////////////////
 
-const MainBody = () => {
+const MainBody = (props) => {
   // fake user
   const user = {
     user_name: "ijwilliamson",
@@ -62,7 +62,9 @@ const MainBody = () => {
   return (
     <div className="mainbody-box">
       <SearchBox />
-      <SpanMainPage />
+      <SpanMainPage
+        userDetails={props.userDetails}
+      />
       <NewPost />
       <Feed />
       <div className="mainbody-posts">
