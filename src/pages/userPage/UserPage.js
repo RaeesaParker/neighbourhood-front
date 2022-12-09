@@ -7,20 +7,27 @@ import "./UserPageStyles.css";
 
 // User Page => Navigation bar on Left => User Posts Section in Center => User Editing Panel on Right
 
-function UserPage() {
+function UserPage(props) {
   return (
     <div className="userpage-page">
       <div
         id="subsection-mainpage-navbar"
         className="userpage-navbar"
       >
-        <NavigationBar />
+        <NavigationBar
+          setIsLoggedIn={props.setIsLoggedIn}
+        />
       </div>
       <div className="userpage-body">
-        <AccountBody />
+        <AccountBody
+          userDetails={props.userDetails}
+        />
       </div>
       <div className="userpage-sidebar">
-        <SideAccount />
+        <SideAccount
+          setUserDetails={props.setUserDetails}
+          userDetails={props.userDetails}
+        />
       </div>
     </div>
   );

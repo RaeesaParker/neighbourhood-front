@@ -7,7 +7,7 @@ import SpanAccount from "../../allAccountPage/SpanAccount/SpanAccount";
 import Feed from "../../allShared/Feed/Feed";
 import PostCard from "../../allShared/PostCards/PostCard";
 
-const AccountBody = () => {
+const AccountBody = (props) => {
   // fake user
   const user = {
     user_name: "ijwilliamson",
@@ -59,7 +59,9 @@ const AccountBody = () => {
   return (
     <div className="mainbody-box">
       <SearchBox />
-      <SpanAccount />
+      <SpanAccount
+        userDetails={props.userDetails}
+      />
       <Feed />
       <div className="mainbody-posts">
         {posts.length > 0 ? (
