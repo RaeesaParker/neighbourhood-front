@@ -38,8 +38,7 @@ function MainPage(props) {
     );
     if (userDetails) {
       console.log(
-        "The user details have been set to ",
-        userDetails
+        "The user details have been set"
       );
     }
   };
