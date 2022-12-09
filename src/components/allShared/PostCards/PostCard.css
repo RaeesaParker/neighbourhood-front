@@ -140,6 +140,11 @@
 
 /* *** */
 
+.bookmarked-post {
+  color: var(--pink);
+  transition: 0.2s all linear;
+}
+
 .liked-post {
   color: var(--pink);
   transition: 0.2s all linear;

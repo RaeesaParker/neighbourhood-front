@@ -40,12 +40,11 @@ const MainBody = (props) => {
       <div className="mainbody-posts">
         {props.postDetails.length > 0 ? (
           <div className="mainbody-posts">
-            {props.postDetails.map((post, i) => {
+            {props.postDetails.map((post) => {
               return (
                 <PostCard
-                  key={i}
+                  key={post.id}
                   post={post}
-                  user={props.userDetails}
                 />
               );
             })}

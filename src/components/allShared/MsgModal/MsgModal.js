@@ -12,7 +12,7 @@ const MsgModal = (props) => {
     useState(false);
 
   const [newPost, setNewPost] = useState({
-    post_type: 1,
+    post_type: null,
     user_id: props.userDetails.user_id,
     post_content: null,
   });
@@ -46,7 +46,7 @@ const MsgModal = (props) => {
     }
     // Function for posting to backend bellow:
     const postCreated = await createPost(newPost);
-
+    setCancelBtn(!cancelBtn);
     setNewPost(postCreated);
     console.log(postCreated);
   };
