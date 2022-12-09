@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Feed.css";
 
-const Feed = () => {
+const Feed = ({ setPostFilter }) => {
   const [postType, setPostType] = useState([
     true,
     true,
@@ -10,22 +10,23 @@ const Feed = () => {
   ]);
   const [all, setAll] = useState(true);
 
-  console.log(postType);
-  console.log(all);
-
-  if (1 == 2) {
-    setPostType(null);
-    setAll(null);
-  }
-
   const optionClicked = (i) => {
     console.log(i);
+
     if (i == 4) {
       if (!all) {
         setPostType([true, true, true, true]);
+        setPostFilter([true, true, true, true]);
       } else {
         setPostType([false, false, false, false]);
+        setPostFilter([
+          false,
+          false,
+          false,
+          false,
+        ]);
       }
+
       setAll(!all);
       return;
     }
@@ -40,6 +41,7 @@ const Feed = () => {
     }
 
     setPostType(temp);
+    setPostFilter(temp);
   };
 
   return (

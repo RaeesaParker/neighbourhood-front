@@ -1,6 +1,6 @@
 // Design + images
 import "./MainBody.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // Components
 import SearchBox from "../../allShared/SearchBox/SearchBox";
@@ -16,6 +16,15 @@ const MainBody = (props) => {
   useEffect(() => {
     getPostFunction();
   }, []);
+
+  // post filter is used to filter the posts.
+  // postFilter is an array of catagories to filter by
+  // setPostFilter should be passed to the feed to set
+  // postFilter should be sent to the getPostFunction
+  // once it can handle it.
+  const [postFilter, setPostFilter] = useState([
+    1, 2, 3, 4,
+  ]);
 
   const getPostFunction = async () => {
     const getPost = await getAllPost();
@@ -36,7 +45,7 @@ const MainBody = (props) => {
         userDetails={props.userDetails}
       />
       <NewPost userDetails={props.userDetails} />
-      <Feed />
+      <Feed setPostFilter={setPostFilter} />
       <div className="mainbody-posts">
         {props.postDetails.length > 0 ? (
           <div className="mainbody-posts">
