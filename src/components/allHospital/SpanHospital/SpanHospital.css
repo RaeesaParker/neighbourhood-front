@@ -1,0 +1,73 @@
+.display-none {
+  display: none;
+}
+/* *** */
+
+.span-hospital {
+  background-color: var(--white-dark);
+  border-radius: 15px;
+
+  margin-bottom: 35px;
+  padding: 0px 30px;
+  width: 60%;
+}
+
+.span-hospital .span-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.span-hospital .span-header h2 {
+  margin-top: 20px;
+}
+
+.span-hospital button {
+  background-color: transparent;
+  border: none;
+
+  z-index: 10;
+}
+
+.span-hospital .span-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+}
+
+.span-hospital .span-body p {
+  margin: 10px 200px 20px 0px;
+}
+
+.span-girl {
+  bottom: 0px;
+  right: 20px;
+
+  position: absolute;
+  width: 165px;
+}
+
+@media screen and (max-width: 1250px) {
+  .span-hospital {
+    width: 80%;
+  }
+
+  .span-hospital .span-body p {
+    font-size: 14px;
+    margin-right: 185px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .span-hospital {
+    width: auto;
+  }
+  .span-girl {
+    display: none;
+  }
+  .span-hospital .span-body p {
+    margin-right: 0px;
+  }
+}

@@ -1,12 +1,22 @@
 // Design + images
 import "./NewPost.css";
-import speechbubble from "../../imgs/speechbubble.png";
+import speechbubble from "../../../imgs/speechbubble.png";
+
+// Components
+import { useState } from "react";
+import MsgModal from "../../allShared/MsgModal/MsgModal";
 
 // ////////////////
 
 const NewPost = () => {
+  const [modal, setModal] = useState(false);
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
   return (
     <div className="newpost">
+      {modal && <MsgModal />}
       <form className="newpost-bg">
         <img
           src={speechbubble}
@@ -15,6 +25,7 @@ const NewPost = () => {
         <input
           className="newpost-input"
           placeholder="What is on your mind, neighbour?"
+          onClick={toggleModal}
         ></input>
       </form>
     </div>

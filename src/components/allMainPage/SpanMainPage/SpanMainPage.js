@@ -1,13 +1,13 @@
 // Design + images
 import "./SpanMainPage.css";
-import cellphone from "../../imgs/groupchat.png";
+import cellphone from "../../../imgs/groupchat.png";
 
 // Libraries
 import { useState } from "react";
 
 // ////////////////
 
-const SpanMainPage = () => {
+const SpanMainPage = (props) => {
   const [span, setSpan] = useState(false);
   const handleClick = () => {
     setSpan(true);
@@ -20,7 +20,9 @@ const SpanMainPage = () => {
       }`}
     >
       <div className="span-header">
-        <h2>Hello, name!</h2>
+        <h2>
+          Hello, {props.userDetails.username}!
+        </h2>
         <button onClick={handleClick}>
           <i className="fa-solid fa-x icon-spanclose"></i>
         </button>
