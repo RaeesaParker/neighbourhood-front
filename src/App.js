@@ -11,6 +11,7 @@ import SchoolPage from "./pages/schoolPage/SchoolPage";
 import HospitalPage from "./pages/hospitalPage/HospitalPage";
 
 function App() {
+  // Feature test branch
   // Set state to manage user login
   const [isLoggedIn, setIsLoggedIn] =
     useState(true);
@@ -61,10 +62,16 @@ function App() {
           path="/main"
           element={
             <MainPage
+
               postDetails={postDetails}
               setPostDetails={onSetPostDetails}
               userDetails={userDetails}
+
+              isLoggedIn={isLoggedIn}
+
               setIsLoggedIn={setIsLoggedIn}
+             
+              setUserDetails={onSetUserDetails}
             />
           }
         ></Route>
@@ -72,8 +79,9 @@ function App() {
           path="/user"
           element={
             <UserPage
-              setUserDetails={onSetUserDetails}
               userDetails={userDetails}
+              setUserDetails={onSetUserDetails}
+              isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
             />
           }
@@ -82,6 +90,9 @@ function App() {
           path="/schools"
           element={
             <SchoolPage
+              setUserDetails={onSetUserDetails}
+              userDetails={userDetails}
+              isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
             />
           }
@@ -90,6 +101,7 @@ function App() {
           path="/hospitals"
           element={
             <HospitalPage
+              userDetails={userDetails}
               setIsLoggedIn={setIsLoggedIn}
             />
           }
