@@ -1,10 +1,28 @@
 .postcard {
-  background-color: var(--grey-extra-light);
   border-radius: 15px;
 
   position: relative;
   padding: 20px 20px 10px 20px;
-  width: 400px;
+}
+
+.postcard-bg {
+  background-color: var(--grey-extra-light);
+}
+
+.postcard-bg1 {
+  background-color: var(--blue-light);
+}
+
+.postcard-bg2 {
+  background-color: var(--green-light);
+}
+
+.postcard-bg3 {
+  background-color: var(--pink-light);
+}
+
+.postcard-bg4 {
+  background-color: var(--orange-light);
 }
 
 /* ** */
@@ -71,7 +89,7 @@
 }
 
 .sharebubble {
-  background: #e5eaee;
+  background: #292929;
   border-radius: 10px;
 
   display: flex;
@@ -85,23 +103,23 @@
   font-size: 30px;
 
   left: -110px;
-  bottom: 60px;
+  bottom: 55px;
   width: 200px;
   height: 50px;
   position: relative;
 }
 .sharebubble:after {
   border-style: solid;
-  border-width: 0 26px 20px 0;
-  border-color: transparent #e5eaee transparent
+  border-width: 0 16px 20px 0;
+  border-color: transparent #292929 transparent
     transparent;
 
   content: "";
   display: block;
 
-  margin-left: -20px;
+  margin-left: -10px;
   left: 92%;
-  bottom: -20px;
+  bottom: -15px;
   width: 0;
 
   z-index: 1;
@@ -129,4 +147,27 @@
 
 .shared-btn {
   visibility: hidden;
+}
+
+@media screen and (max-width: 950px) {
+  .postcard-head {
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .postcard img {
+    height: 45px;
+    width: 45px;
+  }
+
+  .postcard-head,
+  .postcard-text {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+}
+
+@media screen and (max-width: 600px) {
 }

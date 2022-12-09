@@ -1,42 +1,86 @@
 import React from "react";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
-// Import Components => Homepage , Login Page Modal?  , Main Page
-import "./pages/homePage/Homepage";
+// Import Components => Homepage , Login Page  , Main Page
 import Homepage from "./pages/homePage/Homepage";
 import MainPage from "./pages/mainPage/MainPage";
 import UserPage from "./pages/userPage/UserPage";
 import SchoolPage from "./pages/schoolPage/SchoolPage";
 import HospitalPage from "./pages/hospitalPage/HospitalPage";
 
-// Need a state to holder the user details
-
-// Set up the routing
-
 function App() {
+  // Set state to manage user login
+  const [isLoggedIn, setIsLoggedIn] =
+    useState(true);
+
+  // State to set the user details
+  const [userDetails, setUserDetails] = useState({
+    username: "",
+    user_id: "",
+    user_regionId: "",
+  });
+
+  // Function to take in the user details submited on homepage
+  function onSetUserDetails(userDetails) {
+    setUserDetails({
+      username: userDetails.username,
+      user_id: userDetails.user_id,
+      user_regionId: userDetails.user_regionId,
+    });
+  }
+
   return (
     <div>
       <Routes>
         <Route
           path="/"
-          element={<Homepage />}
+          element={
+            <Homepage
+              setUserDetails={onSetUserDetails}
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+            />
+          }
         ></Route>
         <Route
           path="/main"
-          element={<MainPage />}
+          element={
+            <MainPage
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              userDetails={userDetails}
+              setUserDetails={onSetUserDetails}
+            />
+          }
         ></Route>
         <Route
           path="/user"
-          element={<UserPage />}
+          element={
+            <UserPage
+              userDetails={userDetails}
+              setUserDetails={onSetUserDetails}
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+            />
+          }
         ></Route>
         <Route
           path="/schools"
-          element={<SchoolPage />}
+          element={
+            <SchoolPage
+              setIsLoggedIn={setIsLoggedIn}
+            />
+          }
         ></Route>
         <Route
           path="/hospitals"
-          element={<HospitalPage />}
+          element={
+            <HospitalPage
+              setIsLoggedIn={setIsLoggedIn}
+            />
+          }
         ></Route>
       </Routes>
     </div>

@@ -1,11 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+} from "react-router-dom";
+import { useState } from "react";
 import "./NavigationBarStyles.css";
 import logo from "../../imgs/logo.svg";
 
-// Navigation Bar => Logo => Links => Logout Button
+// Components
+import MsgModal from "../allShared/MsgModal/MsgModal";
 
-function NavigationBar() {
+function NavigationBar(props) {
+  // Navigation for redirect
+  const navigate = useNavigate();
+
+  // Modal for new post
+  const [modal, setModal] = useState(false);
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
+  function onLogOut() {
+    props.setIsLoggedIn(false);
+    navigate("/");
+  }
+
   return (
     <div id="section-navbar">
       <div id="navbar-logo-div">
@@ -18,46 +37,49 @@ function NavigationBar() {
       <div className="navbar-links-div">
         <Link to="/main">
           <button className="button-style">
-            <i className="fa-solid fa-house"></i>
-            Home
+            <i className="fa-solid fa-house nb-icon"></i>
+            <p>Home</p>
           </button>
         </Link>
         <Link to="/user">
           <button className="button-style">
-            <i className="fa-solid fa-user"></i>My
-            Account
+            <i className="fa-solid fa-user nb-icon"></i>
+            <p>My Account</p>
           </button>
         </Link>
         <button
           id="button-new-post"
           className="button-style"
+          onClick={toggleModal}
         >
-          <i className="fa-solid fa-plus"></i>New
-          Post
+          <i className="fa-solid fa-plus icon-newpost"></i>
+          <p>New Post</p>
         </button>
       </div>
       <div className="navbar-links-div">
         <Link to="/schools">
           <button className="button-style">
-            <i className="fa-solid fa-school"></i>
-            Schools
+            <i className="fa-solid fa-school nb-icon"></i>
+            <p>Schools</p>
           </button>
         </Link>
         <Link to="/hospitals">
           <button className="button-style">
-            <i className="fa-solid fa-hospital"></i>
-            Medical
+            <i className="fa-solid fa-hospital nb-icon"></i>
+            <p>Medical</p>
           </button>
         </Link>
       </div>
       <div className="navbar-links-div">
-        <Link to="/">
-          <button className="button-style">
-            <i className="fa-solid fa-arrow-right-from-bracket"></i>
-            Logout
-          </button>
-        </Link>
+        <button
+          onClick={onLogOut}
+          className="button-style"
+        >
+          <i className="fa-solid fa-arrow-right-from-bracket"></i>
+          <p>Logout</p>
+        </button>
       </div>
+      {modal && <MsgModal />}
     </div>
   );
 }

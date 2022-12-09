@@ -2,17 +2,46 @@
   background-color: var(--white);
   display: flex;
   min-height: 100vh;
-}
 
-.section-mainpage-border {
-  margin: 1% 1% 1% 1%;
+  margin: 15px;
+  overflow: hidden;
 }
 
 #subsection-mainpage-navbar {
-  background-color: var(--grey-nav);
+  height: 0px;
+  width: 270px;
+  min-width: 200px;
+  max-width: 200px;
 }
 
 #subsection-mainpage-posts {
-  background-color: blue;
-  flex-grow: 2;
+  height: auto;
+  width: 100%;
+}
+
+#subsection-mainpage-sidepanel {
+  height: 50px;
+  width: 280px;
+  min-width: 280px;
+  max-width: 280px;
+}
+
+@media screen and (max-width: 1200px) {
+  #subsection-mainpage-navbar {
+    width: 95px;
+    min-width: 95px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  #subsection-mainpage-sidepanel {
+    width: 230px;
+    min-width: 230px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  #subsection-mainpage-sidepanel {
+    display: none;
+  }
 }

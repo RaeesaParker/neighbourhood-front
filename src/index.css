@@ -29,6 +29,7 @@ body {
 
 button {
   cursor: pointer;
+  font-family: "Heebo", sans-serif;
 }
 
 h1,
@@ -44,4 +45,8 @@ p {
 
 input {
   font-family: "Heebo", sans-serif;
+}
+
+a {
+  text-decoration: none;
 }

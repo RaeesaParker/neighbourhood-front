@@ -17,6 +17,7 @@ module.exports = {
   rules: {
     "require-jsdoc": "off",
     "react/react-in-jsx-scope": "off",
+    "react/prop-types": 0,
   },
   settings: {
     react: {

@@ -1,12 +1,84 @@
 import React from "react";
 import "./UserPageStyles.css";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+// Components
+import AccountBody from "../../components/allAccountPage/AccountBody/AccountBody";
+import NavigationBar from "../../components/navigationBar/NavigationBar";
+import SideAccount from "../../components/allAccountPage/SideAccount/SideAccount";
+// Utils
+import { getCookie } from "../../common/index";
+import { findUser } from "../../utils/users/index";
 
-// User Page => Navigation bar on Left => User Posts Section in Center => User Editing Panel on Right
+function UserPage(props) {
+  // Navigation for redirect
+  const navigate = useNavigate();
 
-function UserPage() {
+  // State to store the current user details => will remain empty for first render
+  const [currentDetails, setCurrentDetails] =
+    useState({
+      user_name: "",
+      password: "",
+      email: "",
+      postcode: "",
+    });
+
+  // Check to see if a user is logged in
+  useEffect(() => {
+    if (props.isLoggedIn) {
+      const cookie = getCookie("jwt_token");
+      // Set the user details if a cookie is found ELSE reroute to homepage
+      if (cookie !== false) {
+        findUserWithToken(
+          cookie,
+          props.setUserDetails
+        );
+      } else {
+        navigate("/");
+      }
+    }
+  }, []);
+
+  // Find the user with the token OR reroute to the homepage
+  const findUserWithToken = async (cookie) => {
+    const userDetails = await findUser(
+      cookie,
+      props.setUserDetails
+    );
+    if (userDetails) {
+      const blankObj = {
+        user_name: userDetails.user_name,
+        password: userDetails.password,
+        email: userDetails.email,
+        postcode: userDetails.pcd,
+      };
+      setCurrentDetails(blankObj);
+    }
+  };
+
   return (
-    <div>
-      <h1>Welcome to the User Page</h1>
+    <div className="userpage-page">
+      <div
+        id="subsection-mainpage-navbar"
+        className="userpage-navbar"
+      >
+        <NavigationBar
+          setIsLoggedIn={props.setIsLoggedIn}
+        />
+      </div>
+      <div className="userpage-body">
+        <AccountBody
+          userDetails={props.userDetails}
+        />
+      </div>
+      <div className="userpage-sidebar">
+        <SideAccount
+          setUserDetails={props.setUserDetails}
+          userDetails={props.userDetails}
+          currentDetails={currentDetails}
+          setCurrentDetails={setCurrentDetails}
+        />
+      </div>
     </div>
   );
 }
