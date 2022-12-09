@@ -70,7 +70,9 @@ function App() {
           path="/schools"
           element={
             <SchoolPage
+              setUserDetails={onSetUserDetails}
               userDetails={userDetails}
+              isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
             />
           }
