@@ -15,6 +15,7 @@ function UserPage(props) {
         className="userpage-navbar"
       >
         <NavigationBar
+          userDetails={props.userDetails}
           setIsLoggedIn={props.setIsLoggedIn}
         />
       </div>
