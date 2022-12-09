@@ -3,6 +3,7 @@
 // Write CRUD Functionality
 import { getCookie } from "../../common/index";
 const API_URL = process.env.REACT_APP_API_URL;
+
 // // Create a post => Used to create post
 export const createPost = async (postObject) => {
   try {

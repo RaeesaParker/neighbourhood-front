@@ -8,22 +8,22 @@ import "./MsgModal.css";
 // ///////////////
 
 const MsgModal = (props) => {
-  const [cancelBtn, setCancelBtn] =
-    useState(false);
+  // prop setModal set false to remove modal
+  // const [cancelBtn, setCancelBtn] =
+  //   useState(false);
+
   const [newPost, setNewPost] = useState({
     post_type: null,
     user_id: props.userDetails.user_id,
     post_content: null,
   });
+
   const [errorMessage, setErrorMessage] =
     useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(newPost);
-    const postCreated = await createPost(newPost);
-    // console.log(postCreated);
-    setNewPost(postCreated);
 
     // Basic validation
     if (!newPost.post_content) {
@@ -44,22 +44,21 @@ const MsgModal = (props) => {
       return setErrorMessage(
         "You must select a category."
       );
-
-      // Function for posting to backend bellow:
     }
-
-    console.log(newPost);
+    // Function for posting to backend bellow:
+    const postCreated = await createPost(newPost);
+    props.setModal(false);
+    setNewPost(postCreated);
+    console.log(postCreated);
   };
 
   const handleCancelBtn = () => {
-    setCancelBtn(!cancelBtn);
+    props.setModal(false);
   };
 
   return (
     <form
-      className={`msgmodal-box ${
-        cancelBtn ? "display-none" : ""
-      }`}
+      className={`msgmodal-box `}
       onSubmit={handleSubmit}
     >
       <div className="msgmodal">
@@ -175,7 +174,10 @@ const MsgModal = (props) => {
               {errorMessage}
             </span>
           )}
-          <button onClick={handleCancelBtn}>
+          <button
+            type="button"
+            onClick={handleCancelBtn}
+          >
             Cancel
           </button>
 

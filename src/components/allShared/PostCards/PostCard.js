@@ -6,16 +6,28 @@ import fakeuser from "../../../imgs/fakeuser.png";
 import { useState } from "react";
 
 const PostCard = ({ post, user }) => {
+  const [bookmarked, setBookmarked] = useState(
+    post.fav
+  );
   const [liked, setLiked] = useState(false);
   const [shareBtn, setShareBtn] = useState(true);
 
   const handleLiked = () => {
     setLiked(!liked);
+    // need to fetch endpoint
   };
 
   const handleShared = () => {
     setShareBtn(!shareBtn);
+    // need to fetch endpoint
   };
+
+  const handleBookmarked = () => {
+    setBookmarked(!bookmarked);
+    // need to fetch endpoint
+  };
+
+  const postDate = new Date(post.created_at);
 
   return (
     <div>
@@ -36,7 +48,12 @@ const PostCard = ({ post, user }) => {
           <img src={fakeuser} alt="userpicture" />
           <div>
             <h3>{post.user_name}</h3>
-            <p>@{post.created_at}</p>
+            <p>
+              @{postDate.toDateString()} :{" "}
+              {postDate.toLocaleTimeString(
+                "en-UK"
+              )}
+            </p>
           </div>
         </div>
         <hr />
@@ -62,7 +79,15 @@ const PostCard = ({ post, user }) => {
               </div>
             </div>
 
-            <i className="fa-solid fa-bookmark" />
+            <i
+              className={`fa-solid fa-bookmark ${
+                bookmarked
+                  ? "bookmarked-post"
+                  : ""
+              }`}
+              onClick={handleBookmarked}
+            />
+
             <i
               className={`fa-solid fa-heart ${
                 liked ? "liked-post" : ""

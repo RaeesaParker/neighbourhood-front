@@ -16,7 +16,12 @@ const NewPost = (props) => {
 
   return (
     <div className="newpost">
-      {modal && <MsgModal />}
+      {modal && (
+        <MsgModal
+          setModal={setModal}
+          userDetails={props.userDetails}
+        />
+      )}
       <form className="newpost-bg">
         <img
           src={speechbubble}
