@@ -75,7 +75,7 @@ function NavigationBar(props) {
           onClick={onLogOut}
           className="button-style"
         >
-          <i className="fa-solid fa-arrow-right-from-bracket"></i>
+          <i className="fa-solid fa-arrow-right-from-bracket nb-icon"></i>
           <p>Logout</p>
         </button>
       </div>

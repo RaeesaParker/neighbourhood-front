@@ -70,6 +70,7 @@ function App() {
           path="/schools"
           element={
             <SchoolPage
+              userDetails={userDetails}
               setIsLoggedIn={setIsLoggedIn}
             />
           }
@@ -78,6 +79,7 @@ function App() {
           path="/hospitals"
           element={
             <HospitalPage
+              userDetails={userDetails}
               setIsLoggedIn={setIsLoggedIn}
             />
           }
