@@ -23,9 +23,6 @@ const MsgModal = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(newPost);
-    const postCreated = await createPost(newPost);
-    // console.log(postCreated);
-    setNewPost(postCreated);
 
     // Basic validation
     if (!newPost.post_content) {
@@ -46,11 +43,12 @@ const MsgModal = (props) => {
       return setErrorMessage(
         "You must select a category."
       );
-
-      // Function for posting to backend bellow:
     }
+    // Function for posting to backend bellow:
+    const postCreated = await createPost(newPost);
 
-    console.log(newPost);
+    setNewPost(postCreated);
+    console.log(postCreated);
   };
 
   const handleCancelBtn = () => {
