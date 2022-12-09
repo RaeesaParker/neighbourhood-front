@@ -2,11 +2,50 @@
 import "./SchoolPageStyles.css";
 
 // Components
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import NavigationBar from "../../components/navigationBar/NavigationBar";
 import SchoolBody from "../../components/allSchool/SchoolBody/SchoolBody";
 import SidePanel from "../../components/sidePanel/SidePanel";
 
+// Import utils
+import { getCookie } from "../../common/index";
+import { findUser } from "../../utils/users/index";
+
 function SchoolPage(props) {
+  // Navigation for redirect
+  const navigate = useNavigate();
+
+  // Check to see if a user is logged in
+  useEffect(() => {
+    if (props.isLoggedIn) {
+      const cookie = getCookie("jwt_token");
+      // Set the user details if a cookie is found ELSE reroute to homepage
+      if (cookie !== false) {
+        findUserWithToken(
+          cookie,
+          props.setUserDetails
+        );
+      } else {
+        navigate("/");
+      }
+    }
+  }, []);
+
+  // Find the user with the token OR reroute to the homepage
+  const findUserWithToken = async (cookie) => {
+    const userDetails = await findUser(
+      cookie,
+      props.setUserDetails
+    );
+    if (userDetails) {
+      console.log(
+        "The user details have been set to ",
+        userDetails
+      );
+    }
+  };
+
   return (
     <div className="section-school">
       <div id="subsection-mainpage-navbar">

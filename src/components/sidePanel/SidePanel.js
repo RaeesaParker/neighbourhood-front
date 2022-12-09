@@ -88,7 +88,7 @@ function SidePanel(props) {
     <div id="subsection-mainpage-panel">
       <div id="subsection-panel-user">
         <div id="subsection-panel-user-div">
-          <h4>{props.userDetails.username}</h4>
+          <h4>@{props.userDetails.username}</h4>
         </div>
         <div id="subsection-panel-image-div">
           <img
