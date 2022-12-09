@@ -17,6 +17,8 @@ const PostCard = ({ post, user }) => {
     setShareBtn(!shareBtn);
   };
 
+  const postDate = new Date(post.created_at);
+
   return (
     <div>
       <div
@@ -36,7 +38,12 @@ const PostCard = ({ post, user }) => {
           <img src={fakeuser} alt="userpicture" />
           <div>
             <h3>{post.user_name}</h3>
-            <p>@{post.created_at}</p>
+            <p>
+              @{postDate.toDateString()} :{" "}
+              {postDate.toLocaleTimeString(
+                "en-UK"
+              )}
+            </p>
           </div>
         </div>
         <hr />
