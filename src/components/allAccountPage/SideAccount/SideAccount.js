@@ -156,7 +156,7 @@ const SideAccount = (props) => {
                 </label>
                 <input
                   placeholder={
-                    props.currentDetails.pcd
+                    props.currentDetails.postcode
                   }
                   onChange={(e) =>
                     setPostcode(e.target.value)
