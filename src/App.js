@@ -59,8 +59,9 @@ function App() {
           path="/user"
           element={
             <UserPage
-              setUserDetails={onSetUserDetails}
               userDetails={userDetails}
+              setUserDetails={onSetUserDetails}
+              isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
             />
           }
