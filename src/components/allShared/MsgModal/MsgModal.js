@@ -21,10 +21,11 @@ const MsgModal = (props) => {
   const [errorMessage, setErrorMessage] =
     useState("");
 
-
   const maxCharsValidation = (e) => {
     // Basic validation to check the max characters
-    if ((e.target.length = 200)) {
+    const newPostText = e.target.value;
+
+    if (newPostText.length > 199) {
       setTimeout(() => {
         setErrorMessage("");
       }, 2000);
@@ -33,7 +34,6 @@ const MsgModal = (props) => {
         "Ops! Maximum characters allowed per post: 200."
       );
     }
-
     setNewPost({
       ...newPost,
       post_content: e.target.value,
