@@ -156,7 +156,7 @@ export const updatePost = async (
 export const deletePost = async (id) => {
   try {
     const response = await fetch(
-      `${API_URL}/posts/${id}`,
+      `${API_URL}/post/${id}`,
       {
         method: "DELETE",
         headers: {
