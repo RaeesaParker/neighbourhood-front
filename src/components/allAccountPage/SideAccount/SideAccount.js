@@ -1,11 +1,12 @@
 // Design + images
 import "./SideAccount.css";
-import userProfile from "../../../imgs/profiles/profile1.jpg";
+import userProfile from "../../../imgs/fakeuser.png";
 import { useState } from "react";
 import {
   updateUser,
   deleteUser,
 } from "../../../utils/users";
+import SavedPostsCard from "../SavedPostsCard/SavedPostsCard";
 
 const SideAccount = (props) => {
   // States to hold the updated details
@@ -13,7 +14,7 @@ const SideAccount = (props) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [postcode, setPostcode] = useState(null);
-  const [editAcc, setEditAcc] = useState(true);
+  const [editAcc, setEditAcc] = useState(false);
 
   // Handle open and close of edit pane
   const handleClick = () => {
@@ -188,6 +189,18 @@ const SideAccount = (props) => {
             </div>
           </div>
         )}
+      </div>
+      <div className="allsaved-posts">
+        <div className="allsaved-header">
+          <h3>Saved posts:</h3>
+          <i className="fa-solid fa-bookmark"></i>{" "}
+        </div>
+        <div className="allsaved-feed">
+          <SavedPostsCard />
+          <SavedPostsCard />
+          <SavedPostsCard />
+          <SavedPostsCard />
+        </div>
       </div>
     </div>
   );

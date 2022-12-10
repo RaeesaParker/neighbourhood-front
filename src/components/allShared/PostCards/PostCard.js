@@ -85,17 +85,25 @@ const PostCard = ({ post, userDetails }) => {
         }`}
       >
         <div className="postcard-head">
-          <img src={fakeuser} alt="userpicture" />
-          <div>
-            <h3>{localPost.user_name}</h3>
-            <p>
-              @{postDate.toDateString()} :{" "}
+          <div className="postcard-head-left">
+            <img
+              src={fakeuser}
+              alt="userpicture"
+            />
+            <div>
+              <h3>{localPost.user_name}</h3>
+              <p>@{postDate.toDateString()} :{" "}
               {postDate.toLocaleTimeString(
                 "en-UK"
-              )}
-            </p>
+              )}</p>
+            </div>
+          </div>
+          <div className="postcard-head-right">
+            <i className="fa-solid fa-file-pen"></i>
+            <i className="fa-solid fa-trash"></i>
           </div>
         </div>
+        
         <hr />
         <div className="postcard-text">
           <p>{localPost.post_content}</p>
@@ -118,7 +126,6 @@ const PostCard = ({ post, userDetails }) => {
                 <i className="fa-brands fa-square-twitter" />
               </div>
             </div>
-
             <i
               className={`fa-solid fa-bookmark ${
                 bookmarked
@@ -127,13 +134,17 @@ const PostCard = ({ post, userDetails }) => {
               }`}
               onClick={handleBookmarked}
             />
-
             <i
               className={`fa-solid fa-heart ${
                 liked ? "liked-post" : ""
               }`}
               onClick={handleLiked}
             />
+            <p>
+              <span>0</span> Like
+              <span>s</span>
+            </p>
+            <i className="fa-solid fa-bookmark" />
             <i
               className="fa-solid fa-share"
               onClick={handleShared}
