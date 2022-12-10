@@ -30,10 +30,23 @@ export const createPost = async (postObject) => {
   }
 };
 
-export const getAllPost = async () => {
+export const getAllPost = async (postFilter) => {
   try {
+    if (!postFilter.includes(true)) {
+      return [];
+    }
+    // build filter array
+    let filter = "[";
+    for (let i = 0; i < postFilter.length; i++) {
+      if (postFilter[i]) {
+        filter += `${i + 1},`;
+      }
+    }
+    filter = filter.slice(0, filter.length - 1);
+    filter = filter + "]";
+
     const response = await fetch(
-      `${API_URL}/posts`,
+      `${API_URL}/posts/type/${filter}`,
       {
         method: "GET",
         headers: {

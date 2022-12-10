@@ -49,7 +49,7 @@ const MsgModal = (props) => {
     const postCreated = await createPost(newPost);
     props.setModal(false);
     setNewPost(postCreated);
-    console.log(postCreated);
+    props.setHaveNewPost(true);
   };
 
   const handleCancelBtn = () => {

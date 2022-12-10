@@ -83,6 +83,7 @@ function NavigationBar(props) {
         <MsgModal
           setModal={setModal}
           userDetails={props.userDetails}
+          setHaveNewPost={props.setHaveNewPost}
         />
       )}
     </div>

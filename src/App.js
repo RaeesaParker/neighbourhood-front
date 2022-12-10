@@ -43,6 +43,16 @@ function App() {
     setPostDetails(postDetails);
   }
 
+  // haveNewPost should be set true when there is a new post.
+  // this is passed down all the way to the MsgModal to be set
+  // true when a new post is created
+  const [haveNewPost, setHaveNewPost] =
+    useState(true);
+
+  function onSetHaveNewPost(haveNewPost) {
+    setHaveNewPost(haveNewPost);
+  }
+
   console.log(onSetPostDetails);
 
   return (
@@ -62,16 +72,14 @@ function App() {
           path="/main"
           element={
             <MainPage
-
               postDetails={postDetails}
               setPostDetails={onSetPostDetails}
               userDetails={userDetails}
-
               isLoggedIn={isLoggedIn}
-
               setIsLoggedIn={setIsLoggedIn}
-             
               setUserDetails={onSetUserDetails}
+              haveNewPost={haveNewPost}
+              setHaveNewPost={onSetHaveNewPost}
             />
           }
         ></Route>
