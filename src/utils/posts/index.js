@@ -172,3 +172,53 @@ export const deletePost = async (id) => {
     console.log(error);
   }
 };
+
+export const likePost = async (likeObject) => {
+  try {
+    const response = await fetch(
+      `${API_URL}/post/like`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer " + getCookie("jwt_token"),
+        },
+        body: JSON.stringify({
+          user_id: likeObject.user_id,
+          post_id: likeObject.post_id,
+        }),
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const favoritePost = async (
+  favoriteObject
+) => {
+  try {
+    const response = await fetch(
+      `${API_URL}/post/favorite`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer " + getCookie("jwt_token"),
+        },
+        body: JSON.stringify({
+          user_id: favoriteObject.user_id,
+          post_id: favoriteObject.post_id,
+        }),
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
