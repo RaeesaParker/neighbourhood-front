@@ -92,10 +92,12 @@ const PostCard = ({ post, userDetails }) => {
             />
             <div>
               <h3>{localPost.user_name}</h3>
-              <p>@{postDate.toDateString()} :{" "}
-              {postDate.toLocaleTimeString(
-                "en-UK"
-              )}</p>
+              <p>
+                @{postDate.toDateString()} :{" "}
+                {postDate.toLocaleTimeString(
+                  "en-UK"
+                )}
+              </p>
             </div>
           </div>
           <div className="postcard-head-right">
@@ -103,7 +105,7 @@ const PostCard = ({ post, userDetails }) => {
             <i className="fa-solid fa-trash"></i>
           </div>
         </div>
-        
+
         <hr />
         <div className="postcard-text">
           <p>{localPost.post_content}</p>
@@ -112,7 +114,7 @@ const PostCard = ({ post, userDetails }) => {
         <div className="postcard-icons">
           <div>
             <i className="fa-solid fa-comment"></i>
-            <p>50 Comments {likesString()}</p>
+            <p>50 Comments</p>
           </div>
           <div className="postcard-right">
             <div className="share-links">
@@ -126,6 +128,14 @@ const PostCard = ({ post, userDetails }) => {
                 <i className="fa-brands fa-square-twitter" />
               </div>
             </div>
+
+            <i
+              className={`fa-solid fa-heart ${
+                liked ? "liked-post" : ""
+              }`}
+              onClick={handleLiked}
+            />
+            <p>{likesString()}</p>
             <i
               className={`fa-solid fa-bookmark ${
                 bookmarked
@@ -134,17 +144,6 @@ const PostCard = ({ post, userDetails }) => {
               }`}
               onClick={handleBookmarked}
             />
-            <i
-              className={`fa-solid fa-heart ${
-                liked ? "liked-post" : ""
-              }`}
-              onClick={handleLiked}
-            />
-            <p>
-              <span>0</span> Like
-              <span>s</span>
-            </p>
-            <i className="fa-solid fa-bookmark" />
             <i
               className="fa-solid fa-share"
               onClick={handleShared}
