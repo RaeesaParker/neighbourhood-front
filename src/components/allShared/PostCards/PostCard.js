@@ -62,13 +62,17 @@ const PostCard = ({ post, user }) => {
               </div>
             </div>
 
-            <i className="fa-solid fa-bookmark" />
             <i
               className={`fa-solid fa-heart ${
                 liked ? "liked-post" : ""
               }`}
               onClick={handleLiked}
             />
+            <p>
+              <span>0</span> Like
+              <span>s</span>
+            </p>
+            <i className="fa-solid fa-bookmark" />
             <i
               className="fa-solid fa-share"
               onClick={handleShared}

@@ -82,6 +82,10 @@
 .postcard-right i {
   z-index: 30;
 }
+.postcard-right p {
+  margin-left: -12px;
+  margin-right: -6px;
+}
 
 .share-links {
   z-index: 29;

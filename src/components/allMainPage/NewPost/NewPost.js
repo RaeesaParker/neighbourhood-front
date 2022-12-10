@@ -26,7 +26,8 @@ const NewPost = () => {
           className="newpost-input"
           onClick={toggleModal}
         >
-          What is on your mind, neighbour?
+          What is on your mind, neighbour? Click
+          here to share with us.
         </div>
       </form>
     </div>
