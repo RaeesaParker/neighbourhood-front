@@ -17,6 +17,24 @@ const MsgModal = () => {
   const [errorMessage, setErrorMessage] =
     useState("");
 
+  const maxCharsValidation = (e) => {
+    // Basic validation to check the max characters
+    if ((e.target.length = 200)) {
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 2000);
+
+      return setErrorMessage(
+        "Ops! Maximum characters allowed per post: 200."
+      );
+    }
+
+    setNewPost({
+      ...newPost,
+      post_content: e.target.value,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -70,12 +88,8 @@ const MsgModal = () => {
         </div>
         <div className="msgmodal-header">
           <textarea
-            onChange={(e) =>
-              setNewPost({
-                ...newPost,
-                post_content: e.target.value,
-              })
-            }
+            maxLength="200"
+            onChange={maxCharsValidation}
             placeholder="What's on your mind, neighbour?"
           />
         </div>

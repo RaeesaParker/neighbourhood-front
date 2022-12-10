@@ -33,10 +33,19 @@ const PostCard = ({ post, user }) => {
         }`}
       >
         <div className="postcard-head">
-          <img src={fakeuser} alt="userpicture" />
-          <div>
-            <h3>{user.name}</h3>
-            <p>@{user.user_name}</p>
+          <div className="postcard-head-left">
+            <img
+              src={fakeuser}
+              alt="userpicture"
+            />
+            <div>
+              <h3>{user.name}</h3>
+              <p>@{user.user_name}</p>
+            </div>
+          </div>
+          <div className="postcard-head-right">
+            <i className="fa-solid fa-file-pen"></i>
+            <i className="fa-solid fa-trash"></i>
           </div>
         </div>
         <hr />
@@ -62,13 +71,17 @@ const PostCard = ({ post, user }) => {
               </div>
             </div>
 
-            <i className="fa-solid fa-bookmark" />
             <i
               className={`fa-solid fa-heart ${
                 liked ? "liked-post" : ""
               }`}
               onClick={handleLiked}
             />
+            <p>
+              <span>0</span> Like
+              <span>s</span>
+            </p>
+            <i className="fa-solid fa-bookmark" />
             <i
               className="fa-solid fa-share"
               onClick={handleShared}
