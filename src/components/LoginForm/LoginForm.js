@@ -29,25 +29,35 @@ function LoginForm(props) {
     <div className="loginform">
       <div className="loginform-cover">
         <h1 id="loginform-header">
-          Welcome back neighbour!
+          Welcome back,
+          <br /> neighbour!
         </h1>
-        <form onSubmit={onSubmitLoginForm}>
-          <input
-            className="text-btn"
-            type="text"
-            placeholder="Username"
-            onChange={(event) =>
-              setUsername(event.target.value)
-            }
-          ></input>
-          <input
-            className="password-btn"
-            type="password"
-            placeholder="Password"
-            onChange={(event) =>
-              setPassword(event.target.value)
-            }
-          ></input>
+        <form
+          onSubmit={onSubmitLoginForm}
+          className="login-form"
+        >
+          <div>
+            <i className="fa-solid fa-user-large login-icon" />
+            <input
+              className="text-btn"
+              type="text"
+              placeholder="Username"
+              onChange={(event) =>
+                setUsername(event.target.value)
+              }
+            />
+          </div>
+          <div>
+            <i className="fa-solid fa-lock login-icon" />
+            <input
+              className="password-btn"
+              type="password"
+              placeholder="Password"
+              onChange={(event) =>
+                setPassword(event.target.value)
+              }
+            ></input>
+          </div>
           <button type="submit" id="login-btn">
             Log In
           </button>

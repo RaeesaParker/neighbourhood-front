@@ -34,42 +34,58 @@ function RegisterForm(props) {
     <div className="registerform">
       <div className="registerform-cover">
         <h1 id="registerform-header">
-          Welcome back neighbour!
+          Welcome,
+          <br /> neighbour!
         </h1>
-        <form onSubmit={onSubmitRegisterForm}>
-          <input
-            onChange={(event) =>
-              setUsername(event.target.value)
-            }
-            className="register-text-btn"
-            type="text"
-            placeholder="Username"
-          ></input>
-          <input
-            onChange={(event) =>
-              setEmail(event.target.value)
-            }
-            className="register-email-btn"
-            type="email"
-            placeholder="Email"
-          ></input>
-          <input
-            onChange={(event) =>
-              setPassword(event.target.value)
-            }
-            className="register-password-btn"
-            type="password"
-            placeholder="Password"
-          ></input>
-          <input
-            onChange={(event) =>
-              setPostcode(event.target.value)
-            }
-            className="register-postcode-btn"
-            type="text"
-            placeholder="Postcode"
-          ></input>
-          <button id="register-btn" type="submit">
+        <form
+          onSubmit={onSubmitRegisterForm}
+          className="register-form"
+        >
+          <div>
+            <i className="fa-solid fa-user-large login-icon" />
+            <input
+              onChange={(event) =>
+                setUsername(event.target.value)
+              }
+              className="register-text-btn"
+              type="text"
+              placeholder="Username"
+            ></input>
+          </div>
+          <div>
+            <i className="fa-solid fa-envelope login-icon" />
+            <input
+              onChange={(event) =>
+                setEmail(event.target.value)
+              }
+              className="register-email-btn"
+              type="email"
+              placeholder="Email"
+            ></input>
+          </div>
+          <div>
+            <i className="fa-solid fa-lock login-icon" />
+            <input
+              onChange={(event) =>
+                setPassword(event.target.value)
+              }
+              className="register-password-btn"
+              type="password"
+              placeholder="Password"
+            ></input>
+          </div>
+          <div>
+            <i className="fa-solid fa-location-dot login-icon" />
+            <input
+              onChange={(event) =>
+                setPostcode(event.target.value)
+              }
+              className="register-postcode-btn"
+              type="text"
+              placeholder="Postcode"
+            ></input>
+          </div>
+          <button type="submit" id="register-btn">
             Create my account
           </button>
         </form>
