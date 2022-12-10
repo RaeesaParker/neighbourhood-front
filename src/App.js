@@ -1,3 +1,6 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import React from "react";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
@@ -11,6 +14,8 @@ import SchoolPage from "./pages/schoolPage/SchoolPage";
 import HospitalPage from "./pages/hospitalPage/HospitalPage";
 
 function App() {
+  // ** AOS = library with effects on the cards
+  AOS.init();
   // Feature test branch
   // Set state to manage user login
   const [isLoggedIn, setIsLoggedIn] =
