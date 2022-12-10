@@ -11,6 +11,7 @@ import SchoolPage from "./pages/schoolPage/SchoolPage";
 import HospitalPage from "./pages/hospitalPage/HospitalPage";
 
 function App() {
+  // Feature test branch
   // Set state to manage user login
   const [isLoggedIn, setIsLoggedIn] =
     useState(true);
@@ -31,6 +32,29 @@ function App() {
     });
   }
 
+  // eslint-disable-next-line no-unused-vars
+  const [postDetails, setPostDetails] = useState(
+    []
+  );
+
+  // func to take all post details on homepage
+
+  function onSetPostDetails(postDetails) {
+    setPostDetails(postDetails);
+  }
+
+  // haveNewPost should be set true when there is a new post.
+  // this is passed down all the way to the MsgModal to be set
+  // true when a new post is created
+  const [haveNewPost, setHaveNewPost] =
+    useState(true);
+
+  function onSetHaveNewPost(haveNewPost) {
+    setHaveNewPost(haveNewPost);
+  }
+
+  console.log(onSetPostDetails);
+
   return (
     <div>
       <Routes>
@@ -48,10 +72,14 @@ function App() {
           path="/main"
           element={
             <MainPage
+              postDetails={postDetails}
+              setPostDetails={onSetPostDetails}
+              userDetails={userDetails}
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
-              userDetails={userDetails}
               setUserDetails={onSetUserDetails}
+              haveNewPost={haveNewPost}
+              setHaveNewPost={onSetHaveNewPost}
             />
           }
         ></Route>
@@ -81,7 +109,9 @@ function App() {
           path="/hospitals"
           element={
             <HospitalPage
+              setUserDetails={onSetUserDetails}
               userDetails={userDetails}
+              isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
             />
           }

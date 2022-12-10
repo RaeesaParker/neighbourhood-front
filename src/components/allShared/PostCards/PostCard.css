@@ -1,6 +1,5 @@
 .postcard {
   border-radius: 15px;
-
   position: relative;
   padding: 20px 20px 10px 20px;
 }
@@ -106,6 +105,10 @@
   margin-right: -6px;
 }
 
+.postcard-right .fa-bookmark {
+  margin-left: -3px;
+}
+
 .share-links {
   z-index: 29;
   position: absolute;
@@ -162,6 +165,11 @@
 }
 
 /* *** */
+
+.bookmarked-post {
+  color: var(--pink);
+  transition: 0.2s all linear;
+}
 
 .liked-post {
   color: var(--pink);

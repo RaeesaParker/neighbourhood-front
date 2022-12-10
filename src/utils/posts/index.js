@@ -1,13 +1,11 @@
 /* eslint-disable camelcase */
 // Utils for the post connections
 // Write CRUD Functionality
+import { getCookie } from "../../common/index";
 const API_URL = process.env.REACT_APP_API_URL;
+
 // // Create a post => Used to create post
-export const createPost = async (
-  user_id,
-  post_type,
-  post_content
-) => {
+export const createPost = async (postObject) => {
   try {
     const response = await fetch(
       `${API_URL}/post`,
@@ -19,9 +17,9 @@ export const createPost = async (
             "Bearer " + getCookie("jwt_token"),
         },
         body: JSON.stringify({
-          post_type: post_type,
-          user_id: user_id,
-          post_content: post_content,
+          post_type: postObject.post_type,
+          user_id: postObject.user_id,
+          post_content: postObject.post_content,
         }),
       }
     );
@@ -32,10 +30,23 @@ export const createPost = async (
   }
 };
 
-export const getAllPost = async () => {
+export const getAllPost = async (postFilter) => {
   try {
+    if (!postFilter.includes(true)) {
+      return [];
+    }
+    // build filter array
+    let filter = "[";
+    for (let i = 0; i < postFilter.length; i++) {
+      if (postFilter[i]) {
+        filter += `${i + 1},`;
+      }
+    }
+    filter = filter.slice(0, filter.length - 1);
+    filter = filter + "]";
+
     const response = await fetch(
-      `${API_URL}/posts`,
+      `${API_URL}/posts/type/${filter}`,
       {
         method: "GET",
         headers: {
@@ -147,12 +158,62 @@ export const deletePost = async (id) => {
     const response = await fetch(
       `${API_URL}/posts/${id}`,
       {
-        method: "GET",
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
           Authorization:
             "Bearer " + getCookie("jwt_token"),
         },
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const likePost = async (likeObject) => {
+  try {
+    const response = await fetch(
+      `${API_URL}/post/like`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer " + getCookie("jwt_token"),
+        },
+        body: JSON.stringify({
+          user_id: likeObject.user_id,
+          post_id: likeObject.post_id,
+        }),
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const favoritePost = async (
+  favoriteObject
+) => {
+  try {
+    const response = await fetch(
+      `${API_URL}/post/favorite`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer " + getCookie("jwt_token"),
+        },
+        body: JSON.stringify({
+          user_id: favoriteObject.user_id,
+          post_id: favoriteObject.post_id,
+        }),
       }
     );
     const data = await response.json();

@@ -1,33 +1,85 @@
 // Design + images
 import "./PostCard.css";
 import fakeuser from "../../../imgs/fakeuser.png";
+import {
+  likePost,
+  favoritePost,
+  getPostById,
+} from "../../../utils/posts";
 
 // Components
 import { useState } from "react";
 
-const PostCard = ({ post, user }) => {
-  const [liked, setLiked] = useState(false);
+const PostCard = ({ post, userDetails }) => {
+  // localPost in state is used to allow the post to be updated
+  // without the need to pull all the post data.
+  const [localPost, setLocalPost] =
+    useState(post);
+
+  const [bookmarked, setBookmarked] = useState(
+    post.fav
+  );
+  const [liked, setLiked] = useState(
+    post.userLike
+  );
   const [shareBtn, setShareBtn] = useState(true);
 
-  const handleLiked = () => {
+  const handleLiked = async () => {
     setLiked(!liked);
+    // need to fetch endpoint
+    await likePost({
+      user_id: userDetails.user_id,
+      post_id: post.id,
+    });
+
+    const updatedPost = await getPostById(
+      post.id
+    );
+    setLocalPost(updatedPost);
   };
 
   const handleShared = () => {
     setShareBtn(!shareBtn);
+    // need to fetch endpoint
   };
+
+  const handleBookmarked = async () => {
+    setBookmarked(!bookmarked);
+    // need to fetch endpoint
+    await favoritePost({
+      user_id: userDetails.user_id,
+      post_id: post.id,
+    });
+    const updatedPost = await getPostById(
+      post.id
+    );
+    setLocalPost(updatedPost);
+  };
+
+  const likesString = () => {
+    switch (localPost.likes) {
+      case 0:
+        return <></>;
+      case 1:
+        return <> {localPost.likes} like</>;
+      default:
+        return <> {localPost.likes} likes</>;
+    }
+  };
+
+  const postDate = new Date(localPost.created_at);
 
   return (
     <div>
       <div
         className={`postcard ${
-          post.post_type === 1
+          localPost.post_type === 1
             ? "postcard-bg1"
-            : post.post_type === 2
+            : localPost.post_type === 2
             ? "postcard-bg2"
-            : post.post_type === 3
+            : localPost.post_type === 3
             ? "postcard-bg3"
-            : post.post_type === 4
+            : localPost.post_type === 4
             ? "postcard-bg4"
             : "postcard-bg"
         }`}
@@ -39,8 +91,13 @@ const PostCard = ({ post, user }) => {
               alt="userpicture"
             />
             <div>
-              <h3>{user.name}</h3>
-              <p>@{user.user_name}</p>
+              <h3>{localPost.user_name}</h3>
+              <p>
+                @{postDate.toDateString()} :{" "}
+                {postDate.toLocaleTimeString(
+                  "en-UK"
+                )}
+              </p>
             </div>
           </div>
           <div className="postcard-head-right">
@@ -48,9 +105,10 @@ const PostCard = ({ post, user }) => {
             <i className="fa-solid fa-trash"></i>
           </div>
         </div>
+
         <hr />
         <div className="postcard-text">
-          <p>{post.post_content}</p>
+          <p>{localPost.post_content}</p>
         </div>
 
         <div className="postcard-icons">
@@ -77,11 +135,15 @@ const PostCard = ({ post, user }) => {
               }`}
               onClick={handleLiked}
             />
-            <p>
-              <span>0</span> Like
-              <span>s</span>
-            </p>
-            <i className="fa-solid fa-bookmark" />
+            <p>{likesString()}</p>
+            <i
+              className={`fa-solid fa-bookmark ${
+                bookmarked
+                  ? "bookmarked-post"
+                  : ""
+              }`}
+              onClick={handleBookmarked}
+            />
             <i
               className="fa-solid fa-share"
               onClick={handleShared}
