@@ -20,6 +20,7 @@ const NewPost = (props) => {
         <MsgModal
           setModal={setModal}
           userDetails={props.userDetails}
+          setHaveNewPost={props.setHaveNewPost}
         />
       )}
       <form className="newpost-bg">

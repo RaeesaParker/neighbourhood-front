@@ -13,23 +13,35 @@ import { getAllPost } from "../../../utils/posts";
 // ////////////////
 
 const MainBody = (props) => {
+  // postFilter is the filter array for the posts.  Propped down the
+  // Feed component to allow users to choose post catagories.
+
+  const [postFilter, setPostFilter] = useState([
+    true,
+    true,
+    true,
+    true,
+  ]);
+
+  // elavation
+  // // haveNewPost should be set true when there is a new post.
+  // const [haveNewPost, setHaveNewPost] =
+  //   useState(false);
+
   useEffect(() => {
     getPostFunction();
-  }, []);
+    console.log(props.setHaveNewPost);
+    props.setHaveNewPost(false);
+  }, [postFilter, props.haveNewPost]);
 
   // post filter is used to filter the posts.
   // postFilter is an array of catagories to filter by
   // setPostFilter should be passed to the feed to set
   // postFilter should be sent to the getPostFunction
   // once it can handle it.
-  const [postFilter, setPostFilter] = useState([
-    1, 2, 3, 4,
-  ]);
-
-  console.log(postFilter); // remove once the postFilter variable has been used
 
   const getPostFunction = async () => {
-    const getPost = await getAllPost();
+    const getPost = await getAllPost(postFilter);
     console.log(getPost);
     props.setPostDetails(getPost);
   };
@@ -46,10 +58,13 @@ const MainBody = (props) => {
       <SpanMainPage
         userDetails={props.userDetails}
       />
-      <NewPost userDetails={props.userDetails} />
+      <NewPost
+        userDetails={props.userDetails}
+        setHaveNewPost={props.setHaveNewPost}
+      />
       <Feed setPostFilter={setPostFilter} />
       <div className="mainbody-posts">
-        {props.postDetails.length > 0 ? (
+        {props.postDetails?.length > 0 ? (
           <div className="mainbody-posts">
             {props.postDetails.map((post) => {
               return (

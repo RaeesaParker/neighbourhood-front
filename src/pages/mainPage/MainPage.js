@@ -49,6 +49,7 @@ function MainPage(props) {
         <NavigationBar
           userDetails={props.userDetails}
           setIsLoggedIn={props.setIsLoggedIn}
+          setHaveNewPost={props.setHaveNewPost}
         />
       </div>
       <div id="subsection-mainpage-posts">
@@ -56,6 +57,8 @@ function MainPage(props) {
           postDetails={props.postDetails}
           setPostDetails={props.setPostDetails}
           userDetails={props.userDetails}
+          haveNewPost={props.haveNewPost}
+          setHaveNewPost={props.setHaveNewPost}
         />
       </div>
       <div id="subsection-mainpage-sidepanel">
