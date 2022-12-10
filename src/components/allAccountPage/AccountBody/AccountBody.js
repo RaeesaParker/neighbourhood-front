@@ -1,5 +1,6 @@
 // Design + images
 import "./AccountBody.css";
+import Masonry from "react-masonry-css";
 
 // Components
 import SearchBox from "../../allShared/SearchBox/SearchBox";
@@ -56,6 +57,13 @@ const AccountBody = (props) => {
     },
   ];
 
+  const breakpointPostCards = {
+    default: 4,
+    1920: 3,
+    1450: 2,
+    1050: 1,
+  };
+
   return (
     <div className="mainbody-box">
       <SearchBox />
@@ -65,7 +73,11 @@ const AccountBody = (props) => {
       <Feed />
       <div className="mainbody-posts">
         {posts.length > 0 ? (
-          <div className="mainbody-posts">
+          <Masonry
+            breakpointCols={breakpointPostCards}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
             {posts.map((post, i) => {
               return (
                 <PostCard
@@ -75,7 +87,7 @@ const AccountBody = (props) => {
                 />
               );
             })}
-          </div>
+          </Masonry>
         ) : (
           <div className="no-posts">
             <h2>
