@@ -1,6 +1,5 @@
 .postcard {
   border-radius: 15px;
-
   position: relative;
   padding: 20px 20px 10px 20px;
 }
@@ -104,6 +103,10 @@
 .postcard-right p {
   margin-left: -12px;
   margin-right: -6px;
+}
+
+.postcard-right .fa-bookmark {
+  margin-left: -3px;
 }
 
 .share-links {
