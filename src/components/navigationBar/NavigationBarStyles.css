@@ -11,6 +11,7 @@
   height: calc(100% - 110px);
   width: 150px;
 
+  z-index: 50;
   position: fixed;
 }
 
@@ -31,15 +32,17 @@
   width: 100%;
 }
 
-#section-navbar i {
+#section-navbar .nb-icon {
   font-size: 22px;
   margin-right: 25px;
+  text-align: center;
 
-  width: 25px;
+  width: 30px;
 }
 
 .button-style {
   display: flex;
+  align-items: center;
   background: none;
   border: none;
 
@@ -80,6 +83,10 @@
     padding: 30px 10px;
     height: calc(100% - 90px);
     width: 75px;
+  }
+
+  #section-navbar .nb-icon {
+    margin-right: 0px;
   }
 
   #navbar-logo {
