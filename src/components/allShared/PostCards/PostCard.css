@@ -29,9 +29,25 @@
 
 .postcard-head {
   display: flex;
+  justify-content: space-between;
+}
+
+.postcard-head-left {
+  display: flex;
   gap: 20px;
 
-  margin-bottom: 20px;
+  margin-bottom: 14px;
+}
+
+.postcard-head-right i {
+  text-align: center;
+  margin-left: 14px;
+  height: 16px;
+  width: 16px;
+}
+
+.postcard-head-right i:hover {
+  cursor: pointer;
 }
 
 .postcard img {
@@ -80,6 +96,9 @@
 }
 
 .postcard-right i {
+  text-align: center;
+  height: 16px;
+  width: 16px;
   z-index: 30;
 }
 .postcard-right p {
