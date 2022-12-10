@@ -18,7 +18,7 @@ const MsgModal = () => {
     useState("");
 
   const maxCharsValidation = (e) => {
-    // Basic validation to check the characters
+    // Basic validation to check the max characters
     if ((e.target.length = 200)) {
       setTimeout(() => {
         setErrorMessage("");

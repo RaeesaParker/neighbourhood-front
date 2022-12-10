@@ -69,6 +69,7 @@
   border-radius: 15px;
 
   padding: 20px 20px;
+  margin-bottom: 20px;
 }
 
 .form-editacc label {
@@ -95,6 +96,43 @@
 .form-editacc hr {
   opacity: 0.4;
   margin: 10px 0px 20px 0px;
+}
+
+.allsaved-posts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-color: var(--white-dark);
+  border-radius: 15px;
+
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.allsaved-posts h3 {
+  font-size: 20px;
+}
+
+.allsaved-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 20px 10px 20px;
+}
+
+.allsaved-header i {
+  color: var(--grey-medium);
+  font-size: 18px;
+  margin-top: -4px;
+}
+
+.allsaved-feed {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-around;
+  margin: 0px 15px 10px 15px;
 }
 
 @media screen and (max-width: 1100px) {
