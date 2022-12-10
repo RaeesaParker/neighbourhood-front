@@ -1,10 +1,8 @@
 /* eslint-disable camelcase */
-// Utils for the post connections
-// Write CRUD Functionality
 import { getCookie } from "../../common/index";
 const API_URL = process.env.REACT_APP_API_URL;
 
-// // Create a post => Used to create post
+// Create a post
 export const createPost = async (postObject) => {
   try {
     const response = await fetch(
@@ -30,6 +28,7 @@ export const createPost = async (postObject) => {
   }
 };
 
+// Get all the posts => Apply the filter for various post types
 export const getAllPost = async (postFilter) => {
   try {
     if (!postFilter.includes(true)) {
@@ -63,6 +62,7 @@ export const getAllPost = async (postFilter) => {
   }
 };
 
+// Get a specific post
 export const getPostById = async (id) => {
   try {
     const response = await fetch(
@@ -83,6 +83,7 @@ export const getPostById = async (id) => {
   }
 };
 
+// Get a post from a specfic user
 export const getPostByUserId = async (id) => {
   try {
     const response = await fetch(
@@ -103,6 +104,7 @@ export const getPostByUserId = async (id) => {
   }
 };
 
+// Get all the posts by a postType
 export const getPostByPostType = async (id) => {
   try {
     const response = await fetch(
@@ -123,6 +125,7 @@ export const getPostByPostType = async (id) => {
   }
 };
 
+// Update a specific post
 export const updatePost = async (
   id,
   user_id,
@@ -153,6 +156,7 @@ export const updatePost = async (
   }
 };
 
+// Delete a specific post
 export const deletePost = async (id) => {
   try {
     const response = await fetch(
@@ -173,6 +177,7 @@ export const deletePost = async (id) => {
   }
 };
 
+// Like a post
 export const likePost = async (likeObject) => {
   try {
     const response = await fetch(
@@ -197,6 +202,7 @@ export const likePost = async (likeObject) => {
   }
 };
 
+// Favourite a post
 export const favoritePost = async (
   favoriteObject
 ) => {
