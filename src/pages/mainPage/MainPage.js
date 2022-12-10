@@ -1,24 +1,70 @@
 import React from "react";
 import "./MainPageStyles.css";
-import SidePanel from "../../components/sidePanel/SidePanel";
-
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+// Import utils
+import { getCookie } from "../../common/index";
+import { findUser } from "../../utils/users/index";
 // Import Components
+import SidePanel from "../../components/sidePanel/SidePanel";
 import NavigationBar from "../../components/navigationBar/NavigationBar";
-import MainBody from "../../components/MainBody/MainBody";
+import MainBody from "../../components/allMainPage/MainBody/MainBody";
 
-// Main Page => Navigation bar on Left => Posts Section in Center => User Panel on Right
+function MainPage(props) {
+  // Navigation for redirect
+  const navigate = useNavigate();
 
-function MainPage() {
+  // Check to see if a user is logged in
+  useEffect(() => {
+    if (props.isLoggedIn) {
+      const cookie = getCookie("jwt_token");
+      // Set the user details if a cookie is found ELSE reroute to homepage
+      if (cookie !== false) {
+        findUserWithToken(
+          cookie,
+          props.setUserDetails
+        );
+      } else {
+        navigate("/");
+      }
+    }
+  }, []);
+
+  // Find the user with the token OR reroute to the homepage
+  const findUserWithToken = async (cookie) => {
+    const userDetails = await findUser(
+      cookie,
+      props.setUserDetails
+    );
+    if (userDetails) {
+      console.log(
+        "The user details have been set"
+      );
+    }
+  };
+
   return (
     <div id="section-mainpage-div">
       <div id="subsection-mainpage-navbar">
-        <NavigationBar />
+        <NavigationBar
+          userDetails={props.userDetails}
+          setIsLoggedIn={props.setIsLoggedIn}
+          setHaveNewPost={props.setHaveNewPost}
+        />
       </div>
       <div id="subsection-mainpage-posts">
-        <MainBody />
+        <MainBody
+          postDetails={props.postDetails}
+          setPostDetails={props.setPostDetails}
+          userDetails={props.userDetails}
+          haveNewPost={props.haveNewPost}
+          setHaveNewPost={props.setHaveNewPost}
+        />
       </div>
       <div id="subsection-mainpage-sidepanel">
-        <SidePanel />
+        <SidePanel
+          userDetails={props.userDetails}
+        />
       </div>
     </div>
   );

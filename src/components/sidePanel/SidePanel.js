@@ -2,9 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./SidePanelStyles.css";
 // Import profile pictures
-import userProfile from "../../imgs/profiles/profile1.jpg";
+import userProfile from "../../imgs/fakeuser.png";
 
-function SidePanel() {
+function SidePanel(props) {
   // State to store the weather
   const [weather, setWeather] = useState({});
   const [weatherImage, setWeatherImage] =
@@ -66,14 +66,21 @@ function SidePanel() {
 
   // Function to set all the users
   const allUsers = [
-    "profile2",
-    "profile2",
-    "profile2",
-    "profile2",
+    "profile1",
     "profile2",
     "profile3",
     "profile4",
     "profile5",
+    "profile6",
+    "profile7",
+    "profile8",
+    "profile9",
+    "profile10",
+    "profile11",
+    "profile12",
+    "profile13",
+    "profile14",
+    "profile15",
   ];
 
   // Render all the user images
@@ -92,7 +99,7 @@ function SidePanel() {
     <div id="subsection-mainpage-panel">
       <div id="subsection-panel-user">
         <div id="subsection-panel-user-div">
-          <h4>Username</h4>
+          <h4>@{props.userDetails.username}</h4>
         </div>
         <div id="subsection-panel-image-div">
           <img
@@ -103,7 +110,7 @@ function SidePanel() {
         </div>
       </div>
       <div className="subsection-panel">
-        <h3>Whos in Preston?</h3>
+        <h3>Who&apos;s in Preston?</h3>
         <p>All your connected neighbors:</p>
         <div>{userImages}</div>
         <p>And many others!</p>
