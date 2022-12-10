@@ -30,6 +30,7 @@ export const createPost = async (postObject) => {
   }
 };
 
+// Updated to use the type endpoint that takes an array of types
 export const getAllPost = async (postFilter) => {
   try {
     if (!postFilter.includes(true)) {
@@ -47,6 +48,27 @@ export const getAllPost = async (postFilter) => {
 
     const response = await fetch(
       `${API_URL}/posts/type/${filter}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer " + getCookie("jwt_token"),
+        },
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Updated to use the type endpoint that takes an array of types
+export const searchPost = async (searchTerm) => {
+  try {
+    const response = await fetch(
+      `${API_URL}/posts/search/${searchTerm}`,
       {
         method: "GET",
         headers: {
@@ -173,6 +195,7 @@ export const deletePost = async (id) => {
   }
 };
 
+// set a post as liked or unliked
 export const likePost = async (likeObject) => {
   try {
     const response = await fetch(
@@ -197,6 +220,7 @@ export const likePost = async (likeObject) => {
   }
 };
 
+// set a post as favourite or unfavourite
 export const favoritePost = async (
   favoriteObject
 ) => {

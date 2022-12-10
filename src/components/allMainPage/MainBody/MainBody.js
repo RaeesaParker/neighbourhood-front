@@ -8,7 +8,10 @@ import SpanMainPage from "../../allMainPage/SpanMainPage/SpanMainPage";
 import NewPost from "../../allMainPage/NewPost/NewPost";
 import Feed from "../../allShared/Feed/Feed";
 import PostCard from "../../allShared/PostCards/PostCard";
-import { getAllPost } from "../../../utils/posts";
+import {
+  getAllPost,
+  searchPost,
+} from "../../../utils/posts";
 
 // ////////////////
 
@@ -23,6 +26,10 @@ const MainBody = (props) => {
     true,
   ]);
 
+  const [searchTerm, setSearchTerm] = useState([
+    "",
+  ]);
+
   useEffect(() => {
     getPostFunction();
     props.setHaveNewPost(false);
@@ -35,7 +42,14 @@ const MainBody = (props) => {
   // once it can handle it.
 
   const getPostFunction = async () => {
-    const getPost = await getAllPost(postFilter);
+    let getPost = [];
+    if (searchTerm) {
+      getPost = await searchPost(searchTerm);
+      setSearchTerm("");
+    } else {
+      getPost = await getAllPost(postFilter);
+    }
+
     console.log(getPost);
     props.setPostDetails(getPost);
   };
@@ -48,7 +62,11 @@ const MainBody = (props) => {
 
   return (
     <div className="mainbody-box">
-      <SearchBox />
+      <SearchBox
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        setHaveNewPost={props.setHaveNewPost}
+      />
       <SpanMainPage
         userDetails={props.userDetails}
       />
