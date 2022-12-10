@@ -1,0 +1,12 @@
+.school-posts {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(275px, 1fr)
+  );
+
+  gap: 20px;
+
+  margin-top: 25px;
+  max-width: 100%;
+}
