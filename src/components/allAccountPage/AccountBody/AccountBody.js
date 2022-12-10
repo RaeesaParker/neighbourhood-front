@@ -7,7 +7,7 @@ import SearchBox from "../../allShared/SearchBox/SearchBox";
 import SpanAccount from "../../allAccountPage/SpanAccount/SpanAccount";
 import Feed from "../../allShared/Feed/Feed";
 import PostCard from "../../allShared/PostCards/PostCard";
-import { getAllPost } from "../../../utils/posts";
+import { getAllPostUser } from "../../../utils/posts";
 
 const AccountBody = (props) => {
   const [postFilter, setPostFilter] = useState([
@@ -23,12 +23,10 @@ const AccountBody = (props) => {
   }, [postFilter, props.haveNewPost]);
 
   const getPostFunction = async () => {
-    console.log(
-      "The user's id is ",
+    const getPost = await getAllPostUser(
+      postFilter,
       props.userDetails.user_id
     );
-    const getPost = await getAllPost(postFilter);
-    // console.log(getPost);
     props.setPostDetails(getPost);
   };
 

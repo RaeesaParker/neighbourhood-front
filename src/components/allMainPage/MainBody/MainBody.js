@@ -36,7 +36,6 @@ const MainBody = (props) => {
 
   const getPostFunction = async () => {
     const getPost = await getAllPost(postFilter);
-    // console.log(getPost);
     props.setPostDetails(getPost);
   };
 
