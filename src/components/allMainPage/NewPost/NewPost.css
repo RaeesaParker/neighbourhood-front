@@ -24,9 +24,14 @@
 }
 
 .newpost-input {
+  display: flex;
+  align-items: center;
   background-color: var(--white);
   border-radius: 10px;
   border: none;
+  cursor: pointer;
+
+  color: var(--grey-medium);
 
   margin-left: 150px;
   padding: 0px 15px;

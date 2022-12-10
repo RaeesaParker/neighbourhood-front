@@ -22,11 +22,12 @@ const NewPost = () => {
           src={speechbubble}
           alt="speech bubble"
         />
-        <input
+        <div
           className="newpost-input"
-          placeholder="What is on your mind, neighbour?"
           onClick={toggleModal}
-        ></input>
+        >
+          What is on your mind, neighbour?
+        </div>
       </form>
     </div>
   );
