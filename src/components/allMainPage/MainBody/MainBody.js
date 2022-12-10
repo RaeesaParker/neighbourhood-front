@@ -51,7 +51,7 @@ const MainBody = (props) => {
     default: 4,
     1920: 3,
     1450: 2,
-    980: 1,
+    1050: 1,
   };
 
   return (
