@@ -23,14 +23,8 @@ const MainBody = (props) => {
     true,
   ]);
 
-  // elavation
-  // // haveNewPost should be set true when there is a new post.
-  // const [haveNewPost, setHaveNewPost] =
-  //   useState(false);
-
   useEffect(() => {
     getPostFunction();
-    console.log(props.setHaveNewPost);
     props.setHaveNewPost(false);
   }, [postFilter, props.haveNewPost]);
 
@@ -70,6 +64,7 @@ const MainBody = (props) => {
               return (
                 <PostCard
                   key={post.id}
+                  userDetails={props.userDetails}
                   post={post}
                 />
               );

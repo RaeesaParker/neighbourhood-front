@@ -1,20 +1,30 @@
 // Design + images
 import "./PostCard.css";
 import fakeuser from "../../../imgs/fakeuser.png";
+import {
+  likePost,
+  favoritePost,
+} from "../../../utils/posts";
 
 // Components
 import { useState } from "react";
 
-const PostCard = ({ post, user }) => {
+const PostCard = ({ post, userDetails }) => {
   const [bookmarked, setBookmarked] = useState(
     post.fav
   );
-  const [liked, setLiked] = useState(false);
+  const [liked, setLiked] = useState(
+    post.userLike
+  );
   const [shareBtn, setShareBtn] = useState(true);
 
-  const handleLiked = () => {
+  const handleLiked = async () => {
     setLiked(!liked);
     // need to fetch endpoint
+    await likePost({
+      user_id: userDetails.user_id,
+      post_id: post.id,
+    });
   };
 
   const handleShared = () => {
@@ -22,9 +32,13 @@ const PostCard = ({ post, user }) => {
     // need to fetch endpoint
   };
 
-  const handleBookmarked = () => {
+  const handleBookmarked = async () => {
     setBookmarked(!bookmarked);
     // need to fetch endpoint
+    await favoritePost({
+      user_id: userDetails.user_id,
+      post_id: post.id,
+    });
   };
 
   const postDate = new Date(post.created_at);
