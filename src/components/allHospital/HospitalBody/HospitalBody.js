@@ -8,6 +8,7 @@ import SpanHospital from "../../allHospital/SpanHospital/SpanHospital";
 import InfoCards from "../../allShared/InfoCards/InfoCards";
 
 const HospitalBody = (props) => {
+  // Will need to get all the hospitals in the HospitalPage.js and not here to avoid a crash - RP
   const hospitalsArray = [
     {
       Name: "Smith Medical",
