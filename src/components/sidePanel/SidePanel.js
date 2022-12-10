@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./SidePanelStyles.css";
 // Import profile pictures
-import userProfile from "../../imgs/profiles/profile1.jpg";
+import userProfile from "../../imgs/fakeuser.png";
 
 function SidePanel(props) {
   // State to store the weather
