@@ -79,7 +79,13 @@ function NavigationBar(props) {
           <p>Logout</p>
         </button>
       </div>
-      {modal && <MsgModal />}
+      {modal && (
+        <MsgModal
+          setModal={setModal}
+          userDetails={props.userDetails}
+          setHaveNewPost={props.setHaveNewPost}
+        />
+      )}
     </div>
   );
 }

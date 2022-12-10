@@ -1,21 +1,26 @@
 // Design + images
 import { useState } from "react";
+import { createPost } from "../../../utils/posts";
 
 // Components
 import "./MsgModal.css";
 
 // ///////////////
 
-const MsgModal = () => {
-  const [cancelBtn, setCancelBtn] =
-    useState(false);
+const MsgModal = (props) => {
+  // prop setModal set false to remove modal
+  // const [cancelBtn, setCancelBtn] =
+  //   useState(false);
+
   const [newPost, setNewPost] = useState({
     post_type: null,
-    user_id: null,
+    user_id: props.userDetails.user_id,
     post_content: null,
   });
+
   const [errorMessage, setErrorMessage] =
     useState("");
+
 
   const maxCharsValidation = (e) => {
     // Basic validation to check the max characters
@@ -35,8 +40,9 @@ const MsgModal = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(newPost);
 
     // Basic validation
     if (!newPost.post_content) {
@@ -57,22 +63,21 @@ const MsgModal = () => {
       return setErrorMessage(
         "You must select a category."
       );
-
-      // Function for posting to backend bellow:
     }
-
-    console.log(newPost);
+    // Function for posting to backend bellow:
+    const postCreated = await createPost(newPost);
+    props.setModal(false);
+    setNewPost(postCreated);
+    props.setHaveNewPost(true);
   };
 
   const handleCancelBtn = () => {
-    setCancelBtn(!cancelBtn);
+    props.setModal(false);
   };
 
   return (
     <form
-      className={`msgmodal-box ${
-        cancelBtn ? "display-none" : ""
-      }`}
+      className={`msgmodal-box `}
       onSubmit={handleSubmit}
     >
       <div className="msgmodal">
@@ -184,9 +189,13 @@ const MsgModal = () => {
               {errorMessage}
             </span>
           )}
-          <button onClick={handleCancelBtn}>
+          <button
+            type="button"
+            onClick={handleCancelBtn}
+          >
             Cancel
           </button>
+
           <button type="submit">
             Create Post
           </button>
