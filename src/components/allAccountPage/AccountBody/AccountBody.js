@@ -23,6 +23,10 @@ const AccountBody = (props) => {
   }, [postFilter, props.haveNewPost]);
 
   const getPostFunction = async () => {
+    console.log(
+      "The user's id is ",
+      props.userDetails.user_id
+    );
     const getPost = await getAllPost(postFilter);
     // console.log(getPost);
     props.setPostDetails(getPost);
