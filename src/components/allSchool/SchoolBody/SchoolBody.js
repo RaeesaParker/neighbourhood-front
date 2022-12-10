@@ -1,5 +1,6 @@
 // Design + images
 import "./SchoolBody.css";
+import schoolImage from "../../../imgs/schools.jpg";
 
 // Components
 import SearchBox from "../../allShared/SearchBox/SearchBox";
@@ -10,14 +11,17 @@ const SchoolBody = (props) => {
   return (
     <div className="mainbody-box">
       <SearchBox />
-      <SpanSchool />
+      <SpanSchool
+        userDetails={props.userDetails}
+      />
       <div className="school-posts">
         {props.allSchoolsByRegion.map(
           (school, i) => {
             return (
               <InfoCards
                 key={i}
-                school={school}
+                organisation={school}
+                image={schoolImage}
               />
             );
           }

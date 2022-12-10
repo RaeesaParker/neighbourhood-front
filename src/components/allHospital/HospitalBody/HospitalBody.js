@@ -1,12 +1,13 @@
 // Design + images
 import "./HospitalBody.css";
+import medicalImage from "../../../imgs/medical.jpg";
 
 // Components
 import SearchBox from "../../allShared/SearchBox/SearchBox";
 import SpanHospital from "../../allHospital/SpanHospital/SpanHospital";
 import InfoCards from "../../allShared/InfoCards/InfoCards";
 
-const HospitalBody = () => {
+const HospitalBody = (props) => {
   const hospitalsArray = [
     {
       Name: "Smith Medical",
@@ -20,11 +21,17 @@ const HospitalBody = () => {
   return (
     <div className="mainbody-box">
       <SearchBox />
-      <SpanHospital />
+      <SpanHospital
+        userDetails={props.userDetails}
+      />
       <div className="hospitalbody-posts">
-        {hospitalsArray.map((school, i) => {
+        {hospitalsArray.map((hospital, i) => {
           return (
-            <InfoCards key={i} school={school} />
+            <InfoCards
+              key={i}
+              organisation={hospital}
+              image={medicalImage}
+            />
           );
         })}
       </div>
