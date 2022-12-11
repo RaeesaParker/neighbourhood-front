@@ -8,9 +8,15 @@ import SearchBox from "../../allShared/SearchBox/SearchBox";
 import SpanAccount from "../../allAccountPage/SpanAccount/SpanAccount";
 import Feed from "../../allShared/Feed/Feed";
 import PostCard from "../../allShared/PostCards/PostCard";
-import { getAllPostUser } from "../../../utils/posts";
+import {
+  getAllPostUser,
+  searchPost,
+} from "../../../utils/posts";
 
 const AccountBody = (props) => {
+  // Set the post details to be blank on the first
+  // render so that it doesn't crash when you reload a page
+
   const [postFilter, setPostFilter] = useState([
     true,
     true,

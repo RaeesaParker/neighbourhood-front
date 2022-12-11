@@ -71,6 +71,7 @@ function UserPage(props) {
       <div className="userpage-body">
         <AccountBody
           userDetails={props.userDetails}
+          setUserDetails={props.setUserDetails}
           postDetails={props.postDetails}
           setPostDetails={props.setPostDetails}
           haveNewPost={props.haveNewPost}
