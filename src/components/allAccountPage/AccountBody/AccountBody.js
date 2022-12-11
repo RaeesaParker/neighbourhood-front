@@ -77,6 +77,9 @@ const AccountBody = (props) => {
                   key={post.id}
                   post={post}
                   userDetails={props.userDetails}
+                  getPostFunction={
+                    getPostFunction
+                  }
                 />
               );
             })}

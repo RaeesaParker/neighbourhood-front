@@ -42,6 +42,7 @@ const MainBody = (props) => {
   // once it can handle it.
 
   const getPostFunction = async () => {
+    console.log("Inside the get pst function");
     let getPost = [];
     if (searchTerm) {
       getPost = await searchPost(searchTerm);
@@ -88,6 +89,9 @@ const MainBody = (props) => {
                   key={post.id}
                   userDetails={props.userDetails}
                   post={post}
+                  getPostFunction={
+                    getPostFunction
+                  }
                 />
               );
             })}
