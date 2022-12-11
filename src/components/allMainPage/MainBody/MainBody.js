@@ -1,6 +1,7 @@
 // Design + images
 import "./MainBody.css";
 import { useEffect, useState } from "react";
+import Masonry from "react-masonry-css";
 
 // Components
 import SearchBox from "../../allShared/SearchBox/SearchBox";
@@ -52,6 +53,14 @@ const MainBody = (props) => {
     props.setPostDetails(getPost);
   };
 
+
+  const breakpointPostCards = {
+    default: 4,
+    1920: 3,
+    1450: 2,
+    1050: 1,
+  };
+
   return (
     <div className="mainbody-box">
       <SearchBox
@@ -67,9 +76,14 @@ const MainBody = (props) => {
         setHaveNewPost={props.setHaveNewPost}
       />
       <Feed setPostFilter={setPostFilter} />
+      {/* <div className="mainbody-posts"> */}
       <div className="mainbody-posts">
         {props.postDetails?.length > 0 ? (
-          <div className="mainbody-posts">
+          <Masonry
+            breakpointCols={breakpointPostCards}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
             {props.postDetails.map((post) => {
               return (
                 <PostCard
@@ -79,7 +93,7 @@ const MainBody = (props) => {
                 />
               );
             })}
-          </div>
+          </Masonry>
         ) : (
           <div className="no-posts">
             <h2>

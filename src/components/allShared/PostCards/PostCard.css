@@ -33,14 +33,23 @@
 
 .postcard-head-left {
   display: flex;
-  gap: 20px;
+  gap: 12px;
 
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
+.postcard-head-left div p {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.postcard-head-right {
+  display: flex;
+  justify-content: space-between;
+  width: 40px;
+}
 .postcard-head-right i {
   text-align: center;
-  margin-left: 14px;
   height: 16px;
   width: 16px;
 }
@@ -50,8 +59,8 @@
 }
 
 .postcard img {
-  height: 55px;
-  width: 55px;
+  height: 45px;
+  width: 45px;
 }
 
 /* ** */
@@ -184,11 +193,6 @@
   .postcard-head {
     gap: 10px;
     margin-bottom: 15px;
-  }
-
-  .postcard img {
-    height: 45px;
-    width: 45px;
   }
 
   .postcard-head,

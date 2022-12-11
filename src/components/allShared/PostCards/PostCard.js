@@ -79,6 +79,7 @@ const PostCard = ({ post, userDetails }) => {
   return (
     <div>
       <div
+        data-aos="fade-up"
         className={`postcard ${
           localPost.post_type === 1
             ? "postcard-bg1"
@@ -98,11 +99,15 @@ const PostCard = ({ post, userDetails }) => {
               alt="userpicture"
             />
             <div>
-              <h3>{localPost.user_name}</h3>
+              <h3>@{localPost.user_name}</h3>
               <p>
-                @{postDate.toDateString()} :{" "}
+                {postDate.toLocaleDateString()} at{" "}
                 {postDate.toLocaleTimeString(
-                  "en-UK"
+                  "en-UK",
+                  {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  }
                 )}
               </p>
             </div>
