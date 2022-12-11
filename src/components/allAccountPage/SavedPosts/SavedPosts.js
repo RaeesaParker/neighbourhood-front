@@ -24,7 +24,6 @@ const SavedPosts = (props) => {
       await getPostsLikedByUser(
         props.userDetails.user_id
       );
-    console.log(likedPosts);
     setLikedPosts(likedPostsArray);
   };
 
@@ -32,7 +31,7 @@ const SavedPosts = (props) => {
     <div>
       <div className="allsaved-header">
         <h3>Saved posts:</h3>
-        <i className="fa-solid fa-bookmark"></i>{" "}
+        <i className="fa-solid fa-bookmark"></i>
       </div>
       <div className="allsaved-feed">
         {likedPosts.length > 0 ? (
@@ -40,7 +39,15 @@ const SavedPosts = (props) => {
             {likedPosts.map((post) => {
               return (
                 <div key={post.id}>
-                  <SavedPostsCard post={post} />
+                  <SavedPostsCard
+                    userDetails={
+                      props.userDetails
+                    }
+                    post={post}
+                    getSavedFunction={
+                      getSavedFunction
+                    }
+                  />
                 </div>
               );
             })}
