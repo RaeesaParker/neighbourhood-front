@@ -3,15 +3,15 @@ import "./SavedPostsCard.css";
 
 // Components
 
-const SavedPostsCard = () => {
+const SavedPostsCard = (props) => {
   return (
     <div className="saved-postcard saved-postcard-bg2">
       <div className="saved-postcard-head">
         <div className="saved-postcard-user">
           <i className="fa-solid fa-user-large"></i>
-          <p>@username</p>
+          <p>@{props.userDetails.username}</p>
         </div>
-        <i className="fa-solid fa-bookmark sv-bm"></i>
+        <i className="fa-solid fa-trash"></i>
       </div>
       <hr />
       <div className="saved-postcard-text">
