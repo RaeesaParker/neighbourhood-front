@@ -8,6 +8,7 @@ import SearchBox from "../../allShared/SearchBox/SearchBox";
 import SpanAccount from "../../allAccountPage/SpanAccount/SpanAccount";
 import Feed from "../../allShared/Feed/Feed";
 import PostCard from "../../allShared/PostCards/PostCard";
+import DelModal from "../../allShared/DelModal/DelModal";
 import {
   getAllPostUser,
   searchPost,
@@ -26,6 +27,12 @@ const AccountBody = (props) => {
 
   const [searchTerm, setSearchTerm] =
     useState("");
+
+  // Modal handling when deleting a post
+  const [modal, setModal] = useState(false);
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
   useEffect(() => {
     getPostFunction();
@@ -55,6 +62,7 @@ const AccountBody = (props) => {
 
   return (
     <div className="mainbody-box">
+      {modal && <DelModal setModal={setModal} />}
       <SearchBox
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -80,6 +88,7 @@ const AccountBody = (props) => {
                   getPostFunction={
                     getPostFunction
                   }
+                  toggleModal={toggleModal}
                 />
               );
             })}

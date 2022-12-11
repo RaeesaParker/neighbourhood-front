@@ -15,6 +15,7 @@ const PostCard = ({
   post,
   userDetails,
   getPostFunction,
+  toggleModal,
 }) => {
   // localPost in state is used to allow the post to be updated
   // without the need to pull all the post data.
@@ -32,7 +33,8 @@ const PostCard = ({
   const handleDelete = async () => {
     // would be nice to have a popup confirmation
     await deletePost(post.id);
-    getPostFunction();
+    await getPostFunction();
+    toggleModal();
   };
 
   const handleLiked = async () => {
