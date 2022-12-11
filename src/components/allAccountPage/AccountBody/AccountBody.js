@@ -18,16 +18,25 @@ const AccountBody = (props) => {
     true,
   ]);
 
+  const [searchTerm, setSearchTerm] =
+    useState("");
+
   useEffect(() => {
     getPostFunction();
     props.setHaveNewPost(false);
   }, [postFilter, props.haveNewPost]);
 
   const getPostFunction = async () => {
-    const getPost = await getAllPostUser(
-      postFilter,
-      props.userDetails.user_id
-    );
+    let getPost = [];
+    if (searchTerm) {
+      getPost = await searchPost(searchTerm);
+      setSearchTerm("");
+    } else {
+      getPost = await getAllPostUser(
+        postFilter,
+        props.userDetails.user_id
+      );
+    }
     props.setPostDetails(getPost);
   };
 
@@ -40,7 +49,11 @@ const AccountBody = (props) => {
 
   return (
     <div className="mainbody-box">
-      <SearchBox />
+      <SearchBox
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        setHaveNewPost={props.setHaveNewPost}
+      />
       <SpanAccount
         userDetails={props.userDetails}
       />
@@ -53,7 +66,6 @@ const AccountBody = (props) => {
             columnClassName="my-masonry-grid_column"
           >
             {props.postDetails.map((post, i) => {
-
               return (
                 <PostCard
                   key={post.id}
