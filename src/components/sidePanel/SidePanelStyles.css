@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: space-between;
 
   height: calc(100% - 110px);
   width: 280px;
@@ -11,63 +10,115 @@
 }
 
 #subsection-panel-user {
-  align-items: center;
   display: flex;
   flex-direction: row;
-  height: 10vh;
+  align-items: center;
   justify-content: flex-end;
-  margin: 5% 0;
+
+  margin: 20px 0px 40px 0px;
+  width: 100%;
+  position: relative;
 }
 
 #subsection-panel-user-div {
   background-color: var(--grey-dark);
   border-radius: 15px;
-  flex-grow: 2;
+  width: 100%;
 }
 
 #subsection-panel-user-div h4 {
   color: var(--white);
-  font-weight: 400;
-  margin: 0;
-  padding: 3% 10%;
+  font-weight: 500;
+  padding: 10px 20px;
 }
 
 #subsection-panel-image-div {
-  width: 10%;
+  width: 25px;
 }
 
 #fig-user {
   border-radius: 50%;
-  left: -200%;
-  position: relative;
-  width: 300%;
+
+  top: -20px;
+  right: 0px;
+  height: 80px;
+  width: 80px;
+  position: absolute;
 }
 
 .subsection-panel {
-  background-color: var(--white-dark);
-  border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  background-color: var(--white-dark);
+  border-radius: 15px;
+
+  margin-bottom: 20px;
   width: 100%;
 }
 
 .subsection-panel h3 {
-  margin: 10% 10% 0 10%;
+  font-size: 22px;
+  margin: 20px 25px 10px 25px;
 }
 
 .subsection-panel p {
-  font-size: 0.9em;
-  margin: 10% 10% 5% 10%;
+  margin: 5px 25px 10px 25px;
+}
+
+.subsection-panel p:last-child {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.subsection-panel div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0px 25px;
 }
 
 .fig-user-all {
-  border-radius: 50%;
-  margin: 5% 3% 0 7%;
-  width: 3.5vw;
+  border-radius: 40px;
+  height: 40px;
+  width: 40px;
 }
 
 #fig-weather {
   margin: 2% auto 10% auto;
   width: 30%;
+}
+
+@media screen and (max-width: 1100px) {
+  #subsection-mainpage-panel {
+    width: 230px;
+  }
+  .subsection-panel h3 {
+    font-size: 18px;
+    margin: 20px 20px 10px 20px;
+  }
+
+  .subsection-panel p {
+    font-size: 14px;
+    margin: 5px 20px 10px 20px;
+  }
+  .fig-user-all {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  #subsection-mainpage-panel {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 850px) {
+}
+
+@media screen and (max-width: 600px) {
 }

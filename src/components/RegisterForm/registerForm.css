@@ -1,57 +1,77 @@
-* {
-  margin: 0;
-  box-sizing: border-box;
-}
-
-.registerform {
-  display: flex;
-  height: 100vh;
-  width: 100%;
-  justify-content: right;
-}
-
-.registerform-cover {
-  background-color: var(--grey-nav);
-  width: 30em;
-  height: 35em;
-  border-radius: 2em;
+.register-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 25px;
+
+  width: 100%;
 }
-.registerform input {
-  height: 3em;
-  width: 20em;
-  border-radius: 0.3em;
-  margin: 2%;
+
+#registerform-header {
+  color: var(--grey-extra-light);
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+
+  padding: 50px 0px 60px 0px;
+}
+
+.registerform-cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: var(--grey-nav);
+  border-radius: 20px;
+
+  width: 400px;
+  height: calc(100vh - 60px);
+  position: absolute;
+  top: 30px;
+  right: 40px;
+}
+
+.register-form div {
+  border-radius: 5px;
+  background-color: var(--grey-extra-light);
+  padding-left: 12px;
+  width: 80%;
+}
+
+.register-form input {
+  border: none;
+  background-color: var(--grey-extra-light);
+  height: 40px;
+  padding-left: 12px;
+  width: 90%;
+}
+
+.register-form input:focus {
+  outline: none;
 }
 
 #register-btn {
-  height: 2.5em;
-  width: 10em;
-  border-radius: 0.3em;
-  margin-top: 2%;
+  background-color: var(--grey-extra-light);
+  border-radius: 10px;
+  border: none;
+
+  margin-top: 20px;
+  padding: 8px 65px;
+  transition: 0.5s all ease;
 }
 
-.registerform-btn,
-#registerform-para:hover {
+#register-btn:hover {
+  background-color: var(--grey-light);
+}
+
+#registerform-para {
+  color: var(--white-dark);
   cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+  transition: 0.5s all ease;
 }
+
 #registerform-para:hover {
-  opacity: 0.7;
-}
-
-.register-postcode-btn {
-  margin-bottom: 20px;
-}
-
-#registerform-header,
-#registerform-para {
-  color: white;
-}
-#registerform-header {
-  margin: 10%;
-}
-#registerform-para {
-  margin: 2%;
+  color: var(--grey-light);
 }

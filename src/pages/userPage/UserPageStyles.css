@@ -1,0 +1,32 @@
+.userpage-page {
+  background-color: var(--white);
+  display: flex;
+  min-height: 100vh;
+
+  margin: 15px;
+  overflow: hidden;
+}
+
+.userpage-body {
+  height: auto;
+  width: 100%;
+}
+
+.userpage-sidebar {
+  height: 50px;
+  width: 280px;
+  min-width: 280px;
+  max-width: 280px;
+}
+
+@media screen and (max-width: 1100px) {
+  .userpage-sidebar {
+    width: 230px;
+    min-width: 230px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .userpage-sidebar {
+  }
+}
