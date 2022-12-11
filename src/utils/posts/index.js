@@ -32,7 +32,7 @@ export const createPost = async (postObject) => {
 export const getAllPost = async (postFilter) => {
   try {
     if (!postFilter.includes(true)) {
-      return [];
+      postFilter = [true, true, true, true];
     }
     // build filter array
     let filter = "[";
@@ -62,7 +62,7 @@ export const getAllPost = async (postFilter) => {
   }
 };
 
-// Updated to use the type endpoint that takes an array of types
+// Get all posts that match the search term
 export const searchPost = async (searchTerm) => {
   try {
     const response = await fetch(
@@ -83,7 +83,6 @@ export const searchPost = async (searchTerm) => {
   }
 };
 
-
 // Get all the posts from a user => Apply the filter for various post types
 export const getAllPostUser = async (
   postFilter,
@@ -91,7 +90,7 @@ export const getAllPostUser = async (
 ) => {
   try {
     if (!postFilter.includes(true)) {
-      return [];
+      postFilter = [true, true, true, true];
     }
     // build filter array
     let filter = "[";
@@ -239,7 +238,6 @@ export const likePost = async (likeObject) => {
     console.log(error);
   }
 };
-
 
 // set a post as favourite or unfavourite
 export const favoritePost = async (
