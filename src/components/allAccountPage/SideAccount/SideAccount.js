@@ -60,19 +60,11 @@ const SideAccount = (props) => {
     const reducedData = await reduceObject(
       updatedObj
     );
-    console.log(
-      "The reduced object is ",
-      reducedData
-    );
     // Send the reduced data to the update request
     const updatedUserDetails = await updateUser(
       props.userDetails.user_id,
       reducedData,
       props.setUserDetails
-    );
-    console.log(
-      "The updated details here!",
-      updatedUserDetails
     );
     setEditAcc(!editAcc);
     getUserDetailsFunc();
@@ -90,7 +82,6 @@ const SideAccount = (props) => {
         const { [keys[i]]: unused, ...tempObj } =
           modifiedObj;
         modifiedObj = tempObj;
-        console.log(unused);
       }
     }
     return modifiedObj;

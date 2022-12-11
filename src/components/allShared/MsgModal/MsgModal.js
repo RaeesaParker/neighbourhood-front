@@ -42,8 +42,6 @@ const MsgModal = () => {
 
       // Function for posting to backend bellow:
     }
-
-    console.log(newPost);
   };
 
   const handleCancelBtn = () => {

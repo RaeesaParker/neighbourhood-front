@@ -153,7 +153,7 @@ export const updateUser = async (
       }
     );
     const data = await response.json();
-    console.log("Updated details are ", data);
+    
     setUserDetails({
       username: data.user_name,
       user_id: data.id,
@@ -179,7 +179,7 @@ export const deleteUser = async (userId) => {
       }
     );
     const data = await response.json();
-    console.log(data);
+    
     if (!data.error) {
       return true;
     } else {
