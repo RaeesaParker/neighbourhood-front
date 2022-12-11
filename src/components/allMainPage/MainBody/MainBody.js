@@ -9,7 +9,10 @@ import SpanMainPage from "../../allMainPage/SpanMainPage/SpanMainPage";
 import NewPost from "../../allMainPage/NewPost/NewPost";
 import Feed from "../../allShared/Feed/Feed";
 import PostCard from "../../allShared/PostCards/PostCard";
-import { getAllPost } from "../../../utils/posts";
+import {
+  getAllPost,
+  searchPost,
+} from "../../../utils/posts";
 
 // ////////////////
 
@@ -24,6 +27,10 @@ const MainBody = (props) => {
     true,
   ]);
 
+  const [searchTerm, setSearchTerm] = useState([
+    "",
+  ]);
+
   useEffect(() => {
     getPostFunction();
     props.setHaveNewPost(false);
@@ -36,16 +43,16 @@ const MainBody = (props) => {
   // once it can handle it.
 
   const getPostFunction = async () => {
-    const getPost = await getAllPost(postFilter);
-    console.log(getPost);
+    let getPost = [];
+    if (searchTerm) {
+      getPost = await searchPost(searchTerm);
+      setSearchTerm("");
+    } else {
+      getPost = await getAllPost(postFilter);
+    }
     props.setPostDetails(getPost);
   };
 
-  //     id: 1,
-  //     post_type: 1,
-  //     user_id: 1,
-  //     post_content:
-  //       "This is a post. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
 
   const breakpointPostCards = {
     default: 4,
@@ -56,7 +63,11 @@ const MainBody = (props) => {
 
   return (
     <div className="mainbody-box">
-      <SearchBox />
+      <SearchBox
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        setHaveNewPost={props.setHaveNewPost}
+      />
       <SpanMainPage
         userDetails={props.userDetails}
       />

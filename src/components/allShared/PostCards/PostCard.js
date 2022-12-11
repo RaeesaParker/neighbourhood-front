@@ -5,6 +5,7 @@ import {
   likePost,
   favoritePost,
   getPostById,
+  deletePost,
 } from "../../../utils/posts";
 
 // Components
@@ -23,6 +24,12 @@ const PostCard = ({ post, userDetails }) => {
     post.userLike
   );
   const [shareBtn, setShareBtn] = useState(true);
+
+  const handleDelete = async () => {
+    // would be nice to have a popup confirmation
+
+    await deletePost(post.id);
+  };
 
   const handleLiked = async () => {
     setLiked(!liked);
@@ -106,8 +113,21 @@ const PostCard = ({ post, userDetails }) => {
             </div>
           </div>
           <div className="postcard-head-right">
-            <i className="fa-solid fa-file-pen"></i>
-            <i className="fa-solid fa-trash"></i>
+            {userDetails.user_id ==
+            post.user_id ? (
+              <i className="fa-solid fa-file-pen"></i>
+            ) : (
+              <></>
+            )}
+            {userDetails.user_id ==
+            post.user_id ? (
+              <i
+                className="fa-solid fa-trash"
+                onClick={handleDelete}
+              ></i>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
 
