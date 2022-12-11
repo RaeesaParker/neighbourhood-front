@@ -19,7 +19,7 @@ function App() {
 
   // Set state to manage user login
   const [isLoggedIn, setIsLoggedIn] =
-    useState(true);
+    useState(false);
 
   // State to set the user details
   const [userDetails, setUserDetails] = useState({
