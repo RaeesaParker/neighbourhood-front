@@ -12,17 +12,37 @@ function LoginForm(props) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
+  // Set state for login error
+  const [error, setError] = useState("");
+  // temp use of setError
+  if (1 == 2) {
+    setError("");
+  }
   // Async Function to handle onSubmit of register form
   const onSubmitLoginForm = async (event) => {
     event.preventDefault();
+
+    if (!username) {
+      setError("Username is required");
+      return;
+    }
+
+    if (!password) {
+      setError("Password is required");
+      return;
+    }
+
     const loggedUser = await loginUser(
       username,
       password,
       props.setUserDetails
     );
-    if (loggedUser) {
+
+    if (loggedUser === true) {
       props.setIsLoggedIn(true);
       navigate("/main");
+    } else {
+      setError(loggedUser);
     }
   };
 
@@ -69,6 +89,9 @@ function LoginForm(props) {
                 }
               ></input>
             </div>
+            <form-message className="error">
+              {error ? error : <></>}
+            </form-message>
             <button type="submit" id="login-btn">
               Log In
             </button>

@@ -102,6 +102,8 @@ export const loginUser = async (
       });
       writeCookie("jwt_token", data.token, 7);
       return true;
+    } else {
+      return data.status;
     }
   } catch (error) {
     console.log(error);
