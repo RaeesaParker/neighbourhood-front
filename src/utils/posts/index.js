@@ -28,7 +28,7 @@ export const createPost = async (postObject) => {
   }
 };
 
-// Get all the posts => Apply the filter for various post types
+// Updated to use the type endpoint that takes an array of types
 export const getAllPost = async (postFilter) => {
   try {
     if (!postFilter.includes(true)) {
@@ -61,6 +61,28 @@ export const getAllPost = async (postFilter) => {
     console.log(error);
   }
 };
+
+// Updated to use the type endpoint that takes an array of types
+export const searchPost = async (searchTerm) => {
+  try {
+    const response = await fetch(
+      `${API_URL}/posts/search/${searchTerm}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer " + getCookie("jwt_token"),
+        },
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
 // Get all the posts from a user => Apply the filter for various post types
 export const getAllPostUser = async (
@@ -176,7 +198,7 @@ export const updatePost = async (
 export const deletePost = async (id) => {
   try {
     const response = await fetch(
-      `${API_URL}/posts/${id}`,
+      `${API_URL}/post/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -193,7 +215,7 @@ export const deletePost = async (id) => {
   }
 };
 
-// Like a post
+// set a post as liked or unliked
 export const likePost = async (likeObject) => {
   try {
     const response = await fetch(
@@ -218,7 +240,8 @@ export const likePost = async (likeObject) => {
   }
 };
 
-// Favourite a post
+
+// set a post as favourite or unfavourite
 export const favoritePost = async (
   favoriteObject
 ) => {
