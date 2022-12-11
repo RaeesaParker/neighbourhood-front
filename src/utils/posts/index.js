@@ -282,7 +282,6 @@ export const getPostsLikedByUser = async (id) => {
       }
     );
     const data = await response.json();
-    console.log("Data returned is ", data);
     return data;
   } catch (error) {
     console.log(error);

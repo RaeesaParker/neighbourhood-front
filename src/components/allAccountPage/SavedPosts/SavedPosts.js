@@ -1,26 +1,31 @@
 // Design + images
 import "./SavedPosts.css";
-// import { useState } from "react";
-import { useEffect } from "react";
-import SavedPostsCard from "../SavedPostsCard/SavedPostsCard";
+import { useState, useEffect } from "react";
+// import SavedPostsCard from "../SavedPostsCard/SavedPostsCard";
 import { getPostsLikedByUser } from "../../../utils/posts";
+import SavedPostsCard from "../SavedPostsCard/SavedPostsCard";
+// import SavedPostsCard from "../SavedPostsCard/SavedPostsCard";
 
 const SavedPosts = (props) => {
-  // // Create a state to hold the array of liked posts
-  // const [likedPosts, setLikedPosts] = useState(
-  //   []
-  // );
+  // Create a state to hold the array of liked posts
+  const [likedPosts, setLikedPosts] = useState(
+    []
+  );
 
-  // Get all the posts liked by a user
+  // const likedPosts = [{ user_name: "zed" }];
+
+  // // Get all the posts liked by a user
   useEffect(() => {
     getSavedFunction();
   }, []);
 
   const getSavedFunction = async () => {
-    const likedPosts = await getPostsLikedByUser(
-      props.userDetails.user_id
-    );
+    const likedPostsArray =
+      await getPostsLikedByUser(
+        props.userDetails.user_id
+      );
     console.log(likedPosts);
+    setLikedPosts(likedPostsArray);
   };
 
   return (
@@ -30,9 +35,21 @@ const SavedPosts = (props) => {
         <i className="fa-solid fa-bookmark"></i>{" "}
       </div>
       <div className="allsaved-feed">
-        <SavedPostsCard
-          userDetails={props.userDetails}
-        />
+        {likedPosts.length > 0 ? (
+          <div>
+            {likedPosts.map((post) => {
+              return (
+                <div key={post.id}>
+                  <SavedPostsCard post={post} />
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="no-posts">
+            <h2>No saved posts.</h2>
+          </div>
+        )}
       </div>
     </div>
   );
