@@ -115,7 +115,9 @@ function App() {
           path="/hospitals"
           element={
             <HospitalPage
+              setUserDetails={onSetUserDetails}
               userDetails={userDetails}
+              isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
             />
           }
