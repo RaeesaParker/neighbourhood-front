@@ -27,9 +27,8 @@ const MainBody = (props) => {
     true,
   ]);
 
-  const [searchTerm, setSearchTerm] = useState([
-    "",
-  ]);
+  const [searchTerm, setSearchTerm] =
+    useState("");
 
   useEffect(() => {
     getPostFunction();
@@ -52,7 +51,6 @@ const MainBody = (props) => {
     }
     props.setPostDetails(getPost);
   };
-
 
   const breakpointPostCards = {
     default: 4,
