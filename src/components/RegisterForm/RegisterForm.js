@@ -14,9 +14,37 @@ function RegisterForm(props) {
   const [password, setPassword] = useState();
   const [postcode, setPostcode] = useState();
 
+  // Set state for login error
+  const [error, setError] = useState("");
+  // temp use of setError
+  if (1 == 2) {
+    setError("");
+  }
+
   // Async Function to handle onSubmit of register form
   const onSubmitRegisterForm = async (event) => {
     event.preventDefault();
+
+    if (!username) {
+      setError("A username is required");
+      return;
+    }
+
+    if (!password) {
+      setError("A password is required");
+      return;
+    }
+
+    if (!email) {
+      setError("An email address is required");
+      return;
+    }
+
+    if (!postcode) {
+      setError("A postcode is required");
+      return;
+    }
+
     const newUser = await registerUser(
       username,
       email,
@@ -24,9 +52,12 @@ function RegisterForm(props) {
       postcode,
       props.setUserDetails
     );
-    if (newUser) {
+
+    if (newUser === true) {
       props.setIsLoggedIn(true);
       navigate("/main");
+    } else {
+      setError(newUser);
     }
   };
 
@@ -95,6 +126,9 @@ function RegisterForm(props) {
                 placeholder="Postcode"
               ></input>
             </div>
+            <form-message className="error">
+              {error ? error : <></>}
+            </form-message>
             <button
               type="submit"
               id="register-btn"
