@@ -49,16 +49,8 @@ const MainBody = (props) => {
     } else {
       getPost = await getAllPost(postFilter);
     }
-
-    console.log(getPost);
     props.setPostDetails(getPost);
   };
-
-  //     id: 1,
-  //     post_type: 1,
-  //     user_id: 1,
-  //     post_content:
-  //       "This is a post. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
 
   return (
     <div className="mainbody-box">

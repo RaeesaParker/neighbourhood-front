@@ -11,7 +11,6 @@ import SchoolPage from "./pages/schoolPage/SchoolPage";
 import HospitalPage from "./pages/hospitalPage/HospitalPage";
 
 function App() {
-  // Feature test branch
   // Set state to manage user login
   const [isLoggedIn, setIsLoggedIn] =
     useState(true);
@@ -38,7 +37,6 @@ function App() {
   );
 
   // func to take all post details on homepage
-
   function onSetPostDetails(postDetails) {
     setPostDetails(postDetails);
   }
@@ -52,8 +50,6 @@ function App() {
   function onSetHaveNewPost(haveNewPost) {
     setHaveNewPost(haveNewPost);
   }
-
-  console.log(onSetPostDetails);
 
   return (
     <div>
@@ -87,10 +83,14 @@ function App() {
           path="/user"
           element={
             <UserPage
+              postDetails={postDetails}
+              setPostDetails={onSetPostDetails}
               userDetails={userDetails}
               setUserDetails={onSetUserDetails}
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
+              haveNewPost={haveNewPost}
+              setHaveNewPost={onSetHaveNewPost}
             />
           }
         ></Route>

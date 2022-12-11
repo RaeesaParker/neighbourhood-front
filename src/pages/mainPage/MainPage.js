@@ -32,15 +32,7 @@ function MainPage(props) {
 
   // Find the user with the token OR reroute to the homepage
   const findUserWithToken = async (cookie) => {
-    const userDetails = await findUser(
-      cookie,
-      props.setUserDetails
-    );
-    if (userDetails) {
-      console.log(
-        "The user details have been set"
-      );
-    }
+    await findUser(cookie, props.setUserDetails);
   };
 
   return (
