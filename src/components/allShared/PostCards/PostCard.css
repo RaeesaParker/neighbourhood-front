@@ -181,12 +181,12 @@
 /* *** */
 
 .bookmarked-post {
-  color: var(--pink);
+  color: darkred;
   transition: 0.2s all linear;
 }
 
 .liked-post {
-  color: var(--pink);
+  color: crimson;
   transition: 0.2s all linear;
 }
 
