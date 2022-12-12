@@ -14,6 +14,7 @@ import SchoolPage from "./pages/schoolPage/SchoolPage";
 import HospitalPage from "./pages/hospitalPage/HospitalPage";
 
 function App() {
+  // MVP
   // ** AOS = library with effects on the cards
   AOS.init();
 
