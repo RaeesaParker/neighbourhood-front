@@ -35,7 +35,7 @@ const SavedPosts = (props) => {
       </div>
       <div className="allsaved-feed">
         {likedPosts.length > 0 ? (
-          <div>
+          <div className="allsaved-feed-post">
             {likedPosts.map((post) => {
               return (
                 <div key={post.id}>
