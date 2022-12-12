@@ -13,7 +13,7 @@ const MsgModal = (props) => {
   //   useState(false);
   const [checked, setChecked] = useState(1);
   const [newPost, setNewPost] = useState({
-    post_type: null,
+    post_type: 1,
     user_id: props.userDetails.user_id,
     post_content: null,
   });
@@ -55,15 +55,16 @@ const MsgModal = (props) => {
       );
     }
 
-    if (!newPost.post_type) {
-      setTimeout(() => {
-        setErrorMessage("");
-      }, 2000);
+    // if (!newPost.post_type) {
+    //   setTimeout(() => {
+    //     setErrorMessage("");
+    //   }, 2000);
 
-      return setErrorMessage(
-        "You must select a category."
-      );
-    }
+    //   return setErrorMessage(
+    //     "You must select a category."
+    //   );
+    // }
+
     // Function for posting to backend bellow:
     const postCreated = await createPost(newPost);
     props.setModal(false);
