@@ -5,12 +5,18 @@ import {
   likePost,
   favoritePost,
   getPostById,
+  deletePost,
 } from "../../../utils/posts";
 
 // Components
 import { useState } from "react";
 
-const PostCard = ({ post, userDetails }) => {
+const PostCard = ({
+  post,
+  userDetails,
+  getPostFunction,
+  toggleModal,
+}) => {
   // localPost in state is used to allow the post to be updated
   // without the need to pull all the post data.
   const [localPost, setLocalPost] =
@@ -23,6 +29,13 @@ const PostCard = ({ post, userDetails }) => {
     post.userLike
   );
   const [shareBtn, setShareBtn] = useState(true);
+
+  const handleDelete = async () => {
+    // would be nice to have a popup confirmation
+    await deletePost(post.id);
+    await getPostFunction();
+    toggleModal();
+  };
 
   const handleLiked = async () => {
     setLiked(!liked);
@@ -72,6 +85,7 @@ const PostCard = ({ post, userDetails }) => {
   return (
     <div>
       <div
+        data-aos="fade-up"
         className={`postcard ${
           localPost.post_type === 1
             ? "postcard-bg1"
@@ -91,19 +105,39 @@ const PostCard = ({ post, userDetails }) => {
               alt="userpicture"
             />
             <div>
-              <h3>{localPost.user_name}</h3>
-              <p>@{postDate.toDateString()} :{" "}
-              {postDate.toLocaleTimeString(
-                "en-UK"
-              )}</p>
+              <h3>@{localPost.user_name}</h3>
+              <p>
+                {postDate.toLocaleDateString()} at{" "}
+                {postDate.toLocaleTimeString(
+                  "en-UK",
+                  {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  }
+                )}
+              </p>
             </div>
           </div>
           <div className="postcard-head-right">
-            <i className="fa-solid fa-file-pen"></i>
-            <i className="fa-solid fa-trash"></i>
+            {userDetails.user_id ==
+            post.user_id ? (
+              <i className="fa-solid fa-file-pen"></i>
+            ) : (
+              <></>
+            )}
+            {userDetails.user_id ==
+            post.user_id ? (
+              <i
+                id="postcard-trash"
+                className="fa-solid fa-trash"
+                onClick={handleDelete}
+              ></i>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
-        
+
         <hr />
         <div className="postcard-text">
           <p>{localPost.post_content}</p>
@@ -112,7 +146,7 @@ const PostCard = ({ post, userDetails }) => {
         <div className="postcard-icons">
           <div>
             <i className="fa-solid fa-comment"></i>
-            <p>50 Comments {likesString()}</p>
+            <p>50 Comments</p>
           </div>
           <div className="postcard-right">
             <div className="share-links">
@@ -126,6 +160,14 @@ const PostCard = ({ post, userDetails }) => {
                 <i className="fa-brands fa-square-twitter" />
               </div>
             </div>
+
+            <i
+              className={`fa-solid fa-heart ${
+                liked ? "liked-post" : ""
+              }`}
+              onClick={handleLiked}
+            />
+            <p>{likesString()}</p>
             <i
               className={`fa-solid fa-bookmark ${
                 bookmarked
@@ -134,17 +176,6 @@ const PostCard = ({ post, userDetails }) => {
               }`}
               onClick={handleBookmarked}
             />
-            <i
-              className={`fa-solid fa-heart ${
-                liked ? "liked-post" : ""
-              }`}
-              onClick={handleLiked}
-            />
-            <p>
-              <span>0</span> Like
-              <span>s</span>
-            </p>
-            <i className="fa-solid fa-bookmark" />
             <i
               className="fa-solid fa-share"
               onClick={handleShared}

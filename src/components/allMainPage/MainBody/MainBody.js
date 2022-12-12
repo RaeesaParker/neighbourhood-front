@@ -1,6 +1,7 @@
 // Design + images
 import "./MainBody.css";
 import { useEffect, useState } from "react";
+import Masonry from "react-masonry-css";
 
 // Components
 import SearchBox from "../../allShared/SearchBox/SearchBox";
@@ -8,7 +9,11 @@ import SpanMainPage from "../../allMainPage/SpanMainPage/SpanMainPage";
 import NewPost from "../../allMainPage/NewPost/NewPost";
 import Feed from "../../allShared/Feed/Feed";
 import PostCard from "../../allShared/PostCards/PostCard";
-import { getAllPost } from "../../../utils/posts";
+import DelModal from "../../allShared/DelModal/DelModal";
+import {
+  getAllPost,
+  searchPost,
+} from "../../../utils/posts";
 
 // ////////////////
 
@@ -23,6 +28,15 @@ const MainBody = (props) => {
     true,
   ]);
 
+  const [searchTerm, setSearchTerm] =
+    useState("");
+
+  // Modal handling when deleting a post
+  const [modal, setModal] = useState(false);
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
   useEffect(() => {
     getPostFunction();
     props.setHaveNewPost(false);
@@ -35,20 +49,31 @@ const MainBody = (props) => {
   // once it can handle it.
 
   const getPostFunction = async () => {
-    const getPost = await getAllPost(postFilter);
-    console.log(getPost);
+    let getPost = [];
+    if (searchTerm) {
+      getPost = await searchPost(searchTerm);
+      setSearchTerm("");
+    } else {
+      getPost = await getAllPost(postFilter);
+    }
     props.setPostDetails(getPost);
   };
 
-  //     id: 1,
-  //     post_type: 1,
-  //     user_id: 1,
-  //     post_content:
-  //       "This is a post. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+  const breakpointPostCards = {
+    default: 4,
+    1920: 3,
+    1450: 2,
+    1050: 1,
+  };
 
   return (
     <div className="mainbody-box">
-      <SearchBox />
+      {modal && <DelModal setModal={setModal} />}
+      <SearchBox
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        setHaveNewPost={props.setHaveNewPost}
+      />
       <SpanMainPage
         userDetails={props.userDetails}
       />
@@ -57,19 +82,28 @@ const MainBody = (props) => {
         setHaveNewPost={props.setHaveNewPost}
       />
       <Feed setPostFilter={setPostFilter} />
+      {/* <div className="mainbody-posts"> */}
       <div className="mainbody-posts">
         {props.postDetails?.length > 0 ? (
-          <div className="mainbody-posts">
+          <Masonry
+            breakpointCols={breakpointPostCards}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
             {props.postDetails.map((post) => {
               return (
                 <PostCard
                   key={post.id}
                   userDetails={props.userDetails}
                   post={post}
+                  getPostFunction={
+                    getPostFunction
+                  }
+                  toggleModal={toggleModal}
                 />
               );
             })}
-          </div>
+          </Masonry>
         ) : (
           <div className="no-posts">
             <h2>

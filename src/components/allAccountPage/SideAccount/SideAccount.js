@@ -6,7 +6,7 @@ import {
   updateUser,
   deleteUser,
 } from "../../../utils/users";
-import SavedPostsCard from "../SavedPostsCard/SavedPostsCard";
+import SavedPosts from "../SavedPosts/SavedPosts";
 
 const SideAccount = (props) => {
   // States to hold the updated details
@@ -191,16 +191,9 @@ const SideAccount = (props) => {
         )}
       </div>
       <div className="allsaved-posts">
-        <div className="allsaved-header">
-          <h3>Saved posts:</h3>
-          <i className="fa-solid fa-bookmark"></i>{" "}
-        </div>
-        <div className="allsaved-feed">
-          <SavedPostsCard />
-          <SavedPostsCard />
-          <SavedPostsCard />
-          <SavedPostsCard />
-        </div>
+        <SavedPosts
+          userDetails={props.userDetails}
+        />
       </div>
     </div>
   );
