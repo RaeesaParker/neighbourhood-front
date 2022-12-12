@@ -95,6 +95,20 @@ function SidePanel(props) {
     );
   });
 
+  // Weather functions
+  const weekday = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const date = new Date();
+  const today = weekday[date.getDay()];
+  const todayDate = date.toLocaleDateString();
+
   return (
     <div id="subsection-mainpage-panel">
       <div id="subsection-panel-user">
@@ -115,15 +129,36 @@ function SidePanel(props) {
         <div>{userImages}</div>
         <p>And many others!</p>
       </div>
-      <div className="subsection-panel">
-        <h3>Weather</h3>
-        <p>Min Temp: {weather.minTemp}&deg;C</p>
-        <p>Max Temp: {weather.maxTemp}&deg;C </p>
-        <img
-          src={require(`../../imgs/weather/${weatherImage}.png`)}
-          alt="Logo"
-          id="fig-weather"
-        />
+
+      <div className="subsection-panel-weather">
+        <h3>Today&apos;s weather</h3>
+        <div className="weather-bg">
+          <img
+            src={require(`../../imgs/weather/${weatherImage}.png`)}
+            alt="Logo"
+            id="fig-weather"
+          />
+
+          <div className="weather-box">
+            <div className="max-temp">
+              <p>
+                {weather.maxTemp}
+                &deg;
+              </p>
+              <p>Max Temp.</p>
+            </div>
+            <div className="fake-hr" />
+            <div className="min-temp">
+              <div>
+                <p>{today},</p>
+                <p>{todayDate}</p>
+              </div>
+              <p>
+                Min Temp: {weather.minTemp}&deg;C
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
