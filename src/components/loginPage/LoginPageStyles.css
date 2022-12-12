@@ -14,7 +14,7 @@
 
 .NavBarHomeScreen {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
 
   position: relative;
@@ -90,5 +90,21 @@
 @media screen and (max-width: 850px) {
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
+  .NavBarHomeScreen {
+    padding: 30px 25px 0px 25px;
+  }
+
+  .navbar-buttons {
+    gap: 12px;
+  }
+
+  .navbar-left p {
+    font-size: 20px;
+  }
+
+  .NavBarHomeScreen button {
+    font-size: 12px;
+    padding: 4px 12px;
+  }
 }
