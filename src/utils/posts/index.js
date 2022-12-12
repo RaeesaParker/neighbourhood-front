@@ -55,15 +55,7 @@ export const getAllPost = async (postFilter) => {
         },
       }
     );
-    console.log(
-      "Response from getAllPosts is ",
-      response
-    );
     const data = await response.json();
-    console.log(
-      "Data from getAllPosts is ",
-      data
-    );
     return data;
   } catch (error) {
     console.log(error);
