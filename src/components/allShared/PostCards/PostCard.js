@@ -25,9 +25,9 @@ const PostCard = ({
   const [bookmarked, setBookmarked] = useState(
     post.fav
   );
-  const [liked, setLiked] = useState(
-    post.userLike
-  );
+  const [liked, setLiked] = useState();
+  // post.userLike
+
   const [shareBtn, setShareBtn] = useState(true);
 
   const handleDelete = async () => {
@@ -39,6 +39,7 @@ const PostCard = ({
 
   const handleLiked = async () => {
     setLiked(!liked);
+    post.userLike;
     // need to fetch endpoint
     await likePost({
       user_id: userDetails.user_id,
@@ -146,7 +147,7 @@ const PostCard = ({
         <div className="postcard-icons">
           <div>
             <i className="fa-solid fa-comment"></i>
-            <p>50 Comments</p>
+            <p>10 Comments</p>
           </div>
           <div className="postcard-right">
             <div className="share-links">
@@ -177,7 +178,7 @@ const PostCard = ({
               onClick={handleBookmarked}
             />
             <i
-              className="fa-solid fa-share"
+              className="fa-solid fa-share btn-forshare"
               onClick={handleShared}
             />
           </div>
