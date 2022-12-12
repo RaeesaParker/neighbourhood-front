@@ -4,6 +4,11 @@
   padding: 20px 20px 10px 20px;
 }
 
+#postcard-trash:hover {
+  color: var(--grey-medium);
+  cursor: pointer;
+}
+
 .postcard-bg {
   background-color: var(--grey-extra-light);
 }
@@ -176,12 +181,12 @@
 /* *** */
 
 .bookmarked-post {
-  color: var(--pink);
+  color: darkred;
   transition: 0.2s all linear;
 }
 
 .liked-post {
-  color: var(--pink);
+  color: crimson;
   transition: 0.2s all linear;
 }
 

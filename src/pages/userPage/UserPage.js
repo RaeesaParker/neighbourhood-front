@@ -23,6 +23,10 @@ function UserPage(props) {
       postcode: "",
     });
 
+  // State to store if user details have been obtained
+  const [userObtained, setUserObtained] =
+    useState(false);
+
   // Check to see if a user is logged in
   useEffect(() => {
     if (props.isLoggedIn) {
@@ -46,13 +50,15 @@ function UserPage(props) {
       props.setUserDetails
     );
     if (userDetails) {
-      const blankObj = {
+      const newObj = {
+        user_id: userDetails.id,
         user_name: userDetails.user_name,
         password: userDetails.password,
         email: userDetails.email,
         postcode: userDetails.pcd,
       };
-      setCurrentDetails(blankObj);
+      setCurrentDetails(newObj);
+      setUserObtained(true);
     }
   };
 
@@ -65,11 +71,19 @@ function UserPage(props) {
         <NavigationBar
           userDetails={props.userDetails}
           setIsLoggedIn={props.setIsLoggedIn}
+          setHaveNewPost={props.setHaveNewPost}
         />
       </div>
       <div className="userpage-body">
         <AccountBody
           userDetails={props.userDetails}
+          setUserDetails={props.setUserDetails}
+          postDetails={props.postDetails}
+          currentDetails={currentDetails}
+          setPostDetails={props.setPostDetails}
+          haveNewPost={props.haveNewPost}
+          setHaveNewPost={props.setHaveNewPost}
+          userObtained={userObtained}
         />
       </div>
       <div className="userpage-sidebar">
@@ -78,6 +92,7 @@ function UserPage(props) {
           userDetails={props.userDetails}
           currentDetails={currentDetails}
           setCurrentDetails={setCurrentDetails}
+          userObtained={userObtained}
         />
       </div>
     </div>

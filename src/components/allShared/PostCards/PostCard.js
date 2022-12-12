@@ -5,12 +5,18 @@ import {
   likePost,
   favoritePost,
   getPostById,
+  deletePost,
 } from "../../../utils/posts";
 
 // Components
 import { useState } from "react";
 
-const PostCard = ({ post, userDetails }) => {
+const PostCard = ({
+  post,
+  userDetails,
+  getPostFunction,
+  toggleModal,
+}) => {
   // localPost in state is used to allow the post to be updated
   // without the need to pull all the post data.
   const [localPost, setLocalPost] =
@@ -19,13 +25,21 @@ const PostCard = ({ post, userDetails }) => {
   const [bookmarked, setBookmarked] = useState(
     post.fav
   );
-  const [liked, setLiked] = useState(
-    post.userLike
-  );
+  const [liked, setLiked] = useState();
+  // post.userLike
+
   const [shareBtn, setShareBtn] = useState(true);
+
+  const handleDelete = async () => {
+    // would be nice to have a popup confirmation
+    await deletePost(post.id);
+    await getPostFunction();
+    toggleModal();
+  };
 
   const handleLiked = async () => {
     setLiked(!liked);
+    post.userLike;
     // need to fetch endpoint
     await likePost({
       user_id: userDetails.user_id,
@@ -106,8 +120,22 @@ const PostCard = ({ post, userDetails }) => {
             </div>
           </div>
           <div className="postcard-head-right">
-            <i className="fa-solid fa-file-pen"></i>
-            <i className="fa-solid fa-trash"></i>
+            {userDetails.user_id ==
+            post.user_id ? (
+              <i className="fa-solid fa-file-pen"></i>
+            ) : (
+              <></>
+            )}
+            {userDetails.user_id ==
+            post.user_id ? (
+              <i
+                id="postcard-trash"
+                className="fa-solid fa-trash"
+                onClick={handleDelete}
+              ></i>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
 
@@ -119,7 +147,7 @@ const PostCard = ({ post, userDetails }) => {
         <div className="postcard-icons">
           <div>
             <i className="fa-solid fa-comment"></i>
-            <p>50 Comments</p>
+            <p>10 Comments</p>
           </div>
           <div className="postcard-right">
             <div className="share-links">
@@ -150,7 +178,7 @@ const PostCard = ({ post, userDetails }) => {
               onClick={handleBookmarked}
             />
             <i
-              className="fa-solid fa-share"
+              className="fa-solid fa-share btn-forshare"
               onClick={handleShared}
             />
           </div>
