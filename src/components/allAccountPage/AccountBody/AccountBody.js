@@ -35,9 +35,15 @@ const AccountBody = (props) => {
   };
 
   useEffect(() => {
-    getPostFunction();
-    props.setHaveNewPost(false);
-  }, [postFilter, props.haveNewPost]);
+    if (props.userObtained == true) {
+      getPostFunction();
+      props.setHaveNewPost(false);
+    }
+  }, [
+    props.userObtained,
+    postFilter,
+    props.haveNewPost,
+  ]);
 
   const getPostFunction = async () => {
     let getPost = [];
