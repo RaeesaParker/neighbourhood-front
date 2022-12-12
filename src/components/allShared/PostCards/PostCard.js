@@ -5,12 +5,18 @@ import {
   likePost,
   favoritePost,
   getPostById,
+  deletePost,
 } from "../../../utils/posts";
 
 // Components
 import { useState } from "react";
 
-const PostCard = ({ post, userDetails }) => {
+const PostCard = ({
+  post,
+  userDetails,
+  getPostFunction,
+  toggleModal,
+}) => {
   // localPost in state is used to allow the post to be updated
   // without the need to pull all the post data.
   const [localPost, setLocalPost] =
@@ -19,13 +25,24 @@ const PostCard = ({ post, userDetails }) => {
   const [bookmarked, setBookmarked] = useState(
     post.fav
   );
-  const [liked, setLiked] = useState(
-    post.userLike
-  );
+  const [commentSpan, setCommentSpan] =
+    useState(false);
+  const [viewAll, setViewAll] = useState(false);
+  const [liked, setLiked] = useState(false);
+  // post.userLike
+
   const [shareBtn, setShareBtn] = useState(true);
+
+  const handleDelete = async () => {
+    // would be nice to have a popup confirmation
+    await deletePost(post.id);
+    await getPostFunction();
+    toggleModal();
+  };
 
   const handleLiked = async () => {
     setLiked(!liked);
+    post.userLike;
     // need to fetch endpoint
     await likePost({
       user_id: userDetails.user_id,
@@ -36,6 +53,14 @@ const PostCard = ({ post, userDetails }) => {
       post.id
     );
     setLocalPost(updatedPost);
+  };
+
+  const handleComments = () => {
+    setCommentSpan(!commentSpan);
+  };
+
+  const handleNewComment = () => {
+    setViewAll(!viewAll);
   };
 
   const handleShared = () => {
@@ -106,8 +131,22 @@ const PostCard = ({ post, userDetails }) => {
             </div>
           </div>
           <div className="postcard-head-right">
-            <i className="fa-solid fa-file-pen"></i>
-            <i className="fa-solid fa-trash"></i>
+            {userDetails.user_id ==
+            post.user_id ? (
+              <i className="fa-solid fa-file-pen"></i>
+            ) : (
+              <></>
+            )}
+            {userDetails.user_id ==
+            post.user_id ? (
+              <i
+                id="postcard-trash"
+                className="fa-solid fa-trash"
+                onClick={handleDelete}
+              ></i>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
 
@@ -117,9 +156,12 @@ const PostCard = ({ post, userDetails }) => {
         </div>
 
         <div className="postcard-icons">
-          <div>
+          <div
+            onClick={handleComments}
+            className="comments-box"
+          >
             <i className="fa-solid fa-comment"></i>
-            <p>50 Comments</p>
+            <p>1 Comment</p>
           </div>
           <div className="postcard-right">
             <div className="share-links">
@@ -150,11 +192,59 @@ const PostCard = ({ post, userDetails }) => {
               onClick={handleBookmarked}
             />
             <i
-              className="fa-solid fa-share"
+              className="fa-solid fa-share btn-forshare"
               onClick={handleShared}
             />
           </div>
         </div>
+        {commentSpan && (
+          <div className="comment-span">
+            <p
+              className="comment-span-viewall"
+              onClick={() => setViewAll(!viewAll)}
+            >
+              {`${
+                !viewAll
+                  ? "View all 34345 comments..."
+                  : "Hide all 34345 comments..."
+              }`}
+            </p>
+            {viewAll && (
+              <div>
+                <div className="comment-span-all">
+                  <p>
+                    @<strong>Username</strong>:
+                    this is my comment, and is
+                    very big big big big big big
+                    big big big big big big big
+                    big big big big big big big
+                    big big big big big big big!
+                  </p>
+                  <p>
+                    @<strong>Username</strong>:
+                    this is my comment, and is
+                    very big big big big big big
+                    big big big big big big big
+                    big big big big big big big
+                    big big big big big big big!
+                  </p>
+                </div>
+              </div>
+            )}
+            <form
+              className="comment-span-user"
+              onSubmit={handleNewComment}
+            >
+              <input
+                className="comment-span-input"
+                placeholder="Add your comment..."
+              />
+              <button className="comment-span-btn">
+                Post
+              </button>
+            </form>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -46,13 +46,13 @@ function UserPage(props) {
       props.setUserDetails
     );
     if (userDetails) {
-      const blankObj = {
+      const newObj = {
         user_name: userDetails.user_name,
         password: userDetails.password,
         email: userDetails.email,
         postcode: userDetails.pcd,
       };
-      setCurrentDetails(blankObj);
+      setCurrentDetails(newObj);
     }
   };
 
@@ -65,11 +65,17 @@ function UserPage(props) {
         <NavigationBar
           userDetails={props.userDetails}
           setIsLoggedIn={props.setIsLoggedIn}
+          setHaveNewPost={props.setHaveNewPost}
         />
       </div>
       <div className="userpage-body">
         <AccountBody
           userDetails={props.userDetails}
+          setUserDetails={props.setUserDetails}
+          postDetails={props.postDetails}
+          setPostDetails={props.setPostDetails}
+          haveNewPost={props.haveNewPost}
+          setHaveNewPost={props.setHaveNewPost}
         />
       </div>
       <div className="userpage-sidebar">

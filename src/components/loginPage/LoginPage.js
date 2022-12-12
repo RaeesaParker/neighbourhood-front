@@ -13,22 +13,13 @@ function LoginPage(props) {
   return (
     <div className="LoginPageHomeScreen">
       <div className="NavBarHomeScreen">
-        {showForm === "login" ? (
-          <LoginForm
-            register={setShowForm}
-            setUserDetails={props.setUserDetails}
-            isLoggedIn={props.isLoggedIn}
-            setIsLoggedIn={props.setIsLoggedIn}
-          />
-        ) : showForm === "register" ? (
-          <RegisterForm
-            login={setShowForm}
-            setUserDetails={props.setUserDetails}
-            isLoggedIn={props.isLoggedIn}
-            setIsLoggedIn={props.setIsLoggedIn}
-          />
-        ) : (
-          <div className="btn">
+        <div className="navbar-left">
+          <p>
+            Neighbour<strong>Who?</strong>
+          </p>
+        </div>
+        <div className="navbar-right">
+          <div className="navbar-buttons">
             <button
               className="loginHome-btn"
               onClick={() => {
@@ -45,7 +36,29 @@ function LoginPage(props) {
               Sign Up
             </button>
           </div>
-        )}
+
+          {showForm === "login" ? (
+            <LoginForm
+              register={setShowForm}
+              setUserDetails={
+                props.setUserDetails
+              }
+              isLoggedIn={props.isLoggedIn}
+              setIsLoggedIn={props.setIsLoggedIn}
+            />
+          ) : showForm === "register" ? (
+            <RegisterForm
+              login={setShowForm}
+              setUserDetails={
+                props.setUserDetails
+              }
+              isLoggedIn={props.isLoggedIn}
+              setIsLoggedIn={props.setIsLoggedIn}
+            />
+          ) : (
+            ""
+          )}
+        </div>
       </div>
       <div className="MainLogoHomeScreen">
         <img alt="logo" src={Logo}></img>

@@ -3,6 +3,7 @@ import {
   writeCookie,
   getCookie,
 } from "../../common/index";
+const API_URL = process.env.REACT_APP_BASE_URL;
 
 // Register a user => Used to create user
 export const registerUser = async (
@@ -14,7 +15,7 @@ export const registerUser = async (
 ) => {
   try {
     const response = await fetch(
-      `https://web-production-2000.up.railway.app/user`,
+      `${API_URL}/user`,
       {
         method: "POST",
         headers: {
@@ -29,13 +30,17 @@ export const registerUser = async (
       }
     );
     const data = await response.json();
-    setUserDetails({
-      username: data.user_name,
-      user_id: data.id,
-      user_regionId: data.region_id,
-    });
-    writeCookie("jwt_token", data.token, 7);
-    return data.id;
+    if (data.user_name) {
+      setUserDetails({
+        username: data.user_name,
+        user_id: data.id,
+        user_regionId: data.region_id,
+      });
+      writeCookie("jwt_token", data.token, 7);
+      return true;
+    } else {
+      return data.error;
+    }
   } catch (error) {
     console.log(error);
   }
@@ -48,7 +53,7 @@ export const findUser = async (
 ) => {
   try {
     const response = await fetch(
-      `https://web-production-2000.up.railway.app/auth/checkToken`,
+      `${API_URL}/auth/checkToken`,
       {
         method: "POST",
         headers: {
@@ -81,7 +86,7 @@ export const loginUser = async (
 ) => {
   try {
     const response = await fetch(
-      "https://web-production-2000.up.railway.app/auth",
+      `${API_URL}/auth`,
       {
         method: "POST",
         headers: {
@@ -102,6 +107,8 @@ export const loginUser = async (
       });
       writeCookie("jwt_token", data.token, 7);
       return true;
+    } else {
+      return data.status;
     }
   } catch (error) {
     console.log(error);
@@ -113,7 +120,7 @@ export const getUser = async (userId) => {
   try {
     console.log(userId);
     const response = await fetch(
-      `https://web-production-2000.up.railway.app/user/${userId}`,
+      `${API_URL}/user/${userId}`,
       {
         method: "GET",
         headers: {
@@ -142,7 +149,7 @@ export const updateUser = async (
 ) => {
   try {
     const response = await fetch(
-      `https://web-production-2000.up.railway.app/user/${userId}`,
+      `${API_URL}/user/${userId}`,
       {
         method: "PUT",
         headers: {
@@ -169,7 +176,7 @@ export const updateUser = async (
 export const deleteUser = async (userId) => {
   try {
     const response = await fetch(
-      `https://web-production-2000.up.railway.app/user/${userId}`,
+      `${API_URL}/user/${userId}`,
       {
         method: "DELETE",
         headers: {

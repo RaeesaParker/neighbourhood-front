@@ -1,38 +1,94 @@
 .LoginPageHomeScreen {
-  height: 100vh;
   background-image: url("../../imgs/Background.png");
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
   background-repeat: no-repeat;
-  background-position: center center;
+
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  position: relative;
 }
 
 .NavBarHomeScreen {
   display: flex;
-  float: right;
-  padding-top: 2%;
-  padding-right: 4%;
-}
-.NavBarHomeScreen button {
-  border-radius: 5px;
-  margin-right: 20px;
-  height: 30px;
-}
-.NavBarHomeScreen button:hover {
-  cursor: pointer;
-  opacity: 0.7;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  position: relative;
+  padding: 30px 50px 0px 50px;
+  z-index: 1;
 }
 
-.loginHome-btn {
+.navbar-left p {
+  color: var(--white-dark);
+  font-size: 30px;
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 18px;
+}
+
+.NavBarHomeScreen button {
+  border-radius: 10px;
+  border: 3px solid var(--white-dark);
   background-color: transparent;
+
+  color: var(--white-dark);
+  font-size: 16px;
+  font-weight: 600;
+
+  padding: 6px 20px;
+  transition: 0.5s all ease;
+}
+
+.NavBarHomeScreen button:last-child {
+  background-color: var(--white-dark);
+  color: var(--grey-nav);
+  font-weight: 700;
+}
+
+.NavBarHomeScreen button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.NavBarHomeScreen button:last-child:hover {
+  background-color: var(--grey-light);
+  border: 3px solid var(--grey-light);
+}
+
+.MainLogoHomeScreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
 }
 
 .MainLogoHomeScreen img {
-  position: relative;
   height: 300px;
   width: 300px;
-  left: 50%;
-  /* top: 50%; */
-  margin-top: 300px;
-  transform: translateX(-50%);
-  transform: translateX(-50%);
+}
+
+@media screen and (max-width: 1450px) {
+  .MainLogoHomeScreen img {
+    height: 200px;
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 950px) {
+}
+
+@media screen and (max-width: 850px) {
+}
+
+@media screen and (max-width: 600px) {
 }

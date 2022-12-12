@@ -11,8 +11,6 @@ const Feed = ({ setPostFilter }) => {
   const [all, setAll] = useState(true);
 
   const optionClicked = (i) => {
-    console.log(i);
-
     if (i == 4) {
       if (!all) {
         setPostType([true, true, true, true]);
@@ -55,6 +53,7 @@ const Feed = ({ setPostFilter }) => {
               value="General"
               checked={postType[0]}
               onClick={() => optionClicked(0)}
+              readOnly
             />
             <label className="filter-general">
               General
@@ -66,6 +65,7 @@ const Feed = ({ setPostFilter }) => {
               id="buysell"
               checked={postType[1]}
               onClick={() => optionClicked(1)}
+              readOnly
             />
             <label className="filter-buysell">
               Buy and Sell
@@ -77,6 +77,7 @@ const Feed = ({ setPostFilter }) => {
               id="alerts"
               checked={postType[2]}
               onClick={() => optionClicked(2)}
+              readOnly
             />
             <label className="filter-alerts">
               Alerts
@@ -88,6 +89,7 @@ const Feed = ({ setPostFilter }) => {
               id="traffic"
               checked={postType[3]}
               onClick={() => optionClicked(3)}
+              readOnly
             />
             <label className="filter-traffic">
               Traffic
@@ -99,6 +101,7 @@ const Feed = ({ setPostFilter }) => {
               id="all"
               checked={all}
               onClick={() => optionClicked(4)}
+              readOnly
             />
             <label className="filter-all">
               All
