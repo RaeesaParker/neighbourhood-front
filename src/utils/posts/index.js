@@ -83,7 +83,6 @@ export const searchPost = async (searchTerm) => {
   }
 };
 
-
 // Get all the posts from a user => Apply the filter for various post types
 export const getAllPostUser = async (
   postFilter,
@@ -240,7 +239,6 @@ export const likePost = async (likeObject) => {
   }
 };
 
-
 // set a post as favourite or unfavourite
 export const favoritePost = async (
   favoriteObject
@@ -259,6 +257,28 @@ export const favoritePost = async (
           user_id: favoriteObject.user_id,
           post_id: favoriteObject.post_id,
         }),
+      }
+    );
+    const data = await response.json();
+    console.log("Post has been favourited", data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Get all posts liked by a user
+export const getPostsLikedByUser = async (id) => {
+  try {
+    const response = await fetch(
+      `${API_URL}/posts/user/favourite/${id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer " + getCookie("jwt_token"),
+        },
       }
     );
     const data = await response.json();

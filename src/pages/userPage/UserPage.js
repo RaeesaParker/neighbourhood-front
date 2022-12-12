@@ -65,11 +65,13 @@ function UserPage(props) {
         <NavigationBar
           userDetails={props.userDetails}
           setIsLoggedIn={props.setIsLoggedIn}
+          setHaveNewPost={props.setHaveNewPost}
         />
       </div>
       <div className="userpage-body">
         <AccountBody
           userDetails={props.userDetails}
+          setUserDetails={props.setUserDetails}
           postDetails={props.postDetails}
           setPostDetails={props.setPostDetails}
           haveNewPost={props.haveNewPost}

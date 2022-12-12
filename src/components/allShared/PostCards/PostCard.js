@@ -11,7 +11,12 @@ import {
 // Components
 import { useState } from "react";
 
-const PostCard = ({ post, userDetails }) => {
+const PostCard = ({
+  post,
+  userDetails,
+  getPostFunction,
+  toggleModal,
+}) => {
   // localPost in state is used to allow the post to be updated
   // without the need to pull all the post data.
   const [localPost, setLocalPost] =
@@ -27,8 +32,9 @@ const PostCard = ({ post, userDetails }) => {
 
   const handleDelete = async () => {
     // would be nice to have a popup confirmation
-
     await deletePost(post.id);
+    await getPostFunction();
+    toggleModal();
   };
 
   const handleLiked = async () => {
@@ -122,6 +128,7 @@ const PostCard = ({ post, userDetails }) => {
             {userDetails.user_id ==
             post.user_id ? (
               <i
+                id="postcard-trash"
                 className="fa-solid fa-trash"
                 onClick={handleDelete}
               ></i>
