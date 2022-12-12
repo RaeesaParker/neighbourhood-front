@@ -12,67 +12,99 @@ function LoginForm(props) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
+  // Set state for login error
+  const [error, setError] = useState("");
+
   // Async Function to handle onSubmit of register form
   const onSubmitLoginForm = async (event) => {
     event.preventDefault();
+
+    if (!username) {
+      setError("Username is required");
+      return;
+    }
+
+    if (!password) {
+      setError("Password is required");
+      return;
+    }
+
     const loggedUser = await loginUser(
       username,
       password,
       props.setUserDetails
     );
-    if (loggedUser) {
+
+    if (loggedUser === true) {
       props.setIsLoggedIn(true);
       navigate("/main");
+    } else {
+      setError(loggedUser);
     }
   };
+
+  const handleOverlayClick = (e) => {
+    if (e.target.localName == "login-overlay") {
+      // closes the form if the user clicks outside of the form
+      props.register(null);
+    }
+  };
+
   return (
-    <div className="loginform">
-      <div className="loginform-cover">
-        <h1 id="loginform-header">
-          Welcome back,
-          <br /> neighbour!
-        </h1>
-        <form
-          onSubmit={onSubmitLoginForm}
-          className="login-form"
-        >
-          <div>
-            <i className="fa-solid fa-user-large login-icon" />
-            <input
-              className="text-btn"
-              type="text"
-              placeholder="Username"
-              onChange={(event) =>
-                setUsername(event.target.value)
-              }
-            />
-          </div>
-          <div>
-            <i className="fa-solid fa-lock login-icon" />
-            <input
-              className="password-btn"
-              type="password"
-              placeholder="Password"
-              onChange={(event) =>
-                setPassword(event.target.value)
-              }
-            ></input>
-          </div>
-          <button type="submit" id="login-btn">
-            Log In
-          </button>
-        </form>
-        <p
-          id="loginform-para"
-          onClick={() => {
-            // eslint-disable-next-line react/prop-types
-            props.register("register");
-          }}
-        >
-          Dont have an account?
-        </p>
+    <login-overlay
+      onClick={(e) => handleOverlayClick(e)}
+    >
+      <div className="loginform">
+        <div className="loginform-cover">
+          <h1 id="loginform-header">
+            Welcome back,
+            <br /> neighbour!
+          </h1>
+          <form
+            onSubmit={onSubmitLoginForm}
+            className="login-form"
+          >
+            <div>
+              <i className="fa-solid fa-user-large login-icon" />
+              <input
+                className="text-btn"
+                type="text"
+                placeholder="Username"
+                onChange={(event) =>
+                  setUsername(event.target.value)
+                }
+              />
+            </div>
+            <div>
+              <i className="fa-solid fa-lock login-icon" />
+              <input
+                className="password-btn"
+                type="password"
+                placeholder="Password"
+                onChange={(event) =>
+                  setPassword(event.target.value)
+                }
+              ></input>
+            </div>
+            <form-message className="error">
+              {error ? error : <></>}
+            </form-message>
+            <button type="submit" id="login-btn">
+              Log In
+            </button>
+          </form>
+          <p
+            id="loginform-para"
+            onClick={() => {
+              // eslint-disable-next-line react/prop-types
+              props.register("register");
+            }}
+          >
+            Dont have an account?
+          </p>
+        </div>
       </div>
-    </div>
+    </login-overlay>
   );
 }
 

@@ -55,7 +55,7 @@
   border-radius: 10px;
   border: none;
 
-  margin-top: 20px;
+  /* margin-top: 20px; */
   padding: 8px 65px;
   transition: 0.5s all ease;
 }
@@ -74,4 +74,18 @@
 
 #loginform-para:hover {
   color: var(--grey-light);
+}
+
+login-overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: #22222265;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+form-message {
+  display: block;
+  color: red;
 }
