@@ -29,13 +29,17 @@ export const registerUser = async (
       }
     );
     const data = await response.json();
-    setUserDetails({
-      username: data.user_name,
-      user_id: data.id,
-      user_regionId: data.region_id,
-    });
-    writeCookie("jwt_token", data.token, 7);
-    return data.id;
+    if (data.user_name) {
+      setUserDetails({
+        username: data.user_name,
+        user_id: data.id,
+        user_regionId: data.region_id,
+      });
+      writeCookie("jwt_token", data.token, 7);
+      return true;
+    } else {
+      return data.error;
+    }
   } catch (error) {
     console.log(error);
   }

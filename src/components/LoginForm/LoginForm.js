@@ -14,10 +14,7 @@ function LoginForm(props) {
 
   // Set state for login error
   const [error, setError] = useState("");
-  // temp use of setError
-  if (1 == 2) {
-    setError("");
-  }
+
   // Async Function to handle onSubmit of register form
   const onSubmitLoginForm = async (event) => {
     event.preventDefault();
