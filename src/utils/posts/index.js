@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { getCookie } from "../../common/index";
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = process.env.REACT_APP_BASE_URL;
 
 // Create a post
 export const createPost = async (postObject) => {
