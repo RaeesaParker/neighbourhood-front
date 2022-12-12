@@ -193,6 +193,7 @@ const SideAccount = (props) => {
       <div className="allsaved-posts">
         <SavedPosts
           userDetails={props.userDetails}
+          userObtained={props.userObtained}
         />
       </div>
     </div>
