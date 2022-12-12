@@ -25,9 +25,8 @@ const PostCard = ({
   const [bookmarked, setBookmarked] = useState(
     post.fav
   );
-  const [liked, setLiked] =
-    useState();
-    // post.userLike
+  const [liked, setLiked] = useState();
+  // post.userLike
 
   const [shareBtn, setShareBtn] = useState(true);
 
@@ -148,7 +147,7 @@ const PostCard = ({
         <div className="postcard-icons">
           <div>
             <i className="fa-solid fa-comment"></i>
-            <p>50 Comments</p>
+            <p>10 Comments</p>
           </div>
           <div className="postcard-right">
             <div className="share-links">
