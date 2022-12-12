@@ -11,7 +11,7 @@ const MsgModal = (props) => {
   // prop setModal set false to remove modal
   // const [cancelBtn, setCancelBtn] =
   //   useState(false);
-
+  const [checked, setChecked] = useState(1);
   const [newPost, setNewPost] = useState({
     post_type: null,
     user_id: props.userDetails.user_id,
@@ -103,6 +103,9 @@ const MsgModal = (props) => {
           <div className="msg-filter">
             <div>
               <input
+                checked={`${
+                  checked === 1 ? "checked" : ""
+                }`}
                 type="radio"
                 id="general"
                 name="category"
@@ -115,6 +118,7 @@ const MsgModal = (props) => {
                 }
               />
               <label
+                onClick={() => setChecked(1)}
                 htmlFor="general"
                 className="msg-filter-general"
               >
@@ -123,6 +127,9 @@ const MsgModal = (props) => {
             </div>
             <div>
               <input
+                checked={`${
+                  checked === 2 ? "checked" : ""
+                }`}
                 type="radio"
                 id="buysell"
                 name="category"
@@ -135,6 +142,7 @@ const MsgModal = (props) => {
                 }
               />
               <label
+                onClick={() => setChecked(2)}
                 htmlFor="buysell"
                 className="msg-filter-buysell"
               >
@@ -143,6 +151,9 @@ const MsgModal = (props) => {
             </div>
             <div>
               <input
+                checked={`${
+                  checked === 3 ? "checked" : ""
+                }`}
                 type="radio"
                 id="alerts"
                 name="category"
@@ -155,6 +166,7 @@ const MsgModal = (props) => {
                 }
               />
               <label
+                onClick={() => setChecked(3)}
                 htmlFor="alerts"
                 className="msg-filter-alerts"
               >
@@ -163,6 +175,9 @@ const MsgModal = (props) => {
             </div>
             <div>
               <input
+                checked={`${
+                  checked === 4 ? "checked" : ""
+                }`}
                 type="radio"
                 id="traffic"
                 name="category"
@@ -175,6 +190,7 @@ const MsgModal = (props) => {
                 }
               />
               <label
+                onClick={() => setChecked(4)}
                 htmlFor="traffic"
                 className="msg-filter-traffic"
               >
