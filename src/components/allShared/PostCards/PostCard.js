@@ -7,6 +7,11 @@ import {
   getPostById,
   deletePost,
 } from "../../../utils/posts";
+import {
+  createComment,
+  getComments,
+  // getComments,
+} from "../../../utils/comments";
 
 // Components
 import { useState } from "react";
@@ -25,16 +30,23 @@ const PostCard = ({
   const [bookmarked, setBookmarked] = useState(
     post.fav
   );
+
+  // comment state management
   const [commentSpan, setCommentSpan] =
     useState(false);
   const [viewAll, setViewAll] = useState(false);
   const [liked, setLiked] = useState(false);
+  const [newComment, setNewComment] =
+    useState("");
+  const [comments, setComments] = useState([]);
+
   // post.userLike
 
   const [shareBtn, setShareBtn] = useState(true);
 
   const handleDelete = async () => {
     // would be nice to have a popup confirmation
+
     await deletePost(post.id);
     await getPostFunction();
     toggleModal();
@@ -56,11 +68,33 @@ const PostCard = ({
   };
 
   const handleComments = () => {
+    if (!commentSpan) {
+      loadComments();
+    }
     setCommentSpan(!commentSpan);
   };
 
-  const handleNewComment = () => {
-    setViewAll(!viewAll);
+  const loadComments = async () => {
+    const results = await getComments(post.id);
+    if (results.length > 0) {
+      setComments(results);
+    }
+  };
+
+  const handleNewComment = async (e) => {
+    e.preventDefault();
+    const result = await createComment({
+      PostId: post.id,
+      userId: userDetails.user_id,
+      content: newComment,
+    });
+    setViewAll(true);
+    if (result) {
+      // not sure if the result needs to be handled
+      setNewComment("");
+      loadComments();
+      setCommentSpan(true);
+    }
   };
 
   const handleShared = () => {
@@ -161,7 +195,7 @@ const PostCard = ({
             className="comments-box"
           >
             <i className="fa-solid fa-comment"></i>
-            <p>1 Comment</p>
+            <p>Comments</p>
           </div>
           <div className="postcard-right">
             <div className="share-links">
@@ -205,29 +239,24 @@ const PostCard = ({
             >
               {`${
                 !viewAll
-                  ? "View all 34345 comments..."
-                  : "Hide all 34345 comments..."
+                  ? `View all ${comments.length} comments...`
+                  : `Hide all ${comments.length} comments...`
               }`}
             </p>
             {viewAll && (
               <div>
                 <div className="comment-span-all">
-                  <p>
-                    @<strong>Username</strong>:
-                    this is my comment, and is
-                    very big big big big big big
-                    big big big big big big big
-                    big big big big big big big
-                    big big big big big big big!
-                  </p>
-                  <p>
-                    @<strong>Username</strong>:
-                    this is my comment, and is
-                    very big big big big big big
-                    big big big big big big big
-                    big big big big big big big
-                    big big big big big big big!
-                  </p>
+                  {comments.map((comment) => {
+                    return (
+                      <p key={comment.id}>
+                        @
+                        <strong>
+                          {comment.user_name}
+                        </strong>
+                        :{comment.content}
+                      </p>
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -238,6 +267,12 @@ const PostCard = ({
               <input
                 className="comment-span-input"
                 placeholder="Add your comment..."
+                value={newComment}
+                onChange={(e) =>
+                  setNewComment(
+                    e.currentTarget.value
+                  )
+                }
               />
               <button className="comment-span-btn">
                 Post
