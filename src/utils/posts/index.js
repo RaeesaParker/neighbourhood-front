@@ -260,6 +260,28 @@ export const favoritePost = async (
       }
     );
     const data = await response.json();
+    console.log("Post has been favourited", data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Get all posts liked by a user
+export const getPostsLikedByUser = async (id) => {
+  try {
+    const response = await fetch(
+      `${API_URL}/posts/user/favourite/${id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer " + getCookie("jwt_token"),
+        },
+      }
+    );
+    const data = await response.json();
     return data;
   } catch (error) {
     console.log(error);

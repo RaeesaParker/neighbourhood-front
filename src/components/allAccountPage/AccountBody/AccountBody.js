@@ -8,9 +8,16 @@ import SearchBox from "../../allShared/SearchBox/SearchBox";
 import SpanAccount from "../../allAccountPage/SpanAccount/SpanAccount";
 import Feed from "../../allShared/Feed/Feed";
 import PostCard from "../../allShared/PostCards/PostCard";
-import { getAllPostUser } from "../../../utils/posts";
+import DelModal from "../../allShared/DelModal/DelModal";
+import {
+  getAllPostUser,
+  searchPost,
+} from "../../../utils/posts";
 
 const AccountBody = (props) => {
+  // Set the post details to be blank on the first
+  // render so that it doesn't crash when you reload a page
+
   const [postFilter, setPostFilter] = useState([
     true,
     true,
@@ -18,16 +25,31 @@ const AccountBody = (props) => {
     true,
   ]);
 
+  const [searchTerm, setSearchTerm] =
+    useState("");
+
+  // Modal handling when deleting a post
+  const [modal, setModal] = useState(false);
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
   useEffect(() => {
     getPostFunction();
     props.setHaveNewPost(false);
   }, [postFilter, props.haveNewPost]);
 
   const getPostFunction = async () => {
-    const getPost = await getAllPostUser(
-      postFilter,
-      props.userDetails.user_id
-    );
+    let getPost = [];
+    if (searchTerm) {
+      getPost = await searchPost(searchTerm);
+      setSearchTerm("");
+    } else {
+      getPost = await getAllPostUser(
+        postFilter,
+        props.userDetails.user_id
+      );
+    }
     props.setPostDetails(getPost);
   };
 
@@ -40,7 +62,12 @@ const AccountBody = (props) => {
 
   return (
     <div className="mainbody-box">
-      <SearchBox />
+      {modal && <DelModal setModal={setModal} />}
+      <SearchBox
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        setHaveNewPost={props.setHaveNewPost}
+      />
       <SpanAccount
         userDetails={props.userDetails}
       />
@@ -53,12 +80,15 @@ const AccountBody = (props) => {
             columnClassName="my-masonry-grid_column"
           >
             {props.postDetails.map((post, i) => {
-
               return (
                 <PostCard
                   key={post.id}
                   post={post}
                   userDetails={props.userDetails}
+                  getPostFunction={
+                    getPostFunction
+                  }
+                  toggleModal={toggleModal}
                 />
               );
             })}

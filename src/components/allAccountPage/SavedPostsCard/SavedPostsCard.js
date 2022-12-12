@@ -1,27 +1,67 @@
 // Design + images
 import "./SavedPostsCard.css";
-
+import { useState } from "react";
 // Components
+import {
+  favoritePost,
+  getPostById,
+} from "../../../utils/posts";
 
-const SavedPostsCard = () => {
+const SavedPostsCard = (props) => {
+  // localPost in state is used to allow the post to be updated
+  // without the need to pull all the post data.
+  const [localPost, setLocalPost] = useState(
+    props.post
+  );
+
+  const [bookmarked, setBookmarked] = useState(
+    props.post.fav
+  );
+
+  // Remove a post from the book marks
+  const handleDelete = async () => {
+    setBookmarked(!bookmarked);
+    // need to fetch endpoint
+    await favoritePost({
+      user_id: props.userDetails.user_id,
+      post_id: props.post.id,
+    });
+    const updatedPost = await getPostById(
+      props.post.id
+    );
+    setLocalPost(updatedPost);
+    // Refresh the saved posts once one has been deleted
+    props.getSavedFunction();
+  };
+
   return (
-    <div className="saved-postcard saved-postcard-bg2">
+    <div
+      className={`saved-postcard ${
+        localPost.post_type === 1
+          ? "saved-postcard-bg1"
+          : localPost.post_type === 2
+          ? "saved-postcard-bg2"
+          : localPost.post_type === 3
+          ? "saved-postcard-bg3"
+          : localPost.post_type === 4
+          ? "saved-postcard-bg4"
+          : "postcard-bg"
+      }`}
+    >
       <div className="saved-postcard-head">
         <div className="saved-postcard-user">
           <i className="fa-solid fa-user-large"></i>
-          <p>@username</p>
+          <p>@{localPost.user_name}</p>
         </div>
-        <i className="fa-solid fa-bookmark sv-bm"></i>
+        <i
+          id="saved-trashcan"
+          className="fa-solid fa-trash"
+          onClick={handleDelete}
+        ></i>
       </div>
       <hr />
       <div className="saved-postcard-text">
-        <p>
-          This is a post. Lorem Ipsum is simply
-          dummy text of the printing and
-          typesetting industry. Lorem Ipsum has
-          been the industrys standard dummy text
-          ever since the 1500s.
-        </p>
+        <p>{localPost.post_content}</p>
       </div>
     </div>
   );

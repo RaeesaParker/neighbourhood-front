@@ -15,7 +15,7 @@ function SidePanel(props) {
     setWeather({
       minTemp: 5,
       maxTemp: 15,
-      weatherCode: 91,
+      weatherCode: 20,
     });
   }
 

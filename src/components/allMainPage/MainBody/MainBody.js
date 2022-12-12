@@ -9,6 +9,7 @@ import SpanMainPage from "../../allMainPage/SpanMainPage/SpanMainPage";
 import NewPost from "../../allMainPage/NewPost/NewPost";
 import Feed from "../../allShared/Feed/Feed";
 import PostCard from "../../allShared/PostCards/PostCard";
+import DelModal from "../../allShared/DelModal/DelModal";
 import {
   getAllPost,
   searchPost,
@@ -29,6 +30,12 @@ const MainBody = (props) => {
 
   const [searchTerm, setSearchTerm] =
     useState("");
+
+  // Modal handling when deleting a post
+  const [modal, setModal] = useState(false);
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
   useEffect(() => {
     getPostFunction();
@@ -61,6 +68,7 @@ const MainBody = (props) => {
 
   return (
     <div className="mainbody-box">
+      {modal && <DelModal setModal={setModal} />}
       <SearchBox
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -88,6 +96,10 @@ const MainBody = (props) => {
                   key={post.id}
                   userDetails={props.userDetails}
                   post={post}
+                  getPostFunction={
+                    getPostFunction
+                  }
+                  toggleModal={toggleModal}
                 />
               );
             })}
