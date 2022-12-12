@@ -1,53 +1,31 @@
 // Design + images
 import "./SchoolBody.css";
+import schoolImage from "../../../imgs/schools.jpg";
 
 // Components
 import SearchBox from "../../allShared/SearchBox/SearchBox";
 import SpanSchool from "../../allSchool/SpanSchool/SpanSchool";
 import InfoCards from "../../allShared/InfoCards/InfoCards";
-// import { useState } from "react";
 
-const SchoolBody = () => {
-  // const [schoolList, setSchoolList] = useState(
-  //   []
-  // );
-
-  // setSchoolList();
-
+const SchoolBody = (props) => {
   return (
     <div className="mainbody-box">
       <SearchBox />
-      <SpanSchool />
+      <SpanSchool
+        userDetails={props.userDetails}
+      />
       <div className="school-posts">
-        <InfoCards />
-        <InfoCards />
-        <InfoCards />
-        <InfoCards />
-        <InfoCards />
-        <InfoCards />
-        <InfoCards />
-
-        {/* If there are schools in the area:
-        map all, if there is no school in the area: error
-        message on the screen*/}
-        {/* {schoolList.length > 0 ? (
-          <div className="school-posts">
-            {schoolList.map((data) => {
-              return (
-                <InfoCards
-                  key={data.Name}
-                  data={data}
-                />
-              );
-            })}
-          </div>
-        ) : (
-          <div className="no-school">
-            <h2>
-              No schools found in this area.
-            </h2>
-          </div>
-        )} */}
+        {props.allSchoolsByRegion.map(
+          (school, i) => {
+            return (
+              <InfoCards
+                key={i}
+                organisation={school}
+                image={schoolImage}
+              />
+            );
+          }
+        )}
       </div>
     </div>
   );

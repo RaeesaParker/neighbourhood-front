@@ -21,6 +21,8 @@ function NavigationBar(props) {
   };
 
   function onLogOut() {
+    document.cookie =
+      "jwt_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     props.setIsLoggedIn(false);
     navigate("/");
   }
@@ -75,11 +77,17 @@ function NavigationBar(props) {
           onClick={onLogOut}
           className="button-style"
         >
-          <i className="fa-solid fa-arrow-right-from-bracket"></i>
+          <i className="fa-solid fa-arrow-right-from-bracket nb-icon"></i>
           <p>Logout</p>
         </button>
       </div>
-      {modal && <MsgModal />}
+      {modal && (
+        <MsgModal
+          setModal={setModal}
+          userDetails={props.userDetails}
+          setHaveNewPost={props.setHaveNewPost}
+        />
+      )}
     </div>
   );
 }

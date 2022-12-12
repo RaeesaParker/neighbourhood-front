@@ -5,7 +5,7 @@ import schoolpic from "../../../imgs/manschool.png";
 // Components
 import { useState } from "react";
 
-const SpanSchool = () => {
+const SpanSchool = (props) => {
   const [span, setSpan] = useState(false);
   const handleClick = () => {
     setSpan(true);
@@ -18,7 +18,9 @@ const SpanSchool = () => {
       }`}
     >
       <div className="span-header">
-        <h2>Hello, name!</h2>
+        <h2>
+          Hello, {props.userDetails.username}!
+        </h2>
         <button onClick={handleClick}>
           <i className="fa-solid fa-x icon-spanclose"></i>
         </button>

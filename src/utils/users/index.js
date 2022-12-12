@@ -29,13 +29,17 @@ export const registerUser = async (
       }
     );
     const data = await response.json();
-    setUserDetails({
-      username: data.user_name,
-      user_id: data.id,
-      user_regionId: data.region_id,
-    });
-    writeCookie("jwt_token", data.token, 7);
-    return data.id;
+    if (data.user_name) {
+      setUserDetails({
+        username: data.user_name,
+        user_id: data.id,
+        user_regionId: data.region_id,
+      });
+      writeCookie("jwt_token", data.token, 7);
+      return true;
+    } else {
+      return data.error;
+    }
   } catch (error) {
     console.log(error);
   }
@@ -66,7 +70,7 @@ export const findUser = async (
         user_id: data.id,
         user_regionId: data.region_id,
       });
-      return data.user_name;
+      return data;
     }
   } catch (error) {
     console.log(error);
@@ -102,6 +106,8 @@ export const loginUser = async (
       });
       writeCookie("jwt_token", data.token, 7);
       return true;
+    } else {
+      return data.status;
     }
   } catch (error) {
     console.log(error);
@@ -111,6 +117,7 @@ export const loginUser = async (
 // Get a users details
 export const getUser = async (userId) => {
   try {
+    console.log(userId);
     const response = await fetch(
       `https://web-production-2000.up.railway.app/user/${userId}`,
       {

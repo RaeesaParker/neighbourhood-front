@@ -1,8 +1,12 @@
 .postcard {
   border-radius: 15px;
-
   position: relative;
   padding: 20px 20px 10px 20px;
+}
+
+#postcard-trash:hover {
+  color: var(--grey-medium);
+  cursor: pointer;
 }
 
 .postcard-bg {
@@ -29,14 +33,39 @@
 
 .postcard-head {
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
+}
 
-  margin-bottom: 20px;
+.postcard-head-left {
+  display: flex;
+  gap: 12px;
+
+  margin-bottom: 10px;
+}
+
+.postcard-head-left div p {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.postcard-head-right {
+  display: flex;
+  justify-content: space-between;
+  width: 40px;
+}
+.postcard-head-right i {
+  text-align: center;
+  height: 16px;
+  width: 16px;
+}
+
+.postcard-head-right i:hover {
+  cursor: pointer;
 }
 
 .postcard img {
-  height: 55px;
-  width: 55px;
+  height: 45px;
+  width: 45px;
 }
 
 /* ** */
@@ -80,7 +109,18 @@
 }
 
 .postcard-right i {
+  text-align: center;
+  height: 16px;
+  width: 16px;
   z-index: 30;
+}
+.postcard-right p {
+  margin-left: -12px;
+  margin-right: -6px;
+}
+
+.postcard-right .fa-bookmark {
+  margin-left: -3px;
 }
 
 .share-links {
@@ -140,6 +180,11 @@
 
 /* *** */
 
+.bookmarked-post {
+  color: var(--pink);
+  transition: 0.2s all linear;
+}
+
 .liked-post {
   color: var(--pink);
   transition: 0.2s all linear;
@@ -153,11 +198,6 @@
   .postcard-head {
     gap: 10px;
     margin-bottom: 15px;
-  }
-
-  .postcard img {
-    height: 45px;
-    width: 45px;
   }
 
   .postcard-head,

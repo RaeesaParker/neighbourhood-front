@@ -1,5 +1,7 @@
 // Design + images
 import "./MainBody.css";
+import { useEffect, useState } from "react";
+import Masonry from "react-masonry-css";
 
 // Components
 import SearchBox from "../../allShared/SearchBox/SearchBox";
@@ -7,79 +9,101 @@ import SpanMainPage from "../../allMainPage/SpanMainPage/SpanMainPage";
 import NewPost from "../../allMainPage/NewPost/NewPost";
 import Feed from "../../allShared/Feed/Feed";
 import PostCard from "../../allShared/PostCards/PostCard";
+import DelModal from "../../allShared/DelModal/DelModal";
+import {
+  getAllPost,
+  searchPost,
+} from "../../../utils/posts";
 
 // ////////////////
 
 const MainBody = (props) => {
-  // fake user
-  const user = {
-    user_name: "ijwilliamson",
-    email: "ian@mail.com",
-    password: "password",
-    pcd: "SW1A 1AA",
-    name: "Ian Williamson",
-    address: "1 Downing Street",
+  // postFilter is the filter array for the posts.  Propped down the
+  // Feed component to allow users to choose post catagories.
+
+  const [postFilter, setPostFilter] = useState([
+    true,
+    true,
+    true,
+    true,
+  ]);
+
+  const [searchTerm, setSearchTerm] =
+    useState("");
+
+  // Modal handling when deleting a post
+  const [modal, setModal] = useState(false);
+  const toggleModal = () => {
+    setModal(!modal);
   };
-  // fake post
-  const posts = [
-    {
-      id: 1,
-      post_type: 1,
-      user_id: 1,
-      post_content:
-        "This is a post. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    },
-    {
-      id: 1,
-      post_type: 2,
-      user_id: 1,
-      post_content:
-        "This is a post. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    },
-    {
-      id: 1,
-      post_type: 3,
-      user_id: 1,
-      post_content:
-        "This is a post. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    },
-    {
-      id: 1,
-      post_type: 4,
-      user_id: 1,
-      post_content:
-        "This is a post. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    },
-    {
-      id: 1,
-      post_type: 1,
-      user_id: 1,
-      post_content:
-        "This is a post. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    },
-  ];
+
+  useEffect(() => {
+    getPostFunction();
+    props.setHaveNewPost(false);
+  }, [postFilter, props.haveNewPost]);
+
+  // post filter is used to filter the posts.
+  // postFilter is an array of catagories to filter by
+  // setPostFilter should be passed to the feed to set
+  // postFilter should be sent to the getPostFunction
+  // once it can handle it.
+
+  const getPostFunction = async () => {
+    let getPost = [];
+    if (searchTerm) {
+      getPost = await searchPost(searchTerm);
+      setSearchTerm("");
+    } else {
+      getPost = await getAllPost(postFilter);
+    }
+    props.setPostDetails(getPost);
+  };
+
+  const breakpointPostCards = {
+    default: 4,
+    1920: 3,
+    1450: 2,
+    1050: 1,
+  };
 
   return (
     <div className="mainbody-box">
-      <SearchBox />
+      {modal && <DelModal setModal={setModal} />}
+      <SearchBox
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        setHaveNewPost={props.setHaveNewPost}
+      />
       <SpanMainPage
         userDetails={props.userDetails}
       />
-      <NewPost />
-      <Feed />
+      <NewPost
+        userDetails={props.userDetails}
+        setHaveNewPost={props.setHaveNewPost}
+      />
+      <Feed setPostFilter={setPostFilter} />
+      {/* <div className="mainbody-posts"> */}
       <div className="mainbody-posts">
-        {posts.length > 0 ? (
-          <div className="mainbody-posts">
-            {posts.map((post, i) => {
+        {props.postDetails?.length > 0 ? (
+          <Masonry
+            breakpointCols={breakpointPostCards}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
+            {props.postDetails.map((post) => {
               return (
                 <PostCard
-                  key={i}
+                  key={post.id}
+                  userDetails={props.userDetails}
                   post={post}
-                  user={user}
+                  getPostFunction={
+                    getPostFunction
+                  }
+                  toggleModal={toggleModal}
                 />
               );
             })}
-          </div>
+          </Masonry>
         ) : (
           <div className="no-posts">
             <h2>

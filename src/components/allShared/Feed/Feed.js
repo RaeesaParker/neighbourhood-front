@@ -1,6 +1,47 @@
+import { useState } from "react";
 import "./Feed.css";
 
-const Feed = () => {
+const Feed = ({ setPostFilter }) => {
+  const [postType, setPostType] = useState([
+    true,
+    true,
+    true,
+    true,
+  ]);
+  const [all, setAll] = useState(true);
+
+  const optionClicked = (i) => {
+    if (i == 4) {
+      if (!all) {
+        setPostType([true, true, true, true]);
+        setPostFilter([true, true, true, true]);
+      } else {
+        setPostType([false, false, false, false]);
+        setPostFilter([
+          false,
+          false,
+          false,
+          false,
+        ]);
+      }
+
+      setAll(!all);
+      return;
+    }
+
+    const temp = [...postType];
+    temp[i] = !temp[i];
+
+    if (temp === [true, true, true, true]) {
+      setAll(true);
+    } else {
+      setAll(false);
+    }
+
+    setPostType(temp);
+    setPostFilter(temp);
+  };
+
   return (
     <div className="mainfeed">
       <div className="feed-filter">
@@ -10,31 +51,58 @@ const Feed = () => {
               type="checkbox"
               id="general"
               value="General"
+              checked={postType[0]}
+              onClick={() => optionClicked(0)}
+              readOnly
             />
             <label className="filter-general">
               General
             </label>
           </div>
           <div>
-            <input type="checkbox" id="buysell" />
+            <input
+              type="checkbox"
+              id="buysell"
+              checked={postType[1]}
+              onClick={() => optionClicked(1)}
+              readOnly
+            />
             <label className="filter-buysell">
               Buy and Sell
             </label>
           </div>
           <div>
-            <input type="checkbox" id="alerts" />
+            <input
+              type="checkbox"
+              id="alerts"
+              checked={postType[2]}
+              onClick={() => optionClicked(2)}
+              readOnly
+            />
             <label className="filter-alerts">
               Alerts
             </label>
           </div>
           <div>
-            <input type="checkbox" id="traffic" />
+            <input
+              type="checkbox"
+              id="traffic"
+              checked={postType[3]}
+              onClick={() => optionClicked(3)}
+              readOnly
+            />
             <label className="filter-traffic">
               Traffic
             </label>
           </div>
           <div>
-            <input type="checkbox" id="all" />
+            <input
+              type="checkbox"
+              id="all"
+              checked={all}
+              onClick={() => optionClicked(4)}
+              readOnly
+            />
             <label className="filter-all">
               All
             </label>

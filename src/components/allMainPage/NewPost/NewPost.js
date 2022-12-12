@@ -8,7 +8,7 @@ import MsgModal from "../../allShared/MsgModal/MsgModal";
 
 // ////////////////
 
-const NewPost = () => {
+const NewPost = (props) => {
   const [modal, setModal] = useState(false);
   const toggleModal = () => {
     setModal(!modal);
@@ -16,17 +16,25 @@ const NewPost = () => {
 
   return (
     <div className="newpost">
-      {modal && <MsgModal />}
+      {modal && (
+        <MsgModal
+          setModal={setModal}
+          userDetails={props.userDetails}
+          setHaveNewPost={props.setHaveNewPost}
+        />
+      )}
       <form className="newpost-bg">
         <img
           src={speechbubble}
           alt="speech bubble"
         />
-        <input
+        <div
           className="newpost-input"
-          placeholder="What is on your mind, neighbour?"
           onClick={toggleModal}
-        ></input>
+        >
+          What is on your mind, neighbour? Click
+          here to share with us.
+        </div>
       </form>
     </div>
   );

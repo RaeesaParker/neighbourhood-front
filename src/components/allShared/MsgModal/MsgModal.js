@@ -1,24 +1,48 @@
 // Design + images
 import { useState } from "react";
+import { createPost } from "../../../utils/posts";
 
 // Components
 import "./MsgModal.css";
 
 // ///////////////
 
-const MsgModal = () => {
-  const [cancelBtn, setCancelBtn] =
-    useState(false);
+const MsgModal = (props) => {
+  // prop setModal set false to remove modal
+  // const [cancelBtn, setCancelBtn] =
+  //   useState(false);
+
   const [newPost, setNewPost] = useState({
     post_type: null,
-    user_id: null,
+    user_id: props.userDetails.user_id,
     post_content: null,
   });
+
   const [errorMessage, setErrorMessage] =
     useState("");
 
-  const handleSubmit = (e) => {
+  const maxCharsValidation = (e) => {
+    // Basic validation to check the max characters
+    const newPostText = e.target.value;
+
+    if (newPostText.length > 199) {
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 2000);
+
+      return setErrorMessage(
+        "Ops! Maximum characters allowed per post: 200."
+      );
+    }
+    setNewPost({
+      ...newPost,
+      post_content: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(newPost);
 
     // Basic validation
     if (!newPost.post_content) {
@@ -39,22 +63,21 @@ const MsgModal = () => {
       return setErrorMessage(
         "You must select a category."
       );
-
-      // Function for posting to backend bellow:
     }
-
-    console.log(newPost);
+    // Function for posting to backend bellow:
+    const postCreated = await createPost(newPost);
+    props.setModal(false);
+    setNewPost(postCreated);
+    props.setHaveNewPost(true);
   };
 
   const handleCancelBtn = () => {
-    setCancelBtn(!cancelBtn);
+    props.setModal(false);
   };
 
   return (
     <form
-      className={`msgmodal-box ${
-        cancelBtn ? "display-none" : ""
-      }`}
+      className={`msgmodal-box `}
       onSubmit={handleSubmit}
     >
       <div className="msgmodal">
@@ -70,12 +93,8 @@ const MsgModal = () => {
         </div>
         <div className="msgmodal-header">
           <textarea
-            onChange={(e) =>
-              setNewPost({
-                ...newPost,
-                post_content: e.target.value,
-              })
-            }
+            maxLength="200"
+            onChange={maxCharsValidation}
             placeholder="What's on your mind, neighbour?"
           />
         </div>
@@ -170,9 +189,13 @@ const MsgModal = () => {
               {errorMessage}
             </span>
           )}
-          <button onClick={handleCancelBtn}>
+          <button
+            type="button"
+            onClick={handleCancelBtn}
+          >
             Cancel
           </button>
+
           <button type="submit">
             Create Post
           </button>

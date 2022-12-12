@@ -1,49 +1,24 @@
 // Design + images
 import "./SideAccount.css";
-import userProfile from "../../../imgs/profiles/profile1.jpg";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import userProfile from "../../../imgs/fakeuser.png";
+import { useState } from "react";
 import {
-  getUser,
   updateUser,
   deleteUser,
 } from "../../../utils/users";
+import SavedPosts from "../SavedPosts/SavedPosts";
 
 const SideAccount = (props) => {
-  // Navigation for redirect
-  const navigate = useNavigate();
-
   // States to hold the updated details
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [postcode, setPostcode] = useState(null);
-  const [editAcc, setEditAcc] = useState(true);
-
-  // State to store the current user details => will remain empty for firt render
-  const [currentDetails, setCurrentDetails] =
-    useState({
-      user_name: null,
-      password: null,
-      email: null,
-      postcode: null,
-    });
+  const [editAcc, setEditAcc] = useState(false);
 
   // Handle open and close of edit pane
   const handleClick = () => {
     setEditAcc(!editAcc);
-  };
-
-  // Function to get the user data (username, email and postcode)
-  useEffect(() => {
-    getUserDetailsFunc();
-  }, []);
-
-  const getUserDetailsFunc = async () => {
-    const userData = await getUser(
-      props.userDetails.user_id
-    );
-    setCurrentDetails(userData);
   };
 
   //  Function to update the user parameters
@@ -59,10 +34,6 @@ const SideAccount = (props) => {
     // Reduce the object down to just the updated fields
     const reducedData = await reduceObject(
       updatedObj
-    );
-    console.log(
-      "The reduced object is ",
-      reducedData
     );
     // Send the reduced data to the update request
     const updatedUserDetails = await updateUser(
@@ -113,7 +84,7 @@ const SideAccount = (props) => {
     <div className="sideaccount">
       <div id="subsection-panel-user">
         <div id="subsection-panel-user-div">
-          <h4>{props.userDetails.username}</h4>
+          <h4>@{props.userDetails.username}</h4>
         </div>
         <div id="subsection-panel-image-div">
           <img
@@ -143,7 +114,7 @@ const SideAccount = (props) => {
                 </label>
                 <input
                   placeholder={
-                    currentDetails.user_name
+                    props.currentDetails.user_name
                   }
                   onChange={(e) =>
                     setUsername(e.target.value)
@@ -158,7 +129,7 @@ const SideAccount = (props) => {
                 </label>
                 <input
                   placeholder={
-                    currentDetails.email
+                    props.currentDetails.email
                   }
                   onChange={(e) =>
                     setEmail(e.target.value)
@@ -185,7 +156,9 @@ const SideAccount = (props) => {
                   <i className="fa-solid fa-chevron-right"></i>
                 </label>
                 <input
-                  placeholder={currentDetails.pcd}
+                  placeholder={
+                    props.currentDetails.postcode
+                  }
                   onChange={(e) =>
                     setPostcode(e.target.value)
                   }
@@ -216,6 +189,11 @@ const SideAccount = (props) => {
             </div>
           </div>
         )}
+      </div>
+      <div className="allsaved-posts">
+        <SavedPosts
+          userDetails={props.userDetails}
+        />
       </div>
     </div>
   );
