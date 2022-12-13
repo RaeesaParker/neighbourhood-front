@@ -25,7 +25,10 @@ const PostCard = ({
   const [bookmarked, setBookmarked] = useState(
     post.fav
   );
-  const [liked, setLiked] = useState();
+  const [commentSpan, setCommentSpan] =
+    useState(false);
+  const [viewAll, setViewAll] = useState(false);
+  const [liked, setLiked] = useState(false);
   // post.userLike
 
   const [shareBtn, setShareBtn] = useState(true);
@@ -50,6 +53,14 @@ const PostCard = ({
       post.id
     );
     setLocalPost(updatedPost);
+  };
+
+  const handleComments = () => {
+    setCommentSpan(!commentSpan);
+  };
+
+  const handleNewComment = () => {
+    setViewAll(!viewAll);
   };
 
   const handleShared = () => {
@@ -145,9 +156,12 @@ const PostCard = ({
         </div>
 
         <div className="postcard-icons">
-          <div>
+          <div
+            onClick={handleComments}
+            className="comments-box"
+          >
             <i className="fa-solid fa-comment"></i>
-            <p>10 Comments</p>
+            <p>1 Comment</p>
           </div>
           <div className="postcard-right">
             <div className="share-links">
@@ -183,6 +197,54 @@ const PostCard = ({
             />
           </div>
         </div>
+        {commentSpan && (
+          <div className="comment-span">
+            <p
+              className="comment-span-viewall"
+              onClick={() => setViewAll(!viewAll)}
+            >
+              {`${
+                !viewAll
+                  ? "View all 34345 comments..."
+                  : "Hide all 34345 comments..."
+              }`}
+            </p>
+            {viewAll && (
+              <div>
+                <div className="comment-span-all">
+                  <p>
+                    @<strong>Username</strong>:
+                    this is my comment, and is
+                    very big big big big big big
+                    big big big big big big big
+                    big big big big big big big
+                    big big big big big big big!
+                  </p>
+                  <p>
+                    @<strong>Username</strong>:
+                    this is my comment, and is
+                    very big big big big big big
+                    big big big big big big big
+                    big big big big big big big
+                    big big big big big big big!
+                  </p>
+                </div>
+              </div>
+            )}
+            <form
+              className="comment-span-user"
+              onSubmit={handleNewComment}
+            >
+              <input
+                className="comment-span-input"
+                placeholder="Add your comment..."
+              />
+              <button className="comment-span-btn">
+                Post
+              </button>
+            </form>
+          </div>
+        )}
       </div>
     </div>
   );

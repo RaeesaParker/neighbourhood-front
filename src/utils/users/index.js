@@ -161,12 +161,12 @@ export const updateUser = async (
       }
     );
     const data = await response.json();
-    console.log("Updated details are ", data);
     setUserDetails({
       username: data.user_name,
       user_id: data.id,
       user_regionId: data.region_id,
     });
+    return data;
   } catch (error) {
     console.log(error);
   }
