@@ -195,7 +195,7 @@ const PostCard = ({
             className="comments-box"
           >
             <i className="fa-solid fa-comment"></i>
-            <p>Comments</p>
+            <p>{post.comments} Comments</p>
           </div>
           <div className="postcard-right">
             <div className="share-links">
