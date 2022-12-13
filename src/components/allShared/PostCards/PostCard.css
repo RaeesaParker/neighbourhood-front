@@ -1,3 +1,7 @@
+.visibility-hidden {
+  visibility: hidden;
+}
+
 .postcard {
   border-radius: 15px;
   position: relative;
@@ -104,9 +108,9 @@
   cursor: pointer;
 }
 
-.postcard-right {
+/* .postcard-right {
   position: relative;
-}
+} */
 
 .postcard-right i {
   text-align: center;
@@ -121,6 +125,10 @@
 
 .postcard-right .fa-bookmark {
   margin-left: -3px;
+}
+
+.btn-forshare {
+  position: relative;
 }
 
 .share-links {
@@ -143,8 +151,8 @@
   color: var(--white);
   font-size: 30px;
 
-  left: -84px;
-  bottom: 55px;
+  left: -150px;
+  bottom: 85px;
   width: 170px;
   height: 50px;
   position: relative;

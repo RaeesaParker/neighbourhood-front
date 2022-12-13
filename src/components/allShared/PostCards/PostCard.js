@@ -169,7 +169,7 @@ const PostCard = ({
           <div className="postcard-head-right">
             {userDetails.user_id ==
             post.user_id ? (
-              <i className="fa-solid fa-file-pen"></i>
+              <i className="fa-solid fa-file-pen visibility-hidden"></i>
             ) : (
               <></>
             )}
@@ -200,18 +200,6 @@ const PostCard = ({
             <p>{post.comments} Comments</p>
           </div>
           <div className="postcard-right">
-            <div className="share-links">
-              <div
-                className={`sharebubble ${
-                  shareBtn ? "shared-btn" : ""
-                }`}
-              >
-                <i className="fa-brands fa-square-facebook" />
-                <i className="fa-brands fa-square-instagram" />
-                <i className="fa-brands fa-square-twitter" />
-              </div>
-            </div>
-
             <i
               className={`fa-solid fa-heart ${
                 liked ? "liked-post" : ""
@@ -230,7 +218,19 @@ const PostCard = ({
             <i
               className="fa-solid fa-share btn-forshare"
               onClick={handleShared}
-            />
+            >
+              <div className="share-links">
+                <div
+                  className={`sharebubble ${
+                    shareBtn ? "shared-btn" : ""
+                  }`}
+                >
+                  <i className="fa-brands fa-square-facebook" />
+                  <i className="fa-brands fa-square-instagram" />
+                  <i className="fa-brands fa-square-twitter" />
+                </div>
+              </div>
+            </i>
           </div>
         </div>
         {commentSpan && (
