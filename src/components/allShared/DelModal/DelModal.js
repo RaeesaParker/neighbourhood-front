@@ -12,13 +12,13 @@ const DelModal = (props) => {
   };
 
   return (
-    <form className={`msgmodal-box `}>
-      <div className="msgmodal-title">
-        <div className="msgmodal-t-right">
+    <form className={`delmodal-box `}>
+      <div className="delmodal-title">
+        <div className="delmodal-t-right">
           <p>Post Deleted</p>
         </div>
         <i
-          className="fa-solid fa-x msgmodal-x"
+          className="fa-solid fa-x delmodal-x"
           onClick={handleCancelBtn}
         />
       </div>

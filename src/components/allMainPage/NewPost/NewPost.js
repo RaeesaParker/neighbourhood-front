@@ -32,8 +32,10 @@ const NewPost = (props) => {
           className="newpost-input"
           onClick={toggleModal}
         >
-          What is on your mind, neighbour? Click
-          here to share with us.
+          What is on your mind, neighbour?&nbsp;
+          <span>
+            Click here to share with us.
+          </span>
         </div>
       </form>
     </div>

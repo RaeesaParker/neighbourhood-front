@@ -69,15 +69,21 @@ const AccountBody = (props) => {
   return (
     <div className="mainbody-box">
       {modal && <DelModal setModal={setModal} />}
-      <SearchBox
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        setHaveNewPost={props.setHaveNewPost}
-      />
-      <SpanAccount
-        userDetails={props.userDetails}
-      />
-      <Feed setPostFilter={setPostFilter} />
+      <div className="mobile-hide">
+        <SearchBox
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          setHaveNewPost={props.setHaveNewPost}
+        />
+      </div>
+      <div className="mobile-span">
+        <SpanAccount
+          userDetails={props.userDetails}
+        />
+      </div>
+      <div className="mobile-feed">
+        <Feed setPostFilter={setPostFilter} />
+      </div>
       <div className="mainbody-posts">
         {props.postDetails.length > 0 ? (
           <Masonry

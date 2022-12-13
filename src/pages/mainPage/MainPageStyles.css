@@ -45,3 +45,21 @@
     display: none;
   }
 }
+
+@media screen and (max-width: 650px) {
+  #section-mainpage-div {
+    flex-direction: column-reverse;
+    margin: 0px;
+  }
+
+  #subsection-mainpage-posts {
+    margin-top: 26px;
+  }
+
+  #subsection-mainpage-navbar {
+    height: 0px;
+    width: 0px;
+    min-width: auto;
+    max-width: auto;
+  }
+}
