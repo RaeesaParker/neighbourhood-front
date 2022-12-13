@@ -2,6 +2,7 @@ import React from "react";
 import {
   Link,
   useNavigate,
+  useLocation,
 } from "react-router-dom";
 import { useState } from "react";
 import "./NavigationBarStyles.css";
@@ -27,6 +28,11 @@ function NavigationBar(props) {
     navigate("/");
   }
 
+  // Page indicator
+
+  const location = useLocation();
+  console.log(location.pathname);
+
   return (
     <div id="section-navbar">
       <div id="navbar-logo-div">
@@ -37,17 +43,31 @@ function NavigationBar(props) {
         />
       </div>
       <div className="navbar-links-div">
-        <Link to="/main">
+        <Link to="/main" className="Link">
           <button className="button-style">
             <i className="fa-solid fa-house nb-icon"></i>
             <p>Home</p>
           </button>
+          <i
+            className={`fa-solid fa-caret-left pageindicator indi-main ${
+              location.pathname === "/main"
+                ? "visibility-visible"
+                : ""
+            }`}
+          />
         </Link>
-        <Link to="/user">
+        <Link to="/user" className="Link">
           <button className="button-style">
             <i className="fa-solid fa-user nb-icon"></i>
             <p>My Account</p>
           </button>
+          <i
+            className={`fa-solid fa-caret-left pageindicator indi-main ${
+              location.pathname === "/user"
+                ? "visibility-visible"
+                : ""
+            }`}
+          />
         </Link>
         <button
           id="button-new-post"
@@ -59,17 +79,31 @@ function NavigationBar(props) {
         </button>
       </div>
       <div className="navbar-links-div">
-        <Link to="/schools">
+        <Link to="/schools" className="Link">
           <button className="button-style">
             <i className="fa-solid fa-school nb-icon"></i>
             <p>Schools</p>
           </button>
+          <i
+            className={`fa-solid fa-caret-left pageindicator indi-main ${
+              location.pathname === "/schools"
+                ? "visibility-visible"
+                : ""
+            }`}
+          />
         </Link>
-        <Link to="/hospitals">
+        <Link to="/hospitals" className="Link">
           <button className="button-style">
             <i className="fa-solid fa-hospital nb-icon"></i>
             <p>Medical</p>
           </button>
+          <i
+            className={`fa-solid fa-caret-left pageindicator indi-main ${
+              location.pathname === "/hospitals"
+                ? "visibility-visible"
+                : ""
+            }`}
+          />
         </Link>
       </div>
       <div className="navbar-links-div">

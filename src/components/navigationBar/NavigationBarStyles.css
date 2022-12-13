@@ -11,6 +11,7 @@
   height: calc(100% - 110px);
   width: 150px;
 
+  overflow: hidden;
   z-index: 50;
   position: fixed;
 }
@@ -78,6 +79,25 @@
   margin-right: 5px !important;
 }
 
+/* Page indicator  */
+.Link {
+  position: relative;
+}
+
+.pageindicator {
+  color: var(--white);
+  font-size: 54px;
+  position: absolute;
+  top: -16px;
+  right: -37px;
+
+  visibility: hidden;
+}
+
+.visibility-visible {
+  visibility: visible !important;
+}
+
 @media screen and (max-width: 1200px) {
   #section-navbar {
     padding: 30px 10px;
@@ -114,6 +134,11 @@
 
   .button-style p {
     display: none;
+  }
+
+  .pageindicator {
+    top: -16px;
+    right: -44px;
   }
 }
 
@@ -184,5 +209,11 @@
 
   #section-navbar .nb-icon {
     font-size: 18px;
+  }
+
+  .pageindicator {
+    top: -52px;
+    right: 0px;
+    transform: rotate(-90deg);
   }
 }
