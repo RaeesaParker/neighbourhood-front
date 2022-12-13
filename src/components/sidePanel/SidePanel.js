@@ -107,7 +107,8 @@ function SidePanel(props) {
   ];
   const date = new Date();
   const today = weekday[date.getDay()];
-  const todayDate = date.toLocaleDateString();
+  const todayDate =
+    date.toLocaleDateString("en-GB");
 
   return (
     <div id="subsection-mainpage-panel">
