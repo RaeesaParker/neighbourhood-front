@@ -16,8 +16,10 @@ const SavedPosts = (props) => {
 
   // // Get all the posts liked by a user
   useEffect(() => {
-    getSavedFunction();
-  }, []);
+    if (props.userObtained == true) {
+      getSavedFunction();
+    }
+  }, [props.userObtained]);
 
   const getSavedFunction = async () => {
     const likedPostsArray =

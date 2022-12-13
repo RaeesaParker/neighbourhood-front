@@ -206,3 +206,42 @@
     opacity: 0;
   }
 }
+
+@media screen and (max-width: 1360px) {
+}
+
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 950px) {
+}
+
+@media screen and (max-width: 850px) {
+}
+
+@media screen and (max-width: 650px) {
+  .msgmodal {
+    width: 350px;
+  }
+
+  .msgmodal-title {
+    padding: 0px 20px;
+    margin-top: 20px;
+    height: 40px;
+    width: 275px;
+  }
+
+  .msg-filter,
+  .msgmodal-category p,
+  .msgmodal-buttons button {
+    font-size: 14px;
+  }
+
+  .msgmodal-buttons button {
+    padding: 6px 12px;
+  }
+
+  .msgmodal-error {
+    font-size: 10px;
+  }
+}

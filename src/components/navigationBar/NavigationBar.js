@@ -54,7 +54,7 @@ function NavigationBar(props) {
           className="button-style"
           onClick={toggleModal}
         >
-          <i className="fa-solid fa-plus icon-newpost"></i>
+          <i className="fa-solid fa-plus icon-newpost nb-icon"></i>
           <p>New Post</p>
         </button>
       </div>

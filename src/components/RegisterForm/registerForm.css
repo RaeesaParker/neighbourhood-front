@@ -22,7 +22,7 @@
   align-items: center;
 
   background-color: var(--grey-nav);
-  border-radius: 20px;
+  border-radius: 15px;
 
   width: 400px;
   height: calc(100vh - 60px);
@@ -74,4 +74,18 @@
 
 #registerform-para:hover {
   color: var(--grey-light);
+}
+
+@media screen and (max-width: 650px) {
+  .registerform-cover {
+    height: 90vh;
+    margin: 0px auto;
+    width: 90%;
+    left: 0;
+    right: 0;
+  }
+
+  .register-form input {
+    width: 80%;
+  }
 }
