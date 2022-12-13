@@ -40,17 +40,14 @@ const SavedPosts = (props) => {
           <div className="allsaved-feed-post">
             {likedPosts.map((post) => {
               return (
-                <div key={post.id}>
-                  <SavedPostsCard
-                    userDetails={
-                      props.userDetails
-                    }
-                    post={post}
-                    getSavedFunction={
-                      getSavedFunction
-                    }
-                  />
-                </div>
+                <SavedPostsCard
+                  key={post.id}
+                  userDetails={props.userDetails}
+                  post={post}
+                  getSavedFunction={
+                    getSavedFunction
+                  }
+                />
               );
             })}
           </div>
