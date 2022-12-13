@@ -35,7 +35,9 @@ const PostCard = ({
   const [commentSpan, setCommentSpan] =
     useState(false);
   const [viewAll, setViewAll] = useState(false);
-  const [liked, setLiked] = useState(false);
+  const [liked, setLiked] = useState(
+    post.userLike
+  );
   const [newComment, setNewComment] =
     useState("");
   const [comments, setComments] = useState([]);
