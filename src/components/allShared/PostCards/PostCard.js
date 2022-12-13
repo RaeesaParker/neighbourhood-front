@@ -35,7 +35,9 @@ const PostCard = ({
   const [commentSpan, setCommentSpan] =
     useState(false);
   const [viewAll, setViewAll] = useState(false);
-  const [liked, setLiked] = useState(false);
+  const [liked, setLiked] = useState(
+    post.userLike
+  );
   const [newComment, setNewComment] =
     useState("");
   const [comments, setComments] = useState([]);
@@ -195,7 +197,7 @@ const PostCard = ({
             className="comments-box"
           >
             <i className="fa-solid fa-comment"></i>
-            <p>Comments</p>
+            <p>{post.comments} Comments</p>
           </div>
           <div className="postcard-right">
             <div className="share-links">
