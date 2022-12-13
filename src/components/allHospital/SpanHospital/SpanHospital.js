@@ -29,9 +29,15 @@ const SpanHospital = (props) => {
       </div>
       <div className="span-body">
         <p>
-          Find here important information about
-          all the hospitals close to where you
-          live.
+          Find contact details for all the local
+          medical places in your region. Please
+          note, this information is received
+          directly from the Get information about
+          medical places portal and NeighbourWho
+          is not responsible for its accuracy. If
+          you need to request any changes to these
+          details, please contact the place
+          directly.
         </p>
 
         <img
