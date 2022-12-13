@@ -76,3 +76,7 @@
   padding: 10px 15px;
   width: 90%;
 }
+
+#saved-trashcan {
+  color: darkred;
+}
