@@ -31,7 +31,7 @@
 export const nearHospitals = async (pcd) => {
   try {
     const response = await fetch(
-      `https://api.nhs.uk/service-search?api-version=2&search=${pcd}&$top=1000`,
+      `https://api.nhs.uk/service-search?api-version=2&search=${pcd}&$top=50`,
       {
         method: "GET",
         headers: {
