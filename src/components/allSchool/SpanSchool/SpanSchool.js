@@ -27,8 +27,15 @@ const SpanSchool = (props) => {
       </div>
       <div className="span-body">
         <p>
-          Find here important information about
-          all the schools close to where you live.
+          Find contact details for all the local
+          schools in your region. Please note,
+          this information is received directly
+          from the Get information about Schools
+          portal and NeighbourWho is not
+          responsible for its accuracy. If you
+          need to request any changes to these
+          details, please contact the school
+          directly.
         </p>
 
         <img
