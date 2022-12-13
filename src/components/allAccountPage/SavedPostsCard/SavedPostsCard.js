@@ -55,7 +55,7 @@ const SavedPostsCard = (props) => {
         </div>
         <i
           id="saved-trashcan"
-          className="fa-solid fa-trash"
+          className="fa-solid fa-bookmark"
           onClick={handleDelete}
         ></i>
       </div>
