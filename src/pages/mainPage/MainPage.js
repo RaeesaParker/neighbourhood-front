@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 // Import utils
 import { getCookie } from "../../common/index";
 import { findUser } from "../../utils/users/index";
+
 // Import Components
 import SidePanel from "../../components/sidePanel/SidePanel";
 import NavigationBar from "../../components/navigationBar/NavigationBar";

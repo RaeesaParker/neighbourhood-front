@@ -27,10 +27,13 @@ const SpanAccount = (props) => {
       </div>
       <div className="span-body">
         <p>
-          This is your user page. Here you can
-          edit your account information and see
-          all your posts already made on our
-          platform!
+          This is your user page. Manage your
+          account details, view all of the posts
+          you have made in this region and read
+          and respond to comments from other
+          users. All of your bookmarks are on the
+          Saved posts and these can be removed
+          when no longer needed.
         </p>
 
         <img

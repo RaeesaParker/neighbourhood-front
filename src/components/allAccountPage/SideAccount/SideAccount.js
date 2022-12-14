@@ -41,12 +41,18 @@ const SideAccount = (props) => {
       reducedData,
       props.setUserDetails
     );
-    console.log(
-      "The updated details here!",
-      updatedUserDetails
-    );
     setEditAcc(!editAcc);
-    getUserDetailsFunc();
+    // Get the updated data and rest the current details
+    if (updatedUserDetails) {
+      const newObj = {
+        user_id: updatedUserDetails.id,
+        user_name: updatedUserDetails.user_name,
+        password: updatedUserDetails.password,
+        email: updatedUserDetails.email,
+        postcode: updatedUserDetails.pcd,
+      };
+      props.setCurrentDetails(newObj);
+    }
   };
 
   // Reduce the object to only the updated fields
@@ -61,7 +67,10 @@ const SideAccount = (props) => {
         const { [keys[i]]: unused, ...tempObj } =
           modifiedObj;
         modifiedObj = tempObj;
-        console.log(unused);
+        console.log(
+          "Can ignore this unused object ",
+          unused
+        );
       }
     }
     return modifiedObj;
@@ -110,7 +119,6 @@ const SideAccount = (props) => {
               <div>
                 <label>
                   <p>Username</p>
-                  <i className="fa-solid fa-chevron-right"></i>
                 </label>
                 <input
                   placeholder={
@@ -125,9 +133,9 @@ const SideAccount = (props) => {
               <div>
                 <label>
                   <p>Email adress</p>
-                  <i className="fa-solid fa-chevron-right"></i>
                 </label>
                 <input
+                  type="email"
                   placeholder={
                     props.currentDetails.email
                   }
@@ -140,7 +148,6 @@ const SideAccount = (props) => {
               <div>
                 <label>
                   <p>Password</p>
-                  <i className="fa-solid fa-chevron-right"></i>
                 </label>
                 <input
                   placeholder="**********"
@@ -153,7 +160,6 @@ const SideAccount = (props) => {
               <div>
                 <label>
                   <p>Post Code</p>
-                  <i className="fa-solid fa-chevron-right"></i>
                 </label>
                 <input
                   placeholder={
@@ -170,7 +176,7 @@ const SideAccount = (props) => {
                 type="submit"
                 className="btn-changeacc"
               >
-                Change informations
+                Change information
               </button>
             </form>
             <div className="form-editacc-btns">
@@ -193,6 +199,7 @@ const SideAccount = (props) => {
       <div className="allsaved-posts">
         <SavedPosts
           userDetails={props.userDetails}
+          userObtained={props.userObtained}
         />
       </div>
     </div>

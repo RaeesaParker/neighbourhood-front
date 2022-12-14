@@ -4,13 +4,14 @@
   align-items: center;
   border-radius: 15px;
   overflow: hidden;
-  margin: 3% 0;
-  padding: 0 3%;
+  margin: 10px 0;
+  padding: 0 5px;
 }
 
 #saved-trashcan {
-  margin: 0 5% 0 0;
+  margin: 0 10px 0 0;
 }
+
 #saved-trashcan:hover {
   color: var(--grey-medium);
   cursor: pointer;
@@ -44,6 +45,7 @@
 
 .saved-postcard-head {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.1);
 
@@ -72,4 +74,9 @@
   line-height: 15px;
   text-align: justify;
   padding: 10px 15px;
+  width: 90%;
+}
+
+#saved-trashcan {
+  color: darkred;
 }
