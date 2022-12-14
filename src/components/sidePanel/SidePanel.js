@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "./SidePanelStyles.css";
 // Import profile pictures
 import userProfile from "../../imgs/fakeuser.png";
+import { getWeather } from "../../utils/weather/index";
 
 function SidePanel(props) {
   // State to store the weather
@@ -10,18 +11,19 @@ function SidePanel(props) {
   const [weatherImage, setWeatherImage] =
     useState("sunny");
 
-  // Function to set the weather
-  function setWeatherFunc() {
+  // Gets todays weather and stores it to weather
+  const localWeather = async () => {
+    const data = await getWeather();
     setWeather({
-      minTemp: 5,
-      maxTemp: 15,
-      weatherCode: 20,
+      minTemp: data.daily.temperature_2m_min[0],
+      maxTemp: data.daily.temperature_2m_max[0],
+      weatherCode: data.daily.weathercode[0],
     });
-  }
+  };
 
   // Set the weather when the component loads
   useEffect(() => {
-    setWeatherFunc();
+    localWeather();
     setWeatherImageFunc();
   }, []);
 
@@ -132,7 +134,7 @@ function SidePanel(props) {
       </div>
 
       <div className="subsection-panel-weather">
-        <h3>Today&apos;s weather</h3>
+        <h3>Today&apos;s average temp.</h3>
         <div className="weather-bg">
           <img
             src={require(`../../imgs/weather/${weatherImage}.png`)}
