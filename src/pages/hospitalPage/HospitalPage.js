@@ -9,6 +9,7 @@ import { findUser } from "../../utils/users/index";
 import SidePanel from "../../components/sidePanel/SidePanel";
 import NavigationBar from "../../components/navigationBar/NavigationBar";
 import HospitalBody from "../../components/allHospital/HospitalBody/HospitalBody";
+import { nearHospitals } from "../../utils/hospitals";
 
 function HospitalPage(props) {
   // Navigation for redirect
@@ -43,16 +44,18 @@ function HospitalPage(props) {
       props.setUserDetails
     );
     if (userDetails) {
-      getHospitals(userDetails);
+      const pcd = userDetails.pcd.slice(0, 3);
+
+      // console.log("user", userDetails);
+      getHospitals(pcd);
     }
   };
 
   // Function to find all the hospitals
-  const getHospitals = async (userDetails) => {
-    const response = await nearHospitals(
-      userDetails.region[0].region_id
-    );
+  const getHospitals = async (pcd) => {
+    const response = await nearHospitals(pcd);
     setAllHospitalsByRegion(response);
+    // console.log(setAllHospitalsByRegion);
   };
 
   console.log(allHospitalsByRegion);
@@ -66,6 +69,9 @@ function HospitalPage(props) {
       <div className="hospitalpage-body">
         <HospitalBody
           userDetails={props.userDetails}
+          allHospitalsByRegion={
+            allHospitalsByRegion
+          }
         />
       </div>
       <div id="subsection-mainpage-sidepanel">
