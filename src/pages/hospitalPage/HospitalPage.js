@@ -58,7 +58,7 @@ function HospitalPage(props) {
     // console.log(setAllHospitalsByRegion);
   };
 
-  console.log(allHospitalsByRegion);
+  // console.log(allHospitalsByRegion);
   return (
     <div className="section-hospital">
       <div id="subsection-mainpage-navbar">
