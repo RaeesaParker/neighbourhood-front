@@ -197,3 +197,29 @@ export const deleteUser = async (userId) => {
     console.log(error);
   }
 };
+
+// get all the users in the current region
+export const getRegionUser = async (regionId) => {
+  console.log(regionId);
+  try {
+    const response = await fetch(
+      `${API_URL}/users`,
+      {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          Authorization:
+            "Bearer " + getCookie("jwt_token"),
+        },
+      }
+    );
+    const data = await response.json();
+    if (!data.error) {
+      return data;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
