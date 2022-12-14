@@ -24,7 +24,7 @@ const SavedPostsCard = (props) => {
     // need to fetch endpoint
     await favoritePost({
       user_id: props.userDetails.user_id,
-      post_id: props.post.id,
+      post_id: props.post.PostId,
     });
     const updatedPost = await getPostById(
       props.post.id
