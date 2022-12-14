@@ -1,3 +1,7 @@
+.visibility-hidden {
+  visibility: hidden;
+}
+
 .postcard {
   border-radius: 15px;
   position: relative;
@@ -104,9 +108,9 @@
   cursor: pointer;
 }
 
-.postcard-right {
+/* .postcard-right {
   position: relative;
-}
+} */
 
 .postcard-right i {
   text-align: center;
@@ -123,43 +127,54 @@
   margin-left: -3px;
 }
 
+.btn-forshare {
+  position: relative;
+}
+
 .share-links {
   z-index: 29;
   position: absolute;
 }
 
 .sharebubble {
-  background: #292929;
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
 
   display: flex;
   align-items: center;
   justify-content: center;
   filter: drop-shadow(
-    2px 2px 6px rgb(0, 0, 0, 0.1)
+    2px 2px 6px rgb(0, 0, 0, 0.15)
   );
+  backdrop-filter: blur(2px);
 
   color: var(--white);
   font-size: 30px;
 
-  left: -110px;
-  bottom: 55px;
-  width: 200px;
+  left: -150px;
+  bottom: 85px;
+  width: 170px;
   height: 50px;
   position: relative;
 }
+
+.sharebubble i {
+  height: 30px;
+  width: 30px;
+}
 .sharebubble:after {
   border-style: solid;
-  border-width: 0 16px 20px 0;
-  border-color: transparent #292929 transparent
+  border-width: 0 12px 14px 0;
+  border-color: transparent
+    rgba(255, 255, 255, 0.7) transparent
     transparent;
 
   content: "";
   display: block;
 
   margin-left: -10px;
-  left: 92%;
-  bottom: -15px;
+  left: 94%;
+  bottom: -14px;
   width: 0;
 
   z-index: 1;
@@ -192,6 +207,70 @@
 
 .shared-btn {
   visibility: hidden;
+}
+
+/* *** */
+
+.comments-box {
+  cursor: pointer;
+}
+
+.comment-span {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  margin: 10px 0px;
+  padding: 10px 12px;
+}
+
+.comment-span-viewall {
+  cursor: pointer;
+  color: var(--grey-medium);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.comment-span-all {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  color: #5a5a5a;
+  font-size: 14px;
+
+  margin-bottom: 15px;
+  padding: 0px 5px;
+}
+
+.comment-span-user {
+  display: flex;
+  justify-content: space-between;
+}
+.comment-span-input {
+  border: 1px solid var(--grey-light);
+  border-radius: 5px;
+  color: var(--grey-dark);
+  padding: 4px 10px;
+  width: 100%;
+}
+
+.comment-span-input:focus {
+  outline: none;
+}
+
+.comment-span-btn {
+  background-color: var(--grey-light);
+  border: 1px solid var(--grey-light);
+  border-radius: 5px;
+  color: var(--grey-dark);
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: 10px;
+  transition: 0.5s all ease;
+}
+
+.comment-span-btn:hover {
+  background-color: #b3b3b3;
+  border: 1px solid #b3b3b3;
 }
 
 @media screen and (max-width: 950px) {

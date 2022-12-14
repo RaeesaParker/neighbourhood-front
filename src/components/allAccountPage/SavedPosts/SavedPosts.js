@@ -16,8 +16,10 @@ const SavedPosts = (props) => {
 
   // // Get all the posts liked by a user
   useEffect(() => {
-    getSavedFunction();
-  }, []);
+    if (props.userObtained == true) {
+      getSavedFunction();
+    }
+  }, [props.userObtained]);
 
   const getSavedFunction = async () => {
     const likedPostsArray =
@@ -38,17 +40,14 @@ const SavedPosts = (props) => {
           <div className="allsaved-feed-post">
             {likedPosts.map((post) => {
               return (
-                <div key={post.id}>
-                  <SavedPostsCard
-                    userDetails={
-                      props.userDetails
-                    }
-                    post={post}
-                    getSavedFunction={
-                      getSavedFunction
-                    }
-                  />
-                </div>
+                <SavedPostsCard
+                  key={post.id}
+                  userDetails={props.userDetails}
+                  post={post}
+                  getSavedFunction={
+                    getSavedFunction
+                  }
+                />
               );
             })}
           </div>
