@@ -35,35 +35,39 @@ const SavedPostsCard = (props) => {
   };
 
   return (
-    <div
-      className={`saved-postcard ${
-        localPost.post_type === 1
-          ? "saved-postcard-bg1"
-          : localPost.post_type === 2
-          ? "saved-postcard-bg2"
-          : localPost.post_type === 3
-          ? "saved-postcard-bg3"
-          : localPost.post_type === 4
-          ? "saved-postcard-bg4"
-          : "postcard-bg"
-      }`}
-    >
-      <div className="saved-postcard-head">
-        <div className="saved-postcard-user">
-          <i className="fa-solid fa-user-large"></i>
-          <p>@{localPost.user_name}</p>
+    <>
+      {localPost.user_id && (
+        <div
+          className={`saved-postcard ${
+            localPost.post_type === 1
+              ? "saved-postcard-bg1"
+              : localPost.post_type === 2
+              ? "saved-postcard-bg2"
+              : localPost.post_type === 3
+              ? "saved-postcard-bg3"
+              : localPost.post_type === 4
+              ? "saved-postcard-bg4"
+              : "postcard-bg"
+          }`}
+        >
+          <div className="saved-postcard-head">
+            <div className="saved-postcard-user">
+              <i className="fa-solid fa-user-large"></i>
+              <p>@{localPost.user_name}</p>
+            </div>
+            <i
+              id="saved-trashcan"
+              className="fa-solid fa-bookmark"
+              onClick={handleDelete}
+            ></i>
+          </div>
+          <hr />
+          <div className="saved-postcard-text">
+            <p>{localPost.post_content}</p>
+          </div>
         </div>
-        <i
-          id="saved-trashcan"
-          className="fa-solid fa-bookmark"
-          onClick={handleDelete}
-        ></i>
-      </div>
-      <hr />
-      <div className="saved-postcard-text">
-        <p>{localPost.post_content}</p>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
