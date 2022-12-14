@@ -1,7 +1,6 @@
 .userpage-page {
   background-color: var(--white);
   display: flex;
-  min-height: 100vh;
 
   margin: 15px;
   overflow: hidden;
