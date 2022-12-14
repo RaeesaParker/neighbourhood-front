@@ -43,7 +43,7 @@ export const nearHospitals = async (pcd) => {
       }
     );
     const data = await response.json();
-    console.log("data from api", data);
+    // console.log("data from api", data);
 
     if (!data.error) {
       return data;

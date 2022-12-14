@@ -1,7 +1,6 @@
 .userpage-page {
   background-color: var(--white);
   display: flex;
-  min-height: 100vh;
 
   margin: 15px;
   overflow: hidden;
@@ -13,7 +12,6 @@
 }
 
 .userpage-sidebar {
-  height: 50px;
   width: 280px;
   min-width: 280px;
   max-width: 280px;

@@ -71,7 +71,6 @@ const HospitalBody = (props) => {
           <h1>{headerArray[j]}</h1>
           <div className="hospitalbody-posts">
             {data[j] &&
-
               data[j]
                 .slice(0, 4)
                 .map((hospital, i) => {
@@ -85,7 +84,6 @@ const HospitalBody = (props) => {
                     </>
                   );
                 })}
-
           </div>
         </>
       ))}

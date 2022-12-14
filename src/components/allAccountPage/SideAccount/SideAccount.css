@@ -6,7 +6,7 @@
   height: calc(100% - 110px);
   width: 280px;
 
-  position: fixed;
+  position: static;
 }
 
 .sideacc-edit {
@@ -118,7 +118,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 20px 20px 10px 20px;
+  margin: 20px 20px 20px 20px;
 }
 
 .allsaved-header i {

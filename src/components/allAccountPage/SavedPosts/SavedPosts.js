@@ -29,34 +29,55 @@ const SavedPosts = (props) => {
     setLikedPosts(likedPostsArray);
   };
 
+  const [bookmarkedPosts, setBookmarkedPosts] =
+    useState(true);
+
   return (
     <div>
-      <div className="allsaved-header">
-        <h3>Saved posts:</h3>
-        <i className="fa-solid fa-bookmark"></i>
+      <div
+        onClick={() =>
+          setBookmarkedPosts(!bookmarkedPosts)
+        }
+        className="allsaved-header"
+      >
+        <div className="allsaved-header-right">
+          <i className="fa-solid fa-bookmark"></i>
+          <h3>Bookmarked posts:</h3>
+        </div>
+        <i
+          className={`${
+            !bookmarkedPosts
+              ? "fa-solid fa-angle-down"
+              : "fa-solid fa-angle-up"
+          }`}
+        ></i>
       </div>
-      <div className="allsaved-feed">
-        {likedPosts.length > 0 ? (
-          <div className="allsaved-feed-post">
-            {likedPosts.map((post) => {
-              return (
-                <SavedPostsCard
-                  key={post.id}
-                  userDetails={props.userDetails}
-                  post={post}
-                  getSavedFunction={
-                    getSavedFunction
-                  }
-                />
-              );
-            })}
-          </div>
-        ) : (
-          <div className="no-posts">
-            <h2>No saved posts.</h2>
-          </div>
-        )}
-      </div>
+      {bookmarkedPosts && (
+        <div className="allsaved-feed">
+          {likedPosts.length > 0 ? (
+            <div className="allsaved-feed-post">
+              {likedPosts.map((post) => {
+                return (
+                  <SavedPostsCard
+                    key={post.id}
+                    userDetails={
+                      props.userDetails
+                    }
+                    post={post}
+                    getSavedFunction={
+                      getSavedFunction
+                    }
+                  />
+                );
+              })}
+            </div>
+          ) : (
+            <div className="no-posts">
+              <h2>No saved posts.</h2>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
