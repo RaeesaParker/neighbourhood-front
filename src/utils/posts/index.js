@@ -83,6 +83,30 @@ export const searchPost = async (searchTerm) => {
   }
 };
 
+// Get all posts that match the search term for a specific user
+export const searchUserPosts = async (
+  searchTerm,
+  user_id
+) => {
+  try {
+    const response = await fetch(
+      `${API_URL}/posts/users/${user_id}/search/${searchTerm}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer " + getCookie("jwt_token"),
+        },
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // Get all the posts from a user => Apply the filter for various post types
 export const getAllPostUser = async (
   postFilter,
