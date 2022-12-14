@@ -1,0 +1,56 @@
+modal-overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.467);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+info-modal {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  z-index: 60;
+  margin-left: 200px;
+}
+
+info-modal modal-heading {
+  background-color: var(--grey-dark);
+  height: 50px;
+  color: white;
+  font-family: Heebo, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 20px 20px 0 0;
+}
+
+info-modal modal-content {
+  padding: 30px;
+  background-color: white;
+}
+
+info-modal footer {
+  background-color: var(--grey-light);
+  padding: 10px;
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+info-modal button {
+  margin: 5px;
+  background-color: var(--orange);
+  border: none;
+  height: 30px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
