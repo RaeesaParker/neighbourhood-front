@@ -22,7 +22,10 @@ const InfoModal = ({
   return (
     <modal-overlay>
       <info-modal>
-        <modal-heading>{title}</modal-heading>
+        <modal-heading>
+          <i className="fa-solid fa-triangle-exclamation alert-icon"></i>
+          {title}
+        </modal-heading>
         <modal-content>
           <p>{message}</p>
         </modal-content>
