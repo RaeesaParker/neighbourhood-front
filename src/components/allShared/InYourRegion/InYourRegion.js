@@ -35,7 +35,9 @@ const InYourRegion = () => {
                 className="fig-user-all"
               />
               <tool-tip>
-                {user.user_name}
+                {user.user_name
+                  .replace(" ", "")
+                  .toLowerCase()}
               </tool-tip>
             </user-item>
           );
