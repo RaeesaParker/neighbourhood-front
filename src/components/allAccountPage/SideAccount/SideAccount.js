@@ -117,7 +117,8 @@ const SideAccount = (props) => {
           <div id="subsection-panel-user-div">
             <Link to="/user" className="Link">
               <h4>
-                @{props.userDetails.username}
+                @
+                {props.userDetails.username.toLowerCase()}
               </h4>
             </Link>
           </div>

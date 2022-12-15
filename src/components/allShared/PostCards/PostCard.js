@@ -173,7 +173,10 @@ const PostCard = ({
                 alt="userpicture"
               />
               <div>
-                <h3>@{localPost.user_name}</h3>
+                <h3>
+                  @
+                  {localPost.user_name.toLowerCase()}
+                </h3>
                 <p>
                   {postDate.toLocaleDateString()}{" "}
                   at{" "}
@@ -276,7 +279,7 @@ const PostCard = ({
                         <p key={comment.id}>
                           @
                           <strong>
-                            {comment.user_name}
+                            {comment.user_name.toLowerCase()}
                           </strong>
                           :{comment.content}
                         </p>
