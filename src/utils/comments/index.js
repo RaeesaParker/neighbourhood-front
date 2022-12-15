@@ -22,7 +22,7 @@ export const createComment = async (
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -43,6 +43,6 @@ export const getComments = async (PostId) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };

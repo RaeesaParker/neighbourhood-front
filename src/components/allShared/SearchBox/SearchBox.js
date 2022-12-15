@@ -12,7 +12,7 @@ const SearchBox = ({
   // -
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(searchTerm);
+    // console.log(searchTerm);
     setHaveNewPost(true);
   };
 
@@ -25,7 +25,7 @@ const SearchBox = ({
         onSubmit={(e) => handleFormSubmit(e)}
       >
         <i className="fa-solid fa-magnifying-glass search-icon"></i>
-        <p>Search</p>
+
         <input
           className="search-input"
           value={searchTerm}
@@ -34,6 +34,12 @@ const SearchBox = ({
           }
           placeholder="Your text here"
         ></input>
+        <button
+          type="submit"
+          className="search-submitbtn"
+        >
+          Search
+        </button>
       </form>
     </div>
   );

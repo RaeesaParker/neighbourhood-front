@@ -98,6 +98,13 @@
   visibility: visible !important;
 }
 
+@media screen and (max-height: 610px) {
+  #section-navbar {
+    min-height: 500px;
+    position: static;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   #section-navbar {
     padding: 30px 10px;
@@ -163,6 +170,8 @@
 
     padding: 18px 10px;
     height: auto;
+    min-height: 24px !important;
+    max-height: 24px !important;
     width: calc(100% - 20px);
 
     left: 0px;

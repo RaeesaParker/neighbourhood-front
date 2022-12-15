@@ -11,7 +11,7 @@ import PostCard from "../../allShared/PostCards/PostCard";
 import DelModal from "../../allShared/DelModal/DelModal";
 import {
   getAllPostUser,
-  searchPost,
+  searchUserPosts,
 } from "../../../utils/posts";
 
 const AccountBody = (props) => {
@@ -48,7 +48,10 @@ const AccountBody = (props) => {
   const getPostFunction = async () => {
     let getPost = [];
     if (searchTerm) {
-      getPost = await searchPost(searchTerm);
+      getPost = await searchUserPosts(
+        searchTerm,
+        props.userDetails.user_id
+      );
       setSearchTerm("");
     } else {
       getPost = await getAllPostUser(

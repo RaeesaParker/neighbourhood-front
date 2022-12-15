@@ -21,6 +21,6 @@ export const nearSchools = async (userRegion) => {
       return false;
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };

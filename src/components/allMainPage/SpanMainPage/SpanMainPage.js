@@ -32,13 +32,13 @@ const SpanMainPage = (props) => {
           This is where communities come together
           to welcome newcomers, exchange
           recommendations and read the latest
-          local news. Where neighbors support
+          local news. Where neighbours support
           local businesses and receive utility
-          updates. Where neighbors lend tools and
+          updates. Where neighbours lend tools and
           sell sofas. Its like getting the most
           out of everything nearby.
           <br />
-          Welcome, neighbor!
+          Welcome, neighbour!
         </p>
 
         <img

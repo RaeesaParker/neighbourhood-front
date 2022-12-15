@@ -1,9 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./SidePanelStyles.css";
 // Import profile pictures
 import userProfile from "../../imgs/fakeuser.png";
 import { getWeather } from "../../utils/weather/index";
+import InYourRegion from "../allShared/InYourRegion/InYourRegion";
 
 function SidePanel(props) {
   // State to store the weather
@@ -66,37 +68,6 @@ function SidePanel(props) {
     }
   }
 
-  // Function to set all the users
-  const allUsers = [
-    "profile1",
-    "profile2",
-    "profile3",
-    "profile4",
-    "profile5",
-    "profile6",
-    "profile7",
-    "profile8",
-    "profile9",
-    "profile10",
-    "profile11",
-    "profile12",
-    "profile13",
-    "profile14",
-    "profile15",
-  ];
-
-  // Render all the user images
-  const userImages = allUsers.map((user) => {
-    return (
-      <img
-        key={user}
-        src={require(`../../imgs/profiles/${user}.jpg`)}
-        alt="Logo"
-        className="fig-user-all"
-      />
-    );
-  });
-
   // Weather functions
   const weekday = [
     "Sunday",
@@ -116,22 +87,25 @@ function SidePanel(props) {
     <div id="subsection-mainpage-panel">
       <div id="subsection-panel-user">
         <div id="subsection-panel-user-div">
-          <h4>@{props.userDetails.username}</h4>
+          <Link to="/user" className="Link">
+            <h4>
+              @
+              {props.userDetails.username.toLowerCase()}
+            </h4>
+          </Link>
         </div>
+
         <div id="subsection-panel-image-div">
-          <img
-            src={userProfile}
-            alt="Logo"
-            id="fig-user"
-          />
+          <Link to="/user" className="Link">
+            <img
+              src={userProfile}
+              alt="Logo"
+              id="fig-user"
+            />
+          </Link>
         </div>
       </div>
-      <div className="subsection-panel">
-        <h3>Who&apos;s in Preston?</h3>
-        <p>All your connected neighbors:</p>
-        <div>{userImages}</div>
-        <p>And many others!</p>
-      </div>
+      <InYourRegion />
 
       <div className="subsection-panel-weather">
         <h3>Today&apos;s average temp.</h3>

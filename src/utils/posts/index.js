@@ -24,7 +24,7 @@ export const createPost = async (postObject) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -58,7 +58,7 @@ export const getAllPost = async (postFilter) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -79,7 +79,31 @@ export const searchPost = async (searchTerm) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
+  }
+};
+
+// Get all posts that match the search term for a specific user
+export const searchUserPosts = async (
+  searchTerm,
+  user_id
+) => {
+  try {
+    const response = await fetch(
+      `${API_URL}/posts/users/${user_id}/search/${searchTerm}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer " + getCookie("jwt_token"),
+        },
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    // console.log(error);
   }
 };
 
@@ -116,7 +140,7 @@ export const getAllPostUser = async (
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -137,7 +161,7 @@ export const getPostById = async (id) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -158,7 +182,7 @@ export const getPostByUserId = async (id) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -189,7 +213,7 @@ export const updatePost = async (
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -210,7 +234,7 @@ export const deletePost = async (id) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -235,7 +259,7 @@ export const likePost = async (likeObject) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -260,10 +284,10 @@ export const favoritePost = async (
       }
     );
     const data = await response.json();
-    console.log("Post has been favourited", data);
+    // console.log("Post has been favourited", data);
     return data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -284,6 +308,6 @@ export const getPostsLikedByUser = async (id) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };

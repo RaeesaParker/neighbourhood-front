@@ -3,9 +3,8 @@ import "./HospitalBody.css";
 import medicalImage from "../../../imgs/medical.jpg";
 
 // Components
-import SearchBox from "../../allShared/SearchBox/SearchBox";
 import SpanHospital from "../../allHospital/SpanHospital/SpanHospital";
-import InfoCards from "../../allShared/InfoCards/InfoCards";
+import InfoCardsHospital from "../../allShared/InfoCardsHospital/InfoCardsHospital";
 
 const HospitalBody = (props) => {
   const hospitalArray =
@@ -28,9 +27,12 @@ const HospitalBody = (props) => {
         Type: element.OrganisationType,
         Street: element.Address1,
         Postcode: element.Postcode,
-        Telephone: element.ContactValue,
         Website: element.URL,
       };
+      element.Contacts.forEach((addressBook) => {
+        const contacts = addressBook.ContactValue;
+        objToAdd.Addressbook = contacts;
+      });
       switch (element.OrganisationTypeId) {
         case "HOS":
           data[0].push(objToAdd);
@@ -53,31 +55,76 @@ const HospitalBody = (props) => {
     });
 
   const headerArray = [
-    "Hospital",
-    "Pharmacy",
-    "GP",
-    "Clinic",
-    "Dental",
+    "Hospitals",
+    "Pharmacies",
+    "GP's",
+    "Clinics",
+    "Dentals",
   ];
 
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+    });
+  }
+
   return (
-    <div className="mainbody-box">
-      <SearchBox />
+    <div
+      className="mainbody-box"
+      id="hospital-start"
+    >
       <SpanHospital
         userDetails={props.userDetails}
       />
+      <div className="hospital-selector">
+        <p></p>
+        <ul className="hospitalHeader-List">
+          <li>
+            <a href={"#" + headerArray[0]}>
+              Hospitals
+            </a>
+          </li>
+          <li>
+            <a href={"#" + headerArray[1]}>
+              Pharmacies
+            </a>
+          </li>
+          <li>
+            <a href={"#" + headerArray[2]}>
+              GP&apos;s
+            </a>
+          </li>
+          <li>
+            <a href={"#" + headerArray[3]}>
+              Clinics
+            </a>
+          </li>
+          <li>
+            <a href={"#" + headerArray[4]}>
+              Dentals
+            </a>
+          </li>
+        </ul>
+      </div>
       {headerArray.map((header, j) => (
         <>
-          <h1>{headerArray[j]}</h1>
+          <div className="hospital-headers">
+            <h1 id={headerArray[j]}>
+              {headerArray[j]}
+            </h1>
+            <i
+              onClick={scrollToTop}
+              className="fa-solid fa-chevron-up hh-icon"
+            ></i>
+          </div>
           <div className="hospitalbody-posts">
             {data[j] &&
-
               data[j]
                 .slice(0, 4)
                 .map((hospital, i) => {
                   return (
                     <>
-                      <InfoCards
+                      <InfoCardsHospital
                         key={i}
                         organisation={hospital}
                         image={medicalImage}
@@ -85,7 +132,6 @@ const HospitalBody = (props) => {
                     </>
                   );
                 })}
-
           </div>
         </>
       ))}
