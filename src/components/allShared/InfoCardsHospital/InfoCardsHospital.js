@@ -29,10 +29,23 @@ const InfoCards = (props) => {
       <div className="infocards-info">
         <div className="ic-info">
           <i className="fa-solid fa-location-dot ic-adress"></i>
-          <p>
-            {props.organisation.Street},{" "}
-            {props.organisation.Postcode}
-          </p>
+
+          {props.organisation.Street && (
+            <p>
+              {props.organisation.Street.toLowerCase()
+                .split(" ")
+                .map(
+                  (word) =>
+                    word.charAt(0).toUpperCase() +
+                    word.slice(1)
+                )
+                .join(" ")}
+              , {props.organisation.Postcode}
+            </p>
+          )}
+          {!props.organisation.Street && (
+            <p>{props.organisation.Postcode}</p>
+          )}
         </div>
         {props.organisation.Addressbook !==
         undefined ? (

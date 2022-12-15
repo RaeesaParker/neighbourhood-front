@@ -35,11 +35,13 @@ function NavigationBar(props) {
   return (
     <div id="section-navbar">
       <div id="navbar-logo-div">
-        <img
-          src={logo}
-          alt="Logo"
-          id="navbar-logo"
-        />
+        <Link to="/main" className="Link">
+          <img
+            src={logo}
+            alt="Logo"
+            id="navbar-logo"
+          />
+        </Link>
       </div>
       <div className="navbar-links-div">
         <Link to="/main" className="Link">

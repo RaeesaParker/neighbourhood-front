@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./SidePanelStyles.css";
 // Import profile pictures
@@ -86,14 +87,22 @@ function SidePanel(props) {
     <div id="subsection-mainpage-panel">
       <div id="subsection-panel-user">
         <div id="subsection-panel-user-div">
-          <h4>@{props.userDetails.username}</h4>
+          <Link to="/user" className="Link">
+            <h4>
+              @
+              {props.userDetails.username.toLowerCase()}
+            </h4>
+          </Link>
         </div>
+
         <div id="subsection-panel-image-div">
-          <img
-            src={userProfile}
-            alt="Logo"
-            id="fig-user"
-          />
+          <Link to="/user" className="Link">
+            <img
+              src={userProfile}
+              alt="Logo"
+              id="fig-user"
+            />
+          </Link>
         </div>
       </div>
       <InYourRegion />
