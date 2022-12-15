@@ -48,3 +48,31 @@
 .hospitalHeader-List a:hover {
   color: var(--grey-extra-light);
 }
+
+@media screen and (max-width: 1250px) {
+  .hospitalHeader-List {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .hospitalHeader-List {
+    gap: 7px;
+  }
+
+  .hospitalHeader-List li {
+    padding: 1px 2px;
+    transition: 0.5s all ease;
+  }
+
+  .hospitalHeader-List a {
+    font-size: 14px;
+    padding: 1px 5px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .hospital-selector {
+    justify-content: center;
+  }
+}
