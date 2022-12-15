@@ -56,10 +56,10 @@ const SavedPosts = (props) => {
         <div className="allsaved-feed">
           {likedPosts.length > 0 ? (
             <div className="allsaved-feed-post">
-              {likedPosts.map((post) => {
+              {likedPosts.map((post, i) => {
                 return (
                   <SavedPostsCard
-                    key={post.id}
+                    key={i}
                     userDetails={
                       props.userDetails
                     }
