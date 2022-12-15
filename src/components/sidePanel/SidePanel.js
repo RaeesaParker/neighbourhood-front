@@ -96,7 +96,7 @@ function SidePanel(props) {
         </div>
 
         <div id="subsection-panel-image-div">
-          <Link to="/user" className="Link">
+          <Link to="/user">
             <img
               src={userProfile}
               alt="Logo"
