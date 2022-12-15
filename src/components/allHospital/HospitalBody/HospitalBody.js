@@ -105,7 +105,7 @@ const HospitalBody = (props) => {
           <div className="hospitalbody-posts">
             {data[j] &&
               data[j]
-                .slice(0, 10)
+                .slice(0, 4)
                 .map((hospital, i) => {
                   return (
                     <>
