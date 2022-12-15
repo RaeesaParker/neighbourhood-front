@@ -9,6 +9,8 @@ import {
 } from "../../../utils/users";
 import SavedPosts from "../SavedPosts/SavedPosts";
 import InfoModal from "../../allShared/InfoModal/InfoModal";
+import { Link } from "react-router-dom";
+
 const SideAccount = (props) => {
   // States to hold the updated details
   const [username, setUsername] = useState(null);
@@ -113,14 +115,21 @@ const SideAccount = (props) => {
       <div className="sideaccount">
         <div id="subsection-panel-user">
           <div id="subsection-panel-user-div">
-            <h4>@{props.userDetails.username}</h4>
+            <Link to="/user" className="Link">
+              <h4>
+                @{props.userDetails.username}
+              </h4>
+            </Link>
           </div>
+
           <div id="subsection-panel-image-div">
-            <img
-              src={userProfile}
-              alt="Logo"
-              id="fig-user"
-            />
+            <Link to="/user" className="Link">
+              <img
+                src={userProfile}
+                alt="Logo"
+                id="fig-user"
+              />
+            </Link>
           </div>
         </div>
         <div className="sideacc-edit">
