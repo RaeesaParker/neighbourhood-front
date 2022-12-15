@@ -53,11 +53,11 @@ const HospitalBody = (props) => {
     });
 
   const headerArray = [
-    "Hospital",
-    "Pharmacy",
-    "GP",
-    "Clinic",
-    "Dental",
+    "Hospitals",
+    "Pharmacies",
+    "GP's",
+    "Clinics",
+    "Dentals",
   ];
 
   return (
@@ -65,31 +65,36 @@ const HospitalBody = (props) => {
       <SpanHospital
         userDetails={props.userDetails}
       />
-      <ul className="hospitalHeader-List">
-        <li>
-          <a href={"#" + headerArray[0]}>
-            Hospital
-          </a>
-        </li>
-        <li>
-          <a href={"#" + headerArray[1]}>
-            Pharmacy
-          </a>
-        </li>
-        <li>
-          <a href={"#" + headerArray[2]}>GP</a>
-        </li>
-        <li>
-          <a href={"#" + headerArray[3]}>
-            Clinic
-          </a>
-        </li>
-        <li>
-          <a href={"#" + headerArray[4]}>
-            Dental
-          </a>
-        </li>
-      </ul>
+      <div className="hospital-selector">
+        <p></p>
+        <ul className="hospitalHeader-List">
+          <li>
+            <a href={"#" + headerArray[0]}>
+              Hospitals
+            </a>
+          </li>
+          <li>
+            <a href={"#" + headerArray[1]}>
+              Pharmacies
+            </a>
+          </li>
+          <li>
+            <a href={"#" + headerArray[2]}>
+              GP&apos;s
+            </a>
+          </li>
+          <li>
+            <a href={"#" + headerArray[3]}>
+              Clinics
+            </a>
+          </li>
+          <li>
+            <a href={"#" + headerArray[4]}>
+              Dentals
+            </a>
+          </li>
+        </ul>
+      </div>
       {headerArray.map((header, j) => (
         <>
           <h1 id={headerArray[j]}>
