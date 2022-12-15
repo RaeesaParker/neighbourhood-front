@@ -29,9 +29,13 @@ const InfoCards = (props) => {
         undefined ? (
           <div className="ic-info">
             <i className="fa-solid fa-address-book ic-address-book"></i>
-            <p>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={`${props.organisation.Addressbook}`}
+            >
               {props.organisation.Addressbook}
-            </p>
+            </a>
           </div>
         ) : (
           <div />
