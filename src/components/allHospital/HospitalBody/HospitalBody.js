@@ -65,7 +65,6 @@ const HospitalBody = (props) => {
   function scrollToTop() {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
     });
   }
 

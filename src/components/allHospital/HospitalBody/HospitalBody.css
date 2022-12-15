@@ -37,6 +37,7 @@
 }
 
 .hospitalHeader-List a {
+  scroll-behavior: smooth;
   color: var(--grey-medium);
   padding: 4px 8px;
 }
