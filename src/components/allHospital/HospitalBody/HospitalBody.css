@@ -76,3 +76,9 @@
     justify-content: center;
   }
 }
+
+@media screen and (max-width: 650px) {
+  .infocards-box:last-child {
+    margin-bottom: 55px;
+  }
+}
