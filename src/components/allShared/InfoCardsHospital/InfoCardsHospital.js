@@ -13,7 +13,16 @@ const InfoCards = (props) => {
         className="infocards-img"
       />
       <div className="infocards-head">
-        <h3>{props.organisation.Name}</h3>
+        <h3>
+          {props.organisation.Name.toLowerCase()
+            .split(" ")
+            .map(
+              (word) =>
+                word.charAt(0).toUpperCase() +
+                word.slice(1)
+            )
+            .join(" ")}
+        </h3>
         <p>{props.organisation.Type}</p>
       </div>
       <hr />
@@ -21,7 +30,7 @@ const InfoCards = (props) => {
         <div className="ic-info">
           <i className="fa-solid fa-location-dot ic-adress"></i>
           <p>
-            {props.organisation.Street},
+            {props.organisation.Street},{" "}
             {props.organisation.Postcode}
           </p>
         </div>

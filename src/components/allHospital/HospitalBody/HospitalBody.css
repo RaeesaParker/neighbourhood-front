@@ -48,3 +48,48 @@
 .hospitalHeader-List a:hover {
   color: var(--grey-extra-light);
 }
+
+.hospital-headers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hh-icon {
+  cursor: pointer;
+  color: var(--grey-medium);
+}
+
+@media screen and (max-width: 1250px) {
+  .hospitalHeader-List {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .hospitalHeader-List {
+    gap: 7px;
+  }
+
+  .hospitalHeader-List li {
+    padding: 1px 2px;
+    transition: 0.5s all ease;
+  }
+
+  .hospitalHeader-List a {
+    font-size: 14px;
+    padding: 1px 5px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .hospital-selector {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .infocards-box:last-child {
+    margin-bottom: 55px;
+  }
+}
