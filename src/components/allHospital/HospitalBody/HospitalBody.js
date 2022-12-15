@@ -4,7 +4,7 @@ import medicalImage from "../../../imgs/medical.jpg";
 
 // Components
 import SpanHospital from "../../allHospital/SpanHospital/SpanHospital";
-import InfoCards from "../../allShared/InfoCards/InfoCards";
+import InfoCardsHospital from "../../allShared/InfoCardsHospital/InfoCardsHospital";
 
 const HospitalBody = (props) => {
   const hospitalArray =
@@ -27,10 +27,12 @@ const HospitalBody = (props) => {
         Type: element.OrganisationType,
         Street: element.Address1,
         Postcode: element.Postcode,
-        // Telephone:
-        //   element.Contacts[0].ContactType,
         Website: element.URL,
       };
+      element.Contacts.forEach((addressBook) => {
+        const contacts = addressBook.ContactValue;
+        objToAdd.Addressbook = contacts;
+      });
       switch (element.OrganisationTypeId) {
         case "HOS":
           data[0].push(objToAdd);
@@ -107,7 +109,7 @@ const HospitalBody = (props) => {
                 .map((hospital, i) => {
                   return (
                     <>
-                      <InfoCards
+                      <InfoCardsHospital
                         key={i}
                         organisation={hospital}
                         image={medicalImage}
