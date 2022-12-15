@@ -49,6 +49,17 @@
   color: var(--grey-extra-light);
 }
 
+.hospital-headers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hh-icon {
+  cursor: pointer;
+  color: var(--grey-medium);
+}
+
 @media screen and (max-width: 1250px) {
   .hospitalHeader-List {
     margin-bottom: 20px;

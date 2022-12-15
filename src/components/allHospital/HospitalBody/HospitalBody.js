@@ -62,8 +62,18 @@ const HospitalBody = (props) => {
     "Dentals",
   ];
 
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
   return (
-    <div className="mainbody-box">
+    <div
+      className="mainbody-box"
+      id="hospital-start"
+    >
       <SpanHospital
         userDetails={props.userDetails}
       />
@@ -99,9 +109,15 @@ const HospitalBody = (props) => {
       </div>
       {headerArray.map((header, j) => (
         <>
-          <h1 id={headerArray[j]}>
-            {headerArray[j]}
-          </h1>
+          <div className="hospital-headers">
+            <h1 id={headerArray[j]}>
+              {headerArray[j]}
+            </h1>
+            <i
+              onClick={scrollToTop}
+              className="fa-solid fa-chevron-up hh-icon"
+            ></i>
+          </div>
           <div className="hospitalbody-posts">
             {data[j] &&
               data[j]
