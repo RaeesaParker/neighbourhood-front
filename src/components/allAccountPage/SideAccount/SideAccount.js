@@ -115,7 +115,7 @@ const SideAccount = (props) => {
       <div className="sideaccount">
         <div id="subsection-panel-user">
           <div id="subsection-panel-user-div">
-            <Link to="/user" className="Link">
+            <Link to="/user">
               <h4>
                 @
                 {props.userDetails.username.toLowerCase()}
@@ -124,7 +124,7 @@ const SideAccount = (props) => {
           </div>
 
           <div id="subsection-panel-image-div">
-            <Link to="/user" className="Link">
+            <Link to="/user">
               <img
                 src={userProfile}
                 alt="Logo"

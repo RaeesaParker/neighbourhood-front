@@ -107,7 +107,7 @@ const HospitalBody = (props) => {
         </ul>
       </div>
       {headerArray.map((header, j) => (
-        <>
+        <div key={j}>
           <div className="hospital-headers">
             <h1 id={headerArray[j]}>
               {headerArray[j]}
@@ -123,17 +123,15 @@ const HospitalBody = (props) => {
                 .slice(0, 4)
                 .map((hospital, i) => {
                   return (
-                    <>
-                      <InfoCardsHospital
-                        key={i}
-                        organisation={hospital}
-                        image={medicalImage}
-                      />
-                    </>
+                    <InfoCardsHospital
+                      key={i}
+                      organisation={hospital}
+                      image={medicalImage}
+                    />
                   );
                 })}
           </div>
-        </>
+        </div>
       ))}
     </div>
   );

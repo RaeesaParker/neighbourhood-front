@@ -87,7 +87,7 @@ function SidePanel(props) {
     <div id="subsection-mainpage-panel">
       <div id="subsection-panel-user">
         <div id="subsection-panel-user-div">
-          <Link to="/user" className="Link">
+          <Link to="/user">
             <h4>
               @
               {props.userDetails.username.toLowerCase()}
@@ -96,7 +96,7 @@ function SidePanel(props) {
         </div>
 
         <div id="subsection-panel-image-div">
-          <Link to="/user" className="Link">
+          <Link to="/user">
             <img
               src={userProfile}
               alt="Logo"
