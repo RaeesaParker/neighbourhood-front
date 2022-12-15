@@ -89,7 +89,7 @@ const SideAccount = (props) => {
 
       navigate("/");
     } else {
-      console.log("Deleting user unsuccessful");
+      // console.log("Deleting user unsuccessful");
     }
   };
 

@@ -42,7 +42,7 @@ export const registerUser = async (
       return data.error;
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -74,7 +74,7 @@ export const findUser = async (
       return data;
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -111,14 +111,14 @@ export const loginUser = async (
       return data.status;
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
 // Get a users details
 export const getUser = async (userId) => {
   try {
-    console.log(userId);
+    // console.log(userId);
     const response = await fetch(
       `${API_URL}/user/${userId}`,
       {
@@ -137,7 +137,7 @@ export const getUser = async (userId) => {
       return false;
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -168,7 +168,7 @@ export const updateUser = async (
     });
     return data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -187,20 +187,20 @@ export const deleteUser = async (userId) => {
       }
     );
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     if (!data.error) {
       return true;
     } else {
       return false;
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
 // get all the users in the current region
 export const getRegionUser = async (regionId) => {
-  console.log(regionId);
+  // console.log(regionId);
   try {
     const response = await fetch(
       `${API_URL}/users`,
@@ -220,6 +220,6 @@ export const getRegionUser = async (regionId) => {
       return false;
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };

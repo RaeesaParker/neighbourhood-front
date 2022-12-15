@@ -42,7 +42,7 @@ const MsgModal = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(newPost);
+    // console.log(newPost);
 
     // Basic validation
     if (!newPost.post_content) {
