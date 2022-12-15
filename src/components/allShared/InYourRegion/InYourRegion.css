@@ -14,7 +14,7 @@ tool-tip {
   z-index: 1;
 }
 
-tool-tip::first-letter {
+tool-tip {
   text-transform: lowercase;
 }
 
