@@ -3,7 +3,6 @@ import "./HospitalBody.css";
 import medicalImage from "../../../imgs/medical.jpg";
 
 // Components
-import SearchBox from "../../allShared/SearchBox/SearchBox";
 import SpanHospital from "../../allHospital/SpanHospital/SpanHospital";
 import InfoCards from "../../allShared/InfoCards/InfoCards";
 
@@ -28,7 +27,8 @@ const HospitalBody = (props) => {
         Type: element.OrganisationType,
         Street: element.Address1,
         Postcode: element.Postcode,
-        Telephone: element.ContactValue,
+        // Telephone:
+        //   element.Contacts[0].ContactType,
         Website: element.URL,
       };
       switch (element.OrganisationTypeId) {
@@ -62,17 +62,43 @@ const HospitalBody = (props) => {
 
   return (
     <div className="mainbody-box">
-      <SearchBox />
       <SpanHospital
         userDetails={props.userDetails}
       />
+      <ul className="hospitalHeader-List">
+        <li>
+          <a href={"#" + headerArray[0]}>
+            Hospital
+          </a>
+        </li>
+        <li>
+          <a href={"#" + headerArray[1]}>
+            Pharmacy
+          </a>
+        </li>
+        <li>
+          <a href={"#" + headerArray[2]}>GP</a>
+        </li>
+        <li>
+          <a href={"#" + headerArray[3]}>
+            Clinic
+          </a>
+        </li>
+        <li>
+          <a href={"#" + headerArray[4]}>
+            Dental
+          </a>
+        </li>
+      </ul>
       {headerArray.map((header, j) => (
         <>
-          <h1>{headerArray[j]}</h1>
+          <h1 id={headerArray[j]}>
+            {headerArray[j]}
+          </h1>
           <div className="hospitalbody-posts">
             {data[j] &&
               data[j]
-                .slice(0, 4)
+                .slice(0, 10)
                 .map((hospital, i) => {
                   return (
                     <>

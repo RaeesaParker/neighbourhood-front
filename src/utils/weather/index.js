@@ -18,3 +18,19 @@
 // And update this object created there
 
 // The componenet has been set up so that the image changes dynamically depending on the weather code
+
+export const getWeather = async () => {
+  try {
+    const res = await fetch(
+      "https://api.open-meteo.com/v1/forecast?latitude=53.78&longitude=-2.71&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Europe%2FLondon"
+    );
+    const data = await res.json();
+    if (data.error) {
+      return console.log(data.reason);
+    } else {
+      return data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

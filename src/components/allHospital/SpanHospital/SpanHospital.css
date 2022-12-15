@@ -9,7 +9,6 @@
 
   margin-bottom: 35px;
   padding: 0px 30px;
-  width: 60%;
 }
 
 .span-hospital .span-header {
@@ -50,10 +49,6 @@
 }
 
 @media screen and (max-width: 1250px) {
-  .span-hospital {
-    width: 80%;
-  }
-
   .span-hospital .span-body p {
     font-size: 14px;
     margin-right: 185px;
@@ -61,9 +56,6 @@
 }
 
 @media screen and (max-width: 950px) {
-  .span-hospital {
-    width: auto;
-  }
   .span-girl {
     display: none;
   }

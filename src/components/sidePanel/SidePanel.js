@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "./SidePanelStyles.css";
 // Import profile pictures
 import userProfile from "../../imgs/fakeuser.png";
+import { getWeather } from "../../utils/weather/index";
 
 function SidePanel(props) {
   // State to store the weather
@@ -10,18 +11,19 @@ function SidePanel(props) {
   const [weatherImage, setWeatherImage] =
     useState("sunny");
 
-  // Function to set the weather
-  function setWeatherFunc() {
+  // Gets todays weather and stores it to weather
+  const localWeather = async () => {
+    const data = await getWeather();
     setWeather({
-      minTemp: 5,
-      maxTemp: 15,
-      weatherCode: 20,
+      minTemp: data.daily.temperature_2m_min[0],
+      maxTemp: data.daily.temperature_2m_max[0],
+      weatherCode: data.daily.weathercode[0],
     });
-  }
+  };
 
   // Set the weather when the component loads
   useEffect(() => {
-    setWeatherFunc();
+    localWeather();
     setWeatherImageFunc();
   }, []);
 
@@ -95,6 +97,21 @@ function SidePanel(props) {
     );
   });
 
+  // Weather functions
+  const weekday = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const date = new Date();
+  const today = weekday[date.getDay()];
+  const todayDate =
+    date.toLocaleDateString("en-GB");
+
   return (
     <div id="subsection-mainpage-panel">
       <div id="subsection-panel-user">
@@ -115,15 +132,36 @@ function SidePanel(props) {
         <div>{userImages}</div>
         <p>And many others!</p>
       </div>
-      <div className="subsection-panel">
-        <h3>Weather</h3>
-        <p>Min Temp: {weather.minTemp}&deg;C</p>
-        <p>Max Temp: {weather.maxTemp}&deg;C </p>
-        <img
-          src={require(`../../imgs/weather/${weatherImage}.png`)}
-          alt="Logo"
-          id="fig-weather"
-        />
+
+      <div className="subsection-panel-weather">
+        <h3>Today&apos;s average temp.</h3>
+        <div className="weather-bg">
+          <img
+            src={require(`../../imgs/weather/${weatherImage}.png`)}
+            alt="Logo"
+            id="fig-weather"
+          />
+
+          <div className="weather-box">
+            <div className="max-temp">
+              <p>
+                {weather.maxTemp}
+                &deg;
+              </p>
+              <p>Max Temp.</p>
+            </div>
+            <div className="fake-hr" />
+            <div className="min-temp">
+              <div>
+                <p>{today},</p>
+                <p>{todayDate}</p>
+              </div>
+              <p>
+                Min Temp: {weather.minTemp}&deg;C
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

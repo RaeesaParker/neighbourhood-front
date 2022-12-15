@@ -26,7 +26,21 @@
   }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 650px) {
+  .userpage-page {
+    flex-direction: column-reverse;
+    margin: 0px;
+  }
+
   .userpage-sidebar {
+    top: 0px;
+    height: auto;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .userpage-body {
+    margin-top: 26px;
   }
 }

@@ -64,6 +64,7 @@ function HospitalPage(props) {
       <div id="subsection-mainpage-navbar">
         <NavigationBar
           setIsLoggedIn={props.setIsLoggedIn}
+          userDetails={props.userDetails}
         />
       </div>
       <div className="hospitalpage-body">

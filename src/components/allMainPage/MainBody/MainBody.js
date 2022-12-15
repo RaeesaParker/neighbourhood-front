@@ -62,7 +62,7 @@ const MainBody = (props) => {
   const breakpointPostCards = {
     default: 4,
     1920: 3,
-    1450: 2,
+    1500: 2,
     1050: 1,
   };
 
