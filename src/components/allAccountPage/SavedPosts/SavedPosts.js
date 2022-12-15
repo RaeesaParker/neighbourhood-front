@@ -59,7 +59,7 @@ const SavedPosts = (props) => {
               {likedPosts.map((post) => {
                 return (
                   <SavedPostsCard
-                    key={post.id}
+                    key={post.PostId}
                     userDetails={
                       props.userDetails
                     }
