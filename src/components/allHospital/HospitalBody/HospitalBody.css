@@ -10,3 +10,29 @@
   margin-top: 25px;
   max-width: 100%;
 }
+
+.hospitalHeader-List {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 20px;
+  background-color: var(--grey-light);
+}
+
+/* .hospitalHeader-List li {
+  display: inline;
+} */
+
+.hospitalHeader-List a {
+  /* display: inline;
+  color: var(--grey-nav);
+  background-color: var(--grey-light);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px; */
+  /* display: flex; */
+  display: inline;
+  text-align: center;
+  color: var(--grey-nav);
+}
