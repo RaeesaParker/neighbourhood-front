@@ -29,13 +29,31 @@ const InfoCards = (props) => {
         undefined ? (
           <div className="ic-info">
             <i className="fa-solid fa-address-book ic-address-book"></i>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={`${props.organisation.Addressbook}`}
-            >
-              {props.organisation.Addressbook}
-            </a>
+            {props.organisation.Addressbook.includes(
+              "http"
+            ) ? (
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={`${props.organisation.Addressbook}`}
+              >
+                {props.organisation.Addressbook}
+              </a>
+            ) : props.organisation.Addressbook.includes(
+                "@"
+              ) ? (
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={`mailto:${props.organisation.Addressbook}`}
+              >
+                {props.organisation.Addressbook}
+              </a>
+            ) : (
+              <p>
+                {props.organisation.Addressbook}
+              </p>
+            )}
           </div>
         ) : (
           <div />
