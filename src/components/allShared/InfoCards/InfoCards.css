@@ -48,6 +48,15 @@
   gap: 10px;
 }
 
+.ic-info a {
+  color: var(--grey-dark);
+  font-weight: 500;
+}
+
+.ic-info a:visited {
+  color: var(--grey-dark);
+}
+
 .ic-info i {
   font-size: 18px;
   text-align: center;
