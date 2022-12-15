@@ -12,7 +12,7 @@ const SearchBox = ({
   // -
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(searchTerm);
+    // console.log(searchTerm);
     setHaveNewPost(true);
   };
 

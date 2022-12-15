@@ -11,7 +11,7 @@ const InfoModal = ({
 }) => {
   //
   const handleOnClick = (val) => {
-    console.log(val);
+    // console.log(val);
 
     if (action && val == actionOn) {
       action();

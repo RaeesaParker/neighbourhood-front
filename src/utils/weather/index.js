@@ -26,11 +26,12 @@ export const getWeather = async () => {
     );
     const data = await res.json();
     if (data.error) {
-      return console.log(data.reason);
+      return;
+      //  console.log(data.reason);
     } else {
       return data;
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
