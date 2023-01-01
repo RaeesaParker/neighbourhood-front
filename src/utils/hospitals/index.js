@@ -1,5 +1,6 @@
 // Utils for the hospitals information
-
+// const API_KEY = process.env.REACT_APP_BASE_HOSPITAL;
+const API_KEY = process.env.REACT_APP_HOSPITAL_KEY;
 
 export const nearHospitals = async (pcd) => {
   try {
@@ -10,7 +11,7 @@ export const nearHospitals = async (pcd) => {
         headers: {
           "Content-Type": "application/json",
           "subscription-key":
-            "8ba74e49f6d74538a07607d9d66fee46",
+            API_KEY,
           // subscription-key
         },
       }
