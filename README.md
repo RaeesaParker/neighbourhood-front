@@ -30,3 +30,15 @@ The app is hosted at [https://neighbourwho.netlify.app/](https://neighbourwho.ne
 In order to use this app, you are required to sign-up using a valid username, e-mail, password, and UK postcode. 
 
 **Note: As this was intented to be a small project, created using limited resources, the app is currently only functional for postcodes within Preston, UK. In order to test this app, we urge users to create a profile using one of the following postcodes - PR7 7AJ, PR7 7AR, PR7 7AT, PR7 7AU**
+
+
+## API's and Data 
+This app makes use of the following API's and Data -
+- NHS Directory of Healthcare Services (Service Search) API
+- Open Mateo Weather Forecast API 
+- Regional Data from the Office of National Statistics
+- UK government's Get Information About Schools Registry
+
+
+
+
