@@ -16,7 +16,7 @@ import HospitalPage from "./pages/hospitalPage/HospitalPage";
 function App() {
   // ** AOS = library with effects on the cards
   AOS.init();
-
+  
   // Set state to manage user login
   const [isLoggedIn, setIsLoggedIn] =
     useState(true);
