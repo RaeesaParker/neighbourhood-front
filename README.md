@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# NeighbourWho? 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+NeighbourWho? is a social media application that automatically groups users with their neighbours so that posts and comments are relevant all of the time.
 
-## Available Scripts
+## General Information
+This app was created in two weeks as part of the [Codenation Masters Web Development Bootcamp](https://wearecodenation.com/2022/04/25/master-coding/).
+This repository ([RaeesaParker/neighbourhood-front/](https://github.com/RaeesaParker/neighbourhood-front/)) holds the front-end code, whilst the back-end repository can be found at [ijwilliamson/neighbourhood-backend](https://github.com/ijwilliamson/neighbourhood-backend/) . 
 
-In the project directory, you can run:
+### Collaborators 
+This project has been a collaboration between -
+- [Raessa Parker](https://github.com/RaeesaParker/)
+- [Ian Williamson](https://github.com/ijwilliamson/)
+- [Mayranne Nascimento](https://github.com/heydut)
+- [Mishal Rayamajhi](https://github.com/Mishal12)
+- [Rowan Wood](https://github.com/mrdiamonddirt/)
 
-### `npm start`
+## Technologies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Front-end
+- React 18.2 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Back-end 
+- Node.js
+- Express 4.18.2
+- MySQL 
+- Swagger
 
-### `npm test`
+## Usage
+The app is hosted at [https://neighbourwho.netlify.app/](https://neighbourwho.netlify.app/). 
+In order to use this app, you are required to sign-up using a valid username, e-mail, password, and UK postcode. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Note: As this was intented to be a small project, created using limited resources, the app is currently only functional for postcodes within Preston, UK. In order to test this app, we urge users to create a profile using one of the following postcodes - PR7 7AJ, PR7 7AR, PR7 7AT, PR7 7AU**
