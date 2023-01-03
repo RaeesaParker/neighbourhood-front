@@ -39,6 +39,13 @@ This app makes use of the following API's and Data -
 - Regional Data from the Office of National Statistics
 - UK government's Get Information About Schools Registry
 
+## Screenshots
+Below are a selection of screenshots of the app. 
 
+<img src="./public/screenshots/neighbourwho1.png" width="500" /> <img src="./public/screenshots/neighbourwho2.png" width="500"  />
+<img src="./public/screenshots/neighbourwho3.png" width="500"  />
+<img src="./public/screenshots/neighbourwho4.png" width="500"  />
+<img src="./public/screenshots/neighbourwho5.png" width="500"  />
+<img src="./public/screenshots/neighbourwho6.png" width="500"  />
 
 
