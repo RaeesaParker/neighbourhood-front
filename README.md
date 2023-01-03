@@ -40,12 +40,11 @@ This app makes use of the following API's and Data -
 - UK government's Get Information About Schools Registry
 
 ## Screenshots
-Below are a selection of screenshots of the app. 
+Below are a selection of screenshots of the app. We have included exmaples showcasing the responsiveness of the app across various devices. 
 
 <img src="./public/screenshots/neighbourwho1.png" width="500" /> <img src="./public/screenshots/neighbourwho2.png" width="500"  />
-<img src="./public/screenshots/neighbourwho3.png" width="500"  />
-<img src="./public/screenshots/neighbourwho4.png" width="500"  />
-<img src="./public/screenshots/neighbourwho5.png" width="500"  />
-<img src="./public/screenshots/neighbourwho6.png" width="500"  />
+<img src="./public/screenshots/neighbourwho3.png" width="500"  /> <img src="./public/screenshots/neighbourwho4.png" width="500"  />
+<img src="./public/screenshots/neighbourwho5.png" width="500"  /> <img src="./public/screenshots/neighbourwho6.png" width="500"  />
+<img src="./public/screenshots/neighbourwho7.png" width="250"  /> <img src="./public/screenshots/neighbourwho8.png" width="400"  />
 
 
