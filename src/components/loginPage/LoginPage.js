@@ -20,6 +20,7 @@ function LoginPage(props) {
         </div>
         <div className="navbar-right">
           <div className="navbar-buttons">
+
             <button
               className="loginHome-btn"
               onClick={() => {
@@ -28,6 +29,7 @@ function LoginPage(props) {
             >
               Login
             </button>
+
             <button
               onClick={() => {
                 setShowForm("register");
@@ -35,6 +37,15 @@ function LoginPage(props) {
             >
               Sign Up
             </button>
+
+            <button
+              onClick={() => {
+                setShowForm("register");
+              }}
+            >
+              Demo
+            </button>
+
           </div>
 
           {showForm === "login" ? (
