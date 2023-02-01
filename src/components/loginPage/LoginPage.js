@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "../../imgs/logo.svg";
+// import { useNavigate } from "react-router-dom";
 import LoginForm from "../LoginForm/LoginForm";
 import { useState } from "react";
 import RegisterForm from "../RegisterForm/RegisterForm";
@@ -8,6 +9,8 @@ import "./LoginPageStyles.css";
 // Login Page => Form to sign in => Form to register
 
 function LoginPage(props) {
+    // Navigation for redirect
+  // const navigate = useNavigate();
   const [showForm, setShowForm] = useState(null);
 
   return (
