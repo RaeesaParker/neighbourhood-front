@@ -28,7 +28,7 @@ This project has been a collaboration between -
 ## Usage <a name="usage"></a>
 The app is hosted at [https://neighbourwho.netlify.app/](https://neighbourwho.netlify.app/). 
 
-If you would like to test the app without creating an account, please do one of the following -
+**To test the app without creating an account, please do one of the following -**
 - Click on the "Demo" button
 - Log in using the following details :  &nbsp; **username:** *testuser* &nbsp; **password:** *testuser*
 
