@@ -45,9 +45,16 @@
   transition: 0.5s all ease;
 }
 
-.NavBarHomeScreen button:last-child {
+.NavBarHomeScreen button:nth-last-child(2) {
   background-color: var(--white-dark);
   color: var(--grey-nav);
+  font-weight: 700;
+}
+
+.NavBarHomeScreen button:last-child {
+  background-color: var(--grey-nav);
+  border: 3px solid var(--grey-nav);
+  color: var(--white-dark);
   font-weight: 700;
 }
 
@@ -55,10 +62,16 @@
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-.NavBarHomeScreen button:last-child:hover {
+.NavBarHomeScreen button:nth-last-child(2):hover{
   background-color: var(--grey-light);
   border: 3px solid var(--grey-light);
 }
+
+.NavBarHomeScreen button:last-child:hover {
+  background-color: var(--grey-dark);
+  border: 3px solid var(--grey-dark);
+}
+
 
 .MainLogoHomeScreen {
   display: flex;
@@ -108,3 +121,4 @@
     padding: 4px 12px;
   }
 }
+
