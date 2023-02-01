@@ -1,32 +1,14 @@
 import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Logo from "../../imgs/logo.svg";
 import LoginForm from "../LoginForm/LoginForm";
+import { useState } from "react";
 import RegisterForm from "../RegisterForm/RegisterForm";
-import { loginUser } from "../../utils/users";
 import "./LoginPageStyles.css";
 
 // Login Page => Form to sign in => Form to register
 
 function LoginPage(props) {
-  // Navigation for redirect
-  const navigate = useNavigate();
-
   const [showForm, setShowForm] = useState(null);
-  const [error, setError] = useState("");
-
-
-  // Login user with test details when demo button is clicked
-  const onSubmitDemo = async () => {
-    const loggedUser = await loginUser("testuser", "testuser", props.setUserDetails);
-
-    if (loggedUser === true) { 
-      props.setIsLoggedIn(true);
-      navigate("/main");
-    } else {setError(loggedUser)}
-  };
-
 
   return (
     <div className="LoginPageHomeScreen">
@@ -38,7 +20,6 @@ function LoginPage(props) {
         </div>
         <div className="navbar-right">
           <div className="navbar-buttons">
-
             <button
               className="loginHome-btn"
               onClick={() => {
@@ -47,7 +28,6 @@ function LoginPage(props) {
             >
               Login
             </button>
-
             <button
               onClick={() => {
                 setShowForm("register");
@@ -55,18 +35,6 @@ function LoginPage(props) {
             >
               Sign Up
             </button>
-
-            <button
-              onClick={() => {
-                onSubmitDemo()
-              }}
-            >
-              Demo
-            </button>
-
-            <form-message className="error">
-              {error ? error : <></>}
-            </form-message>
           </div>
 
           {showForm === "login" ? (
