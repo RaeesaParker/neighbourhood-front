@@ -2,7 +2,7 @@
 
 NeighbourWho? is a social media application that automatically groups users with their neighbours so that posts and comments are relevant all of the time.
 
-<img src="./public/screenshots/screenshot1.png" width="350" /> <img src="./public/screenshots/screenshot2.png" width="350"  />
+<img src="./public/screenshots/screenshot1.png" width="350" /> <img src="./public/screenshots/screenshot3.png" width="350"  />
 
 ## Table of contents
 * [General Information](#generalInfo)
