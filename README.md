@@ -2,6 +2,8 @@
 
 NeighbourWho? is a social media application that automatically groups users with their neighbours so that posts and comments are relevant all of the time.
 
+<img src="./public/screenshots/neighbourwho1.png" width="350" /> <img src="./public/screenshots/neighbourwho2.png" width="350"  />
+
 
 ## General Information
 This app was created in two weeks as part of the [Codenation Masters Web Development Bootcamp](https://wearecodenation.com/2022/04/25/master-coding/).
